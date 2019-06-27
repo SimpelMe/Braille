@@ -1,0 +1,131 @@
+
+  body      { font: 75% Arial,Helvetica,sans-serif; color: #000; background-color: #fff; background-attachment: fixed;
+              margin: auto; padding: 0; width:480px; transform-origin: top center; 
+              -webkit-touch-callout: none; -webkit-user-select: none;} /*transform: scale(2.8); */
+  table     { font: 1em Arial,Helvetica,sans-serif; color: #000; border=0; }
+  td        { text-align: left; }
+  b         { font-size: 1.1em }
+  small     { font-size: .8em; }
+  h1        { font: italic bold  1.8em Times New Roman,Arial,Helvetica,sans-serif; color: red; letter-spacing: 1.6pt;
+              padding-right: 10px; margin: 10px; }
+  h2        { font:        bold  1.4em Arial,Helvetica,sans-serif; color: black; padding-right: 10px; }
+  h3        { font:        bold  1.2em Arial,Helvetica,sans-serif; color: blue; padding-right: 10px; }
+  .hervor   { font-size: 1.2em; color: red }
+  .hh       { font-size: 1.1em; font-weight: bold; color: red; }
+  .hb       { font-size: 1.1em; font-weight: bold; color: blue; }
+  .h        { font-size: 1.1em; color: red; }
+  a         { color: black ; text-decoration: none; }
+  a:hover, a:active, a:focus { color: black; text-decoration: none; }
+  ul        { margin: 10px 0 10px 0; padding-left: 30px; }
+  li 		{margin-bottom:10px}
+  .info		{ font-size: 10pt; margin-top: 1px; margin-right: 2px; position:absolute; top:0; right:0; }
+
+   button          { font: 1em Verdana,Helvetica,sans-serif; color: #333; background-color: #eee; cursor: pointer;
+                    margin: 3px; padding: 0px; height: 22px; width: 18px; border: 1px solid #ccc; border-radius: 1px;}
+  button.druck    { color: #666; background-color: #fff; font-size: .9em; }
+  button.zusatz   { color: #999; background-color: #fff; border: 1px #999 dashed;}
+  button.big	  {height: 44px; width: 36px;}
+  
+  /*img {padding: 0px; padding-left: -2px; padding-top: -2px;}*/
+  
+  textarea,
+  input.text,
+  input[type="text"],
+  input[type="reset"],
+  input[type="button"],
+  input[type="submit"],
+  .input-checkbox {-webkit-appearance: none; -webkit-border-radius:0px; }
+  
+  .out            { font-size: 1.4em; color: black; cursor: default; border: 1px dotted #999; text-align: center;
+                    padding: 0px }
+  .out      { font: 10pt Verdana,Helvetica,sans-serif; border: 0; text-align: center; width: 28px; }
+  .bgws           { background-color: #fff; }
+  .long			  { margin-top: 2px; padding-left: 5px; border: 1px solid #ccc; text-align: left !important; height:25px; width:100%}
+  .zelle    { border: 1px solid #ccc; border-radius: 1px; text-align: center; }
+  .zelle_big    { border: 1px solid #ccc; border-radius: 1px; text-align: center; width: 80px; }
+  .textcenter { text-align: center; }
+  .bottom { vertical-align:bottom; }
+  .middle { vertical-align:middle; }
+  .set img  { cursor: pointer; }
+  .noprint  { color: #666; }
+  .remark   { text-align: left; color: #333; background-color: #eee; border: black 1px dashed; padding: 8px; width:440px; margin-bottom: 20px; }
+  .remark ul{ font-size: .9em; }
+
+.big6		{margin-top: 0.75rem}
+.braille64 	{display: none}
+
+/* Popup container */
+.umschalter {
+  font-size: 1.5rem; 
+  color: grey;
+  position:absolute;
+  top:0; 
+  right:0px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.popup {
+  font-size: 10pt;
+  font-weight: bold;
+  color: grey; 
+  margin-top: 8px; 
+  margin-left: -5px;
+  position:absolute; 
+  top:0; 
+  /*right:-10px; */
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  /*font-size: 1.3vw;*/
+  visibility: hidden;
+  text-align: left; 
+  font-weight: normal;
+  color: #333; 
+  background-color: #eee; 
+  border: black 1px;
+  border-style: solid;
+  padding: 8px; 
+  width:480px; 
+  /*margin-bottom: 20px;*/
+  position: absolute;
+  z-index: 1;
+  top: -6px;
+  left: -244px;
+  /*margin-left: -80px;*/
+}
+/*  .popup .popuptext ul{ font-size: .75rem; }*/
+
+/* Popup arrow */
+.popup .popuptext::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 0s;
+  animation: fadeIn 0s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

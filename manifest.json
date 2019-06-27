@@ -1,0 +1,14 @@
+{
+  "name": "Braille",
+  "short_name": "Braille",
+  "lang": "de-DE",
+  "start_url": "",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "android-icon-192x192.png"
+    }
+  ]
+}
