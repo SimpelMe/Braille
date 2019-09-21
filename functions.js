@@ -1,3 +1,44 @@
+var pos = 0
+// count of zellen-limit
+// adapt declaration 'zellen' at 'var zellen' and reassign at 'function loesch()''
+var limitZellen = 15;
+
+var zellen = new Array();
+// minimum: limitZellen + 1 ; more then enough actual (25)
+zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+var sprache = 'd';
+
+var bit = new Array();
+bit[0] = '000';
+bit[1] = '100'; // oberster Punkt = kleinstes Bit
+bit[2] = '010';
+bit[3] = '110';
+bit[4] = '001';
+bit[5] = '101';
+bit[6] = '011';
+bit[7] = '111';
+bit['000'] = '0';
+bit['100'] = '1';
+bit['010'] = '2';
+bit['110'] = '3';
+bit['001'] = '4';
+bit['101'] = '5';
+bit['011'] = '6';
+bit['111'] = '7';
+
+function loesch() {
+  // minimum: limitZellen + 1 because of the big one; more then enough actual (25)
+  zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+  for (var i = 0; i < limitZellen; i++) ausgabe(i); // affected by count of zellen-limit
+  document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
+  document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
+  document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
+  document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
+  document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
+  document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
+  pos = 0;
+}
+
 function umschalten() {
   var x = document.getElementById("big6");
   var y = document.getElementById("braille64");
@@ -23,31 +64,6 @@ function scaleBody() {
     "style", "transform: scale(" + scaleNow + ");");
 }
 
-var afozeichen = String.fromCharCode(8220);
-var afezeichen = String.fromCharCode(8221);
-
-var zellen = new Array();
-zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
-var sprache = 'd';
-
-var bit = new Array();
-bit[0] = '000';
-bit[1] = '100'; // oberster Punkt = kleinstes Bit
-bit[2] = '010';
-bit[3] = '110';
-bit[4] = '001';
-bit[5] = '101';
-bit[6] = '011';
-bit[7] = '111';
-bit['000'] = '0';
-bit['100'] = '1';
-bit['010'] = '2';
-bit['110'] = '3';
-bit['001'] = '4';
-bit['101'] = '5';
-bit['011'] = '6';
-bit['111'] = '7';
-
 function ausgabe(pos) {
   var zeichen = zellen[pos];
   var pu = [0, 0, 0, 0, 0, 0];
@@ -69,7 +85,7 @@ function ausgabe(pos) {
     if (pu[j])
       document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
     else
-      document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '�';
+      document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
   }
 
   var ausgzelle = 'z' + (pos + 1);
@@ -80,8 +96,16 @@ function ausgabe(pos) {
 }
 
 function klick(zelle, punkt) {
-  var bild = 'p' + zelle + '_' + punkt;
-  var zeichen = zellen[zelle - 1];
+  var bild;
+  var zeichen;
+  if (zelle == 9999) { // bigCell
+    bild = 'pBig_' + punkt;
+    zeichen = zellen[limitZellen];
+    zelle = limitZellen + 1;
+  } else {
+    bild = 'p' + zelle + '_' + punkt;
+    zeichen = zellen[zelle - 1];
+  }
 
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
@@ -98,7 +122,7 @@ function klick(zelle, punkt) {
   else pu[5] = 0;
 
   if (pu[punkt - 1]) {
-    document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '�';
+    document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
     pu[punkt - 1] = 0;
   } else {
     document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
@@ -109,15 +133,14 @@ function klick(zelle, punkt) {
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   zellen[zelle - 1] = brailleback(zeichen1 + zeichen2);
-  if (zelle < 16) {
+  if (zelle < limitZellen + 1) {
     var ausgzelle = 'z' + zelle;
     document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
   }
 }
 
 function grosseAuslesen() {
-  var zelle = 16; // das ist die grosse Zelle
-  var zeichen = zellen[zelle - 1];
+  var zeichen = zellen[limitZellen];
 
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
@@ -137,27 +160,13 @@ function grosseAuslesen() {
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
-  zellen[zelle - 1] = brailleback('00');
-  document.images['p16_1'].src = 'hilfspunkt.svg', document.images['p16_1'].alt = '�';
-  document.images['p16_2'].src = 'hilfspunkt.svg', document.images['p16_2'].alt = '�';
-  document.images['p16_3'].src = 'hilfspunkt.svg', document.images['p16_3'].alt = '�';
-  document.images['p16_4'].src = 'hilfspunkt.svg', document.images['p16_4'].alt = '�';
-  document.images['p16_5'].src = 'hilfspunkt.svg', document.images['p16_5'].alt = '�';
-  document.images['p16_6'].src = 'hilfspunkt.svg', document.images['p16_6'].alt = '�';
-}
-
-function loesch() {
-  zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']; // 16
-  for (var i = 0; i < 15; i++) ausgabe(i); // 16
-  var zelle = 16;
-  zellen[zelle - 1] = brailleback('00');
-  document.images['p16_1'].src = 'hilfspunkt.svg', document.images['p16_1'].alt = '�';
-  document.images['p16_2'].src = 'hilfspunkt.svg', document.images['p16_2'].alt = '�';
-  document.images['p16_3'].src = 'hilfspunkt.svg', document.images['p16_3'].alt = '�';
-  document.images['p16_4'].src = 'hilfspunkt.svg', document.images['p16_4'].alt = '�';
-  document.images['p16_5'].src = 'hilfspunkt.svg', document.images['p16_5'].alt = '�';
-  document.images['p16_6'].src = 'hilfspunkt.svg', document.images['p16_6'].alt = '�';
-
+  zellen[limitZellen] = brailleback('00');
+  document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
+  document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
+  document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
+  document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
+  document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
+  document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
 }
 
 function aend(zelle) {
@@ -267,36 +276,34 @@ var bild_6 = new Image;
 bild_6.src = bgrafik + "6.svg";
 var bild_7 = new Image;
 bild_7.src = bgrafik + "7.svg";
-var bild_8 = new Image;
-bild_8.src = bgrafik + ".svg";
 
 function lastloe() {
-  var pos = 14; // 16
-  if (zellen[pos] == ' ') {
-    for (var i = 13; i >= 0 && zellen[i] == ' '; i--) // 16
-    {
-      if (zellen[i] == ' ') pos = i;
-    }
-    if (pos > 0) pos--;
-  }
+  if (pos == 0) return;
+  pos--;
   zellen[pos] = ' ';
   ausgabe(pos);
 }
 
-var leeran = 0;
-
 function eingabe(graf) {
-  var pos = 14; // 16
-  for (var i = 13; i >= 0 && zellen[i] == ' '; i--) // 16
-  {
-    if (zellen[i] == ' ') pos = i;
+  // test if limit is reached
+  var shift = 0;
+  if (pos > limitZellen - 1) {
+    pos = limitZellen - 1;
+    shift = 1;
   }
-  if (leeran && pos < 14) pos++; // 16
+  // if limit exceeded then shift all leading chararacters
+  if (shift == 1) {
+    for (var i = 0; i < pos; i++) {
+      zellen[i] = zellen [i + 1];
+      ausgabe(i);
+    }
+  }
+  // paint chararacter
   var zeichen = brailleback(graf);
   zellen[pos] = zeichen;
   ausgabe(pos);
-  if (graf == '00') leeran = 1;
-  else leeran = 0;
+  // next place
+  pos++;
 }
 
 function zifferncode(graf) {
@@ -321,7 +328,7 @@ tasten = [
   [' ', 0, 0]
 ];
 
-function tastbewegung(e, r) // r f�r Richtung:     'd' down    'u' up
+function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
 {
   var weiter = String.fromCharCode(e.keyCode);
   if (weiter == ' ') {
