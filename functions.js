@@ -250,6 +250,7 @@ function aend(zelle) {
   else if (wert == '_') wert = 'lich';
 
   document.form[ausgzelle].value = wert;
+  zellen[zelle - 1] = wert; // neues Zeichen auch in das Array schreiben
 }
 
 var bgrafik = 'min-';
