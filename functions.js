@@ -50,8 +50,8 @@ function umschalten() {
 }
 
 // When the user clicks on <div>, open the popup
-function myFunction() {
-  var popup = document.getElementById("myPopup");
+function openPopup() {
+  var popup = document.getElementById("popup");
   popup.classList.toggle("show");
 }
 
