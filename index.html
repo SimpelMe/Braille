@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <meta name="referrer" content="no-referrer">
@@ -26,8 +27,8 @@
   <meta name="msapplication-navbutton-color" content="#ffffff">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes user-scalable=no">
-  
-  <link rel="shortcut icon" href="favicon.ico">  
+
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="icon" href="android-icon-192x192.png">
   <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -38,11 +39,11 @@
   <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  
+
   <meta http-equiv="Content-Script-Type" content="text/javascript">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <meta http-equiv="pragma" content="no cache">
@@ -50,118 +51,167 @@
   <meta http-equiv="imagetoolbar" content="no">
   <meta http-equiv="Window-Target" content="_blank">
   <meta http-equiv="Content-language" content="de">
-  
+
   <title>&#x2819;&#x282c;&#x281e;&#x283b;</title>
-  
+
   <link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript" src="braille-code.js"></script>
   <script type="text/javascript" src="functions.js"></script>
 
 </head>
+
 <body id="body" onKeyDown="tastbewegung(event,'d')" onKeyUp="tastbewegung(event,'u')" oncontextmenu="return false;">
-<div id="wrapper">
-<center>
-<br>
-<br>
-<!--h2>Braille-&Uuml;bersetzer</h2-->
+  <div id="wrapper">
+    <center>
+      <br>
+      <br>
+      <div class="popup" onclick="myFunction()">&#9432;
+        <div class="popuptext" id="myPopup">Erl&auml;uterungen:
+          <ul id="Manual">
+            <li>um die Zeichen zu setzen, kannst Du mit &#9000; zwischen 2 Varianten w&auml;hlen:<ul>
+                <li>setze die Braille-Punkte mit der Maus und best&auml;tige mit &#10003; oder "Enter"</li>
+                <li> oder klicke direkt die Braille-Zeichen-Kn&ouml;pfe</li>
+              </ul>
+            <li>klicke in das &Uuml;bersetzungsfeld, um weitere Bedeutungen anzuzeigen</li>
+            <li>"#" ist das Zahlenzeichen; die nachfolgenden a &minus; j sind die Ziffern 1 &minus; 0</li>
+            <li>herabgesetzte Ziffern nach "#" sind Ordungsziffern (1., 2., 41. usw.)</li>
+            <li>L&ouml;schen: "Backspace" - letztes Zeichen, "ESC" - alle Zeichen</li>
+            <li>Schreibmaschine (S, D, F, J, K, L): dr&uuml;cke die ben&ouml;tigten Punkte gleichzeitig</li>
+          </ul>
+        </div>
+      </div>
 
-<div class="popup" onclick="myFunction()">&#9432;
-  <div class="popuptext" id="myPopup">Erl&auml;uterungen:
-  <ul id="Manual">
-    <li>um die Zeichen zu setzen, kannst Du mit &#9000; zwischen 2 Varianten w&auml;hlen:<ul>
-    <li>setze die Braille-Punkte mit der Maus und best&auml;tige mit &#10003; oder "Enter"</li>
-    <li> oder klicke direkt die Braille-Zeichen-Kn&ouml;pfe</li></ul>
-    <li>klicke in das &Uuml;bersetzungsfeld, um weitere Bedeutungen anzuzeigen</li>
-    <li>"#" ist das Zahlenzeichen; die nachfolgenden a &minus; j sind die Ziffern 1 &minus; 0</li>
-    <li>herabgesetzte Ziffern nach "#" sind Ordungsziffern (1., 2., 41. usw.)</li>
-    <li>L&ouml;schen: "Backspace" - letztes Zeichen, "ESC" - alle Zeichen</li>
-    <li>Schreibmaschine (S, D, F, J, K, L): dr&uuml;cke die ben&ouml;tigten Punkte gleichzeitig</li>
-  </ul></div>
-</div>
+      <div class="umschalter" onclick="umschalten()">&#9000;</div>
 
-<div class="umschalter" onclick="umschalten()">&#9000;</div>
+      <noscript>
+        <br>
+        <font color="red">Ohne Javascript kann der &Uuml;bersetzer nicht benutzt werden.
+          <br>
+          <br><b>Bitte aktiviere Javascript.</b></font>
+        <br>
+        <br>
+      </noscript>
 
-<noscript>
-  <br><font color="red">Ohne Javascript kann der &Uuml;bersetzer nicht benutzt werden.
-  <br>
-  <br><b>Bitte aktiviere Javascript.</b></font>
-  <br>
-  <br>
-</noscript>
+      <form name="form" action="">
+        <table cellspacing=2 cellpadding=0>
+          <tr>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p1_1" alt="·" title="1" onClick="klick(1,1);"><img src="hilfspunkt.svg" name="p1_4" alt="·" title="4" onClick="klick(1,4);"><br>
+                                  <img src="hilfspunkt.svg" name="p1_2" alt="·" title="2" onClick="klick(1,2);"><img src="hilfspunkt.svg" name="p1_5" alt="·" title="5" onClick="klick(1,5);"><br>
+                                  <img src="hilfspunkt.svg" name="p1_3" alt="·" title="3" onClick="klick(1,3);"><img src="hilfspunkt.svg" name="p1_6" alt="·" title="6" onClick="klick(1,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p2_1" alt="·" title="1" onClick="klick(2,1);"><img src="hilfspunkt.svg" name="p2_4" alt="·" title="4" onClick="klick(2,4);"><br><img src="hilfspunkt.svg" name="p2_2" alt="·" title="2"
+                onClick="klick(2,2);"><img src="hilfspunkt.svg" name="p2_5" alt="·" title="5" onClick="klick(2,5);"><br><img src="hilfspunkt.svg" name="p2_3" alt="·" title="3" onClick="klick(2,3);"><img src="hilfspunkt.svg" name="p2_6" alt="·"
+                title="6" onClick="klick(2,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p3_1" alt="·" title="1" onClick="klick(3,1);"><img src="hilfspunkt.svg" name="p3_4" alt="·" title="4" onClick="klick(3,4);"><br><img src="hilfspunkt.svg" name="p3_2" alt="·" title="2"
+                onClick="klick(3,2);"><img src="hilfspunkt.svg" name="p3_5" alt="·" title="5" onClick="klick(3,5);"><br><img src="hilfspunkt.svg" name="p3_3" alt="·" title="3" onClick="klick(3,3);"><img src="hilfspunkt.svg" name="p3_6" alt="·"
+                title="6" onClick="klick(3,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p4_1" alt="·" title="1" onClick="klick(4,1);"><img src="hilfspunkt.svg" name="p4_4" alt="·" title="4" onClick="klick(4,4);"><br><img src="hilfspunkt.svg" name="p4_2" alt="·" title="2"
+                onClick="klick(4,2);"><img src="hilfspunkt.svg" name="p4_5" alt="·" title="5" onClick="klick(4,5);"><br><img src="hilfspunkt.svg" name="p4_3" alt="·" title="3" onClick="klick(4,3);"><img src="hilfspunkt.svg" name="p4_6" alt="·"
+                title="6" onClick="klick(4,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p5_1" alt="·" title="1" onClick="klick(5,1);"><img src="hilfspunkt.svg" name="p5_4" alt="·" title="4" onClick="klick(5,4);"><br><img src="hilfspunkt.svg" name="p5_2" alt="·" title="2"
+                onClick="klick(5,2);"><img src="hilfspunkt.svg" name="p5_5" alt="·" title="5" onClick="klick(5,5);"><br><img src="hilfspunkt.svg" name="p5_3" alt="·" title="3" onClick="klick(5,3);"><img src="hilfspunkt.svg" name="p5_6" alt="·"
+                title="6" onClick="klick(5,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p6_1" alt="·" title="1" onClick="klick(6,1);"><img src="hilfspunkt.svg" name="p6_4" alt="·" title="4" onClick="klick(6,4);"><br><img src="hilfspunkt.svg" name="p6_2" alt="·" title="2"
+                onClick="klick(6,2);"><img src="hilfspunkt.svg" name="p6_5" alt="·" title="5" onClick="klick(6,5);"><br><img src="hilfspunkt.svg" name="p6_3" alt="·" title="3" onClick="klick(6,3);"><img src="hilfspunkt.svg" name="p6_6" alt="·"
+                title="6" onClick="klick(6,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p7_1" alt="·" title="1" onClick="klick(7,1);"><img src="hilfspunkt.svg" name="p7_4" alt="·" title="4" onClick="klick(7,4);"><br><img src="hilfspunkt.svg" name="p7_2" alt="·" title="2"
+                onClick="klick(7,2);"><img src="hilfspunkt.svg" name="p7_5" alt="·" title="5" onClick="klick(7,5);"><br><img src="hilfspunkt.svg" name="p7_3" alt="·" title="3" onClick="klick(7,3);"><img src="hilfspunkt.svg" name="p7_6" alt="·"
+                title="6" onClick="klick(7,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p8_1" alt="·" title="1" onClick="klick(8,1);"><img src="hilfspunkt.svg" name="p8_4" alt="·" title="4" onClick="klick(8,4);"><br><img src="hilfspunkt.svg" name="p8_2" alt="·" title="2"
+                onClick="klick(8,2);"><img src="hilfspunkt.svg" name="p8_5" alt="·" title="5" onClick="klick(8,5);"><br><img src="hilfspunkt.svg" name="p8_3" alt="·" title="3" onClick="klick(8,3);"><img src="hilfspunkt.svg" name="p8_6" alt="·"
+                title="6" onClick="klick(8,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p9_1" alt="·" title="1" onClick="klick(9,1);"><img src="hilfspunkt.svg" name="p9_4" alt="·" title="4" onClick="klick(9,4);"><br><img src="hilfspunkt.svg" name="p9_2" alt="·" title="2"
+                onClick="klick(9,2);"><img src="hilfspunkt.svg" name="p9_5" alt="·" title="5" onClick="klick(9,5);"><br><img src="hilfspunkt.svg" name="p9_3" alt="·" title="3" onClick="klick(9,3);"><img src="hilfspunkt.svg" name="p9_6" alt="·"
+                title="6" onClick="klick(9,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p10_1" alt="·" title="1" onClick="klick(10,1);"><img src="hilfspunkt.svg" name="p10_4" alt="·" title="4" onClick="klick(10,4);"><br><img src="hilfspunkt.svg" name="p10_2" alt="·"
+                title="2" onClick="klick(10,2);"><img src="hilfspunkt.svg" name="p10_5" alt="·" title="5" onClick="klick(10,5);"><br><img src="hilfspunkt.svg" name="p10_3" alt="·" title="3" onClick="klick(10,3);"><img src="hilfspunkt.svg"
+                name="p10_6" alt="·" title="6" onClick="klick(10,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p11_1" alt="·" title="1" onClick="klick(11,1);"><img src="hilfspunkt.svg" name="p11_4" alt="·" title="4" onClick="klick(11,4);"><br><img src="hilfspunkt.svg" name="p11_2" alt="·"
+                title="2" onClick="klick(11,2);"><img src="hilfspunkt.svg" name="p11_5" alt="·" title="5" onClick="klick(11,5);"><br><img src="hilfspunkt.svg" name="p11_3" alt="·" title="3" onClick="klick(11,3);"><img src="hilfspunkt.svg"
+                name="p11_6" alt="·" title="6" onClick="klick(11,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p12_1" alt="·" title="1" onClick="klick(12,1);"><img src="hilfspunkt.svg" name="p12_4" alt="·" title="4" onClick="klick(12,4);"><br><img src="hilfspunkt.svg" name="p12_2" alt="·"
+                title="2" onClick="klick(12,2);"><img src="hilfspunkt.svg" name="p12_5" alt="·" title="5" onClick="klick(12,5);"><br><img src="hilfspunkt.svg" name="p12_3" alt="·" title="3" onClick="klick(12,3);"><img src="hilfspunkt.svg"
+                name="p12_6" alt="·" title="6" onClick="klick(12,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p13_1" alt="·" title="1" onClick="klick(13,1);"><img src="hilfspunkt.svg" name="p13_4" alt="·" title="4" onClick="klick(13,4);"><br><img src="hilfspunkt.svg" name="p13_2" alt="·"
+                title="2" onClick="klick(13,2);"><img src="hilfspunkt.svg" name="p13_5" alt="·" title="5" onClick="klick(13,5);"><br><img src="hilfspunkt.svg" name="p13_3" alt="·" title="3" onClick="klick(13,3);"><img src="hilfspunkt.svg"
+                name="p13_6" alt="·" title="6" onClick="klick(13,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p14_1" alt="·" title="1" onClick="klick(14,1);"><img src="hilfspunkt.svg" name="p14_4" alt="·" title="4" onClick="klick(14,4);"><br><img src="hilfspunkt.svg" name="p14_2" alt="·"
+                title="2" onClick="klick(14,2);"><img src="hilfspunkt.svg" name="p14_5" alt="·" title="5" onClick="klick(14,5);"><br><img src="hilfspunkt.svg" name="p14_3" alt="·" title="3" onClick="klick(14,3);"><img src="hilfspunkt.svg"
+                name="p14_6" alt="·" title="6" onClick="klick(14,6);"></td>
+            <td class="zelle set"><img src="hilfspunkt.svg" name="p15_1" alt="·" title="1" onClick="klick(15,1);"><img src="hilfspunkt.svg" name="p15_4" alt="·" title="4" onClick="klick(15,4);"><br><img src="hilfspunkt.svg" name="p15_2" alt="·"
+                title="2" onClick="klick(15,2);"><img src="hilfspunkt.svg" name="p15_5" alt="·" title="5" onClick="klick(15,5);"><br><img src="hilfspunkt.svg" name="p15_3" alt="·" title="3" onClick="klick(15,3);"><img src="hilfspunkt.svg"
+                name="p15_6" alt="·" title="6" onClick="klick(15,6);"></td>
+            <!-- <td class="zelle set"><img src="hilfspunkt.svg" name="p16_1" alt="·" title="1" onClick="klick(16,1);"><img src="hilfspunkt.svg" name="p16_4" alt="·" title="4" onClick="klick(16,4);"><br><img src="hilfspunkt.svg" name="p16_2" alt="·"
+                title="2" onClick="klick(16,2);"><img src="hilfspunkt.svg" name="p16_5" alt="·" title="5" onClick="klick(16,5);"><br><img src="hilfspunkt.svg" name="p16_3" alt="·" title="3" onClick="klick(16,3);"><img src="hilfspunkt.svg"
+                name="p16_6" alt="·" title="6" onClick="klick(16,6);"></td> -->
+          </tr>
+          <tr>
+            <td class="zelle"><input size="3" name="z1" onclick="aend(1)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z2" onclick="aend(2)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z3" onclick="aend(3)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z4" onclick="aend(4)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z5" onclick="aend(5)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z6" onclick="aend(6)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z7" onclick="aend(7)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z8" onclick="aend(8)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z9" onclick="aend(9)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z10" onclick="aend(10)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z11" onclick="aend(11)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z12" onclick="aend(12)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z13" onclick="aend(13)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z14" onclick="aend(14)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <td class="zelle"><input size="3" name="z15" onclick="aend(15)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
+            <!-- <td class="zelle"><input size="3" name="z16" onclick="aend(16)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td> -->
+          </tr>
+          <!-- <tr>
+            <td colspan="15"><input name="kurzschrift" value="HIER KOMMT DIE KURZSCHRIFTUEBERSEZTZUNG REIN" class="out bgws long" onfocus="if(this.blur)this.blur()" type="reset"></td>
+          </tr> -->
+          </tbody>
+        </table>
+      </form>
 
-<form name="form" action="">
-<table cellspacing=2 cellpadding=0>
-  <tr>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p1_1" alt="·" title="1" onClick="klick(1,1);"><img src="hilfspunkt.svg" name="p1_4" alt="·" title="4" onClick="klick(1,4);"><br><img src="hilfspunkt.svg" name="p1_2" alt="·" title="2" onClick="klick(1,2);"><img src="hilfspunkt.svg" name="p1_5" alt="·" title="5" onClick="klick(1,5);"><br><img src="hilfspunkt.svg" name="p1_3" alt="·" title="3" onClick="klick(1,3);"><img src="hilfspunkt.svg" name="p1_6" alt="·" title="6" onClick="klick(1,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p2_1" alt="·" title="1" onClick="klick(2,1);"><img src="hilfspunkt.svg" name="p2_4" alt="·" title="4" onClick="klick(2,4);"><br><img src="hilfspunkt.svg" name="p2_2" alt="·" title="2" onClick="klick(2,2);"><img src="hilfspunkt.svg" name="p2_5" alt="·" title="5" onClick="klick(2,5);"><br><img src="hilfspunkt.svg" name="p2_3" alt="·" title="3" onClick="klick(2,3);"><img src="hilfspunkt.svg" name="p2_6" alt="·" title="6" onClick="klick(2,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p3_1" alt="·" title="1" onClick="klick(3,1);"><img src="hilfspunkt.svg" name="p3_4" alt="·" title="4" onClick="klick(3,4);"><br><img src="hilfspunkt.svg" name="p3_2" alt="·" title="2" onClick="klick(3,2);"><img src="hilfspunkt.svg" name="p3_5" alt="·" title="5" onClick="klick(3,5);"><br><img src="hilfspunkt.svg" name="p3_3" alt="·" title="3" onClick="klick(3,3);"><img src="hilfspunkt.svg" name="p3_6" alt="·" title="6" onClick="klick(3,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p4_1" alt="·" title="1" onClick="klick(4,1);"><img src="hilfspunkt.svg" name="p4_4" alt="·" title="4" onClick="klick(4,4);"><br><img src="hilfspunkt.svg" name="p4_2" alt="·" title="2" onClick="klick(4,2);"><img src="hilfspunkt.svg" name="p4_5" alt="·" title="5" onClick="klick(4,5);"><br><img src="hilfspunkt.svg" name="p4_3" alt="·" title="3" onClick="klick(4,3);"><img src="hilfspunkt.svg" name="p4_6" alt="·" title="6" onClick="klick(4,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p5_1" alt="·" title="1" onClick="klick(5,1);"><img src="hilfspunkt.svg" name="p5_4" alt="·" title="4" onClick="klick(5,4);"><br><img src="hilfspunkt.svg" name="p5_2" alt="·" title="2" onClick="klick(5,2);"><img src="hilfspunkt.svg" name="p5_5" alt="·" title="5" onClick="klick(5,5);"><br><img src="hilfspunkt.svg" name="p5_3" alt="·" title="3" onClick="klick(5,3);"><img src="hilfspunkt.svg" name="p5_6" alt="·" title="6" onClick="klick(5,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p6_1" alt="·" title="1" onClick="klick(6,1);"><img src="hilfspunkt.svg" name="p6_4" alt="·" title="4" onClick="klick(6,4);"><br><img src="hilfspunkt.svg" name="p6_2" alt="·" title="2" onClick="klick(6,2);"><img src="hilfspunkt.svg" name="p6_5" alt="·" title="5" onClick="klick(6,5);"><br><img src="hilfspunkt.svg" name="p6_3" alt="·" title="3" onClick="klick(6,3);"><img src="hilfspunkt.svg" name="p6_6" alt="·" title="6" onClick="klick(6,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p7_1" alt="·" title="1" onClick="klick(7,1);"><img src="hilfspunkt.svg" name="p7_4" alt="·" title="4" onClick="klick(7,4);"><br><img src="hilfspunkt.svg" name="p7_2" alt="·" title="2" onClick="klick(7,2);"><img src="hilfspunkt.svg" name="p7_5" alt="·" title="5" onClick="klick(7,5);"><br><img src="hilfspunkt.svg" name="p7_3" alt="·" title="3" onClick="klick(7,3);"><img src="hilfspunkt.svg" name="p7_6" alt="·" title="6" onClick="klick(7,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p8_1" alt="·" title="1" onClick="klick(8,1);"><img src="hilfspunkt.svg" name="p8_4" alt="·" title="4" onClick="klick(8,4);"><br><img src="hilfspunkt.svg" name="p8_2" alt="·" title="2" onClick="klick(8,2);"><img src="hilfspunkt.svg" name="p8_5" alt="·" title="5" onClick="klick(8,5);"><br><img src="hilfspunkt.svg" name="p8_3" alt="·" title="3" onClick="klick(8,3);"><img src="hilfspunkt.svg" name="p8_6" alt="·" title="6" onClick="klick(8,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p9_1" alt="·" title="1" onClick="klick(9,1);"><img src="hilfspunkt.svg" name="p9_4" alt="·" title="4" onClick="klick(9,4);"><br><img src="hilfspunkt.svg" name="p9_2" alt="·" title="2" onClick="klick(9,2);"><img src="hilfspunkt.svg" name="p9_5" alt="·" title="5" onClick="klick(9,5);"><br><img src="hilfspunkt.svg" name="p9_3" alt="·" title="3" onClick="klick(9,3);"><img src="hilfspunkt.svg" name="p9_6" alt="·" title="6" onClick="klick(9,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p10_1" alt="·" title="1" onClick="klick(10,1);"><img src="hilfspunkt.svg" name="p10_4" alt="·" title="4" onClick="klick(10,4);"><br><img src="hilfspunkt.svg" name="p10_2" alt="·" title="2" onClick="klick(10,2);"><img src="hilfspunkt.svg" name="p10_5" alt="·" title="5" onClick="klick(10,5);"><br><img src="hilfspunkt.svg" name="p10_3" alt="·" title="3" onClick="klick(10,3);"><img src="hilfspunkt.svg" name="p10_6" alt="·" title="6" onClick="klick(10,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p11_1" alt="·" title="1" onClick="klick(11,1);"><img src="hilfspunkt.svg" name="p11_4" alt="·" title="4" onClick="klick(11,4);"><br><img src="hilfspunkt.svg" name="p11_2" alt="·" title="2" onClick="klick(11,2);"><img src="hilfspunkt.svg" name="p11_5" alt="·" title="5" onClick="klick(11,5);"><br><img src="hilfspunkt.svg" name="p11_3" alt="·" title="3" onClick="klick(11,3);"><img src="hilfspunkt.svg" name="p11_6" alt="·" title="6" onClick="klick(11,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p12_1" alt="·" title="1" onClick="klick(12,1);"><img src="hilfspunkt.svg" name="p12_4" alt="·" title="4" onClick="klick(12,4);"><br><img src="hilfspunkt.svg" name="p12_2" alt="·" title="2" onClick="klick(12,2);"><img src="hilfspunkt.svg" name="p12_5" alt="·" title="5" onClick="klick(12,5);"><br><img src="hilfspunkt.svg" name="p12_3" alt="·" title="3" onClick="klick(12,3);"><img src="hilfspunkt.svg" name="p12_6" alt="·" title="6" onClick="klick(12,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p13_1" alt="·" title="1" onClick="klick(13,1);"><img src="hilfspunkt.svg" name="p13_4" alt="·" title="4" onClick="klick(13,4);"><br><img src="hilfspunkt.svg" name="p13_2" alt="·" title="2" onClick="klick(13,2);"><img src="hilfspunkt.svg" name="p13_5" alt="·" title="5" onClick="klick(13,5);"><br><img src="hilfspunkt.svg" name="p13_3" alt="·" title="3" onClick="klick(13,3);"><img src="hilfspunkt.svg" name="p13_6" alt="·" title="6" onClick="klick(13,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p14_1" alt="·" title="1" onClick="klick(14,1);"><img src="hilfspunkt.svg" name="p14_4" alt="·" title="4" onClick="klick(14,4);"><br><img src="hilfspunkt.svg" name="p14_2" alt="·" title="2" onClick="klick(14,2);"><img src="hilfspunkt.svg" name="p14_5" alt="·" title="5" onClick="klick(14,5);"><br><img src="hilfspunkt.svg" name="p14_3" alt="·" title="3" onClick="klick(14,3);"><img src="hilfspunkt.svg" name="p14_6" alt="·" title="6" onClick="klick(14,6);"></td>
-    <td class="zelle set"><img src="hilfspunkt.svg" name="p15_1" alt="·" title="1" onClick="klick(15,1);"><img src="hilfspunkt.svg" name="p15_4" alt="·" title="4" onClick="klick(15,4);"><br><img src="hilfspunkt.svg" name="p15_2" alt="·" title="2" onClick="klick(15,2);"><img src="hilfspunkt.svg" name="p15_5" alt="·" title="5" onClick="klick(15,5);"><br><img src="hilfspunkt.svg" name="p15_3" alt="·" title="3" onClick="klick(15,3);"><img src="hilfspunkt.svg" name="p15_6" alt="·" title="6" onClick="klick(15,6);"></td>
-  </tr>
-  <tr>
-    <td class="zelle"><input size="3" name="z1" onclick="aend(1)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z2" onclick="aend(2)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z3" onclick="aend(3)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z4" onclick="aend(4)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z5" onclick="aend(5)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z6" onclick="aend(6)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z7" onclick="aend(7)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z8" onclick="aend(8)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z9" onclick="aend(9)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z10" onclick="aend(10)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z11" onclick="aend(11)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z12" onclick="aend(12)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z13" onclick="aend(13)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z14" onclick="aend(14)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-    <td class="zelle"><input size="3" name="z15" onclick="aend(15)" value=" " maxlength="4" class="out bgws" onfocus="if(this.blur)this.blur()" type="reset"></td>
-  </tr>
-  <!--tr>
-  	<td colspan="15"><input name="kurzschrift" value="HIER KOMMT DIE KURZSCHRIFTÜBERSEZTZUNG REIN" class="out bgws long" onfocus="if(this.blur)this.blur()" type="reset"></td>
-  </tr-->
-</tbody></table>
-</form>
+      <form class="big6" id="big6" action="">
+        <table cellspacing=20 cellpadding=0>
+          <tr>
+            <td><button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'><img src='trash.svg' title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen' width='20' height='40'></button>
+            <td class="big">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td class="zelle_big set"><img width="39" height="39" src="hilfspunkt.svg" name="pBig_1" alt="·" title="1" onClick="klick(9999,1);"><img width="39" height="39" src="hilfspunkt.svg" name="pBig_4" alt="·" title="4"
+                onClick="klick(9999,4);"><br><img width="39" height="39" src="hilfspunkt.svg" name="pBig_2" alt="·" title="2" onClick="klick(9999,2);"><img width="39" height="39" src="hilfspunkt.svg" name="pBig_5" alt="·" title="5"
+                onClick="klick(9999,5);"><br><img width="39" height="39" src="hilfspunkt.svg" name="pBig_3" alt="·" title="3" onClick="klick(9999,3);"><img width="39" height="39" src="hilfspunkt.svg" name="pBig_6" alt="·" title="6"
+                onClick="klick(9999,6);">
+            </td>
+            <td><button class="big" onclick='grosseAuslesen()' type='button' title='enter'><img src='ok.svg' title='ok' alt='ok' width='20' height='40'></button></td>
+            <td><button class="big" onclick='lastloe()' type='button' title='letztes zeichen l&ouml;schen'><img src='backspace.svg' title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen' width='20' height='40'></button></td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
 
-<form class ="big6" id="big6" action="">
-<table cellspacing=20 cellpadding=0>
-  <tr>
-    <td><button class ="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'><img src='trash.svg' title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen' width='20' height='40'></button>
-    <td class="big">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-    <td class="zelle_big set"><img width="39" height="39" src="hilfspunkt.svg" name="p16_1" alt="·" title="1" onClick="klick(16,1);"><img width="39" height="39" src="hilfspunkt.svg" name="p16_4" alt="·" title="4" onClick="klick(16,4);"><br><img width="39" height="39" src="hilfspunkt.svg" name="p16_2" alt="·" title="2" onClick="klick(16,2);"><img width="39" height="39" src="hilfspunkt.svg" name="p16_5" alt="·" title="5" onClick="klick(16,5);"><br><img width="39" height="39" src="hilfspunkt.svg" name="p16_3" alt="·" title="3" onClick="klick(16,3);"><img width="39" height="39" src="hilfspunkt.svg" name="p16_6" alt="·" title="6" onClick="klick(16,6);"></td>
-    <td><button class ="big" onclick='grosseAuslesen()' type='button' title='enter'><img src='ok.svg' title='ok' alt='ok' width='20' height='40'></button></td>
-    <td><button class ="big" onclick='lastloe()' type='button' title='letztes zeichen l&ouml;schen'><img src='backspace.svg' title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen' width='20' height='40'></button></td>
-  </tr>
-</tbody></table>
-</form>
+      <form class="braille64" id="braille64" action="">
+        <script language="javascript" type="text/javascript" src="button.js"></script>
+      </form>
 
-<form class="braille64" id="braille64" action="">
-<script language="javascript" type="text/javascript" src="button.js"></script>
-</form>
-
-<table id="keyboard">
-  <tr>
-    <td class="textcenter"><button type="button" onClick="eingabe('40')">S</button></td>
-    <td class="textcenter"><button type="button" onClick="eingabe('20')">D</button></td>
-    <td class="textcenter"><button type="button" onClick="eingabe('10')">F</button></td>
-    <td rowspan="2" class="bottom"><button type="button" onClick="eingabe('00')" style="width: 4rem">Leertaste</button></td>
-    <td class="textcenter"><button type="button" onClick="eingabe('01')">J</button></td>
-    <td class="textcenter"><button type="button" onClick="eingabe('02')">K</button></td>
-    <td class="textcenter"><button type="button" onClick="eingabe('04')">L</button></td>
-  </tr><tr>
-  	<td class="textcenter">3</td><td class="textcenter">2</td><td class="textcenter">1</td>
-  	<td class="textcenter">4</td><td class="textcenter">5</td><td class="textcenter">6</td></tr>
-</table>
-</center>
-</div>
-<script language="javascript" type="text/javascript" src="afterload.js"></script>
+      <table id="keyboard">
+        <tr>
+          <td class="textcenter"><button type="button" onClick="eingabe('40')">S</button></td>
+          <td class="textcenter"><button type="button" onClick="eingabe('20')">D</button></td>
+          <td class="textcenter"><button type="button" onClick="eingabe('10')">F</button></td>
+          <td rowspan="2" class="bottom"><button type="button" onClick="eingabe('00')" style="width: 4rem">Leertaste</button></td>
+          <td class="textcenter"><button type="button" onClick="eingabe('01')">J</button></td>
+          <td class="textcenter"><button type="button" onClick="eingabe('02')">K</button></td>
+          <td class="textcenter"><button type="button" onClick="eingabe('04')">L</button></td>
+        </tr>
+        <tr>
+          <td class="textcenter">3</td>
+          <td class="textcenter">2</td>
+          <td class="textcenter">1</td>
+          <td class="textcenter">4</td>
+          <td class="textcenter">5</td>
+          <td class="textcenter">6</td>
+        </tr>
+      </table>
+    </center>
+  </div>
+  <script language="javascript" type="text/javascript" src="afterload.js"></script>
 </body>
+
 </html>

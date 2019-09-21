@@ -6,9 +6,7 @@
   "display": "fullscreen",
   "orientation": "landscape",
   "theme_color": "#ffffff",
-  "icons": [
-    {
-      "src": "android-icon-192x192.png"
-    }
-  ]
+  "icons": [{
+    "src": "android-icon-192x192.png"
+  }]
 }
