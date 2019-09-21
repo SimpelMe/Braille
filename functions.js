@@ -1,11 +1,11 @@
-var pos = 0
-// count of zellen-limit
-// adapt declaration 'zellen' at 'var zellen' and reassign at 'function loesch()''
-var limitZellen = 15;
+var pos = 0;
 
-var zellen = new Array();
-// minimum: limitZellen + 1 ; more then enough actual (25)
-zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+// how many cells should the braille line have
+var limitZellen = 15;
+// if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
+
+var zellen = new Array(limitZellen + 1);
+zellen.fill(" "); // fill all indexes with " "
 
 var bit = new Array();
 bit[0] = '000';
@@ -26,8 +26,7 @@ bit['011'] = '6';
 bit['111'] = '7';
 
 function loesch() {
-  // minimum: limitZellen + 1 because of the big one; more then enough actual (25)
-  zellen = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+  zellen.fill(" "); // fill all indexes with " "
   for (var i = 0; i < limitZellen; i++) ausgabe(i); // affected by count of zellen-limit
   document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
   document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
@@ -287,7 +286,7 @@ function eingabe(graf) {
   // if limit exceeded then shift all leading chararacters
   if (shift == 1) {
     for (var i = 0; i < pos; i++) {
-      zellen[i] = zellen [i + 1];
+      zellen[i] = zellen[i + 1];
       ausgabe(i);
     }
   }
