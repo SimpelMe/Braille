@@ -100,6 +100,7 @@ function klick(zelle, punkt) {
   } else {
     bild = 'p' + zelle + '_' + punkt;
     zeichen = zellen[zelle - 1];
+    if (zelle - 1 > pos) pos = zelle;
   }
 
   var pu = [0, 0, 0, 0, 0, 0];
