@@ -1,5 +1,5 @@
 body {
-  font: 75% Arial, Helvetica, sans-serif;
+  font: 75% Verdana, Helvetica, sans-serif;
   color: #000;
   background-color: #fff;
   background-attachment: fixed;
@@ -12,30 +12,6 @@ body {
 }
 
 /*transform: scale(2.8); */
-table {
-  font: 1em Arial, Helvetica, sans-serif;
-  color: #000;
-  border=0;
-}
-
-td {
-  text-align: left;
-}
-
-b {
-  font-size: 1.1em
-}
-
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover, a:active, a:focus {
-  color: black;
-  text-decoration: none;
-}
-
 ul {
   margin: 10px 0 10px 0;
   padding-left: 30px;
@@ -45,22 +21,33 @@ li {
   margin-bottom: 10px
 }
 
-button {
-  font: 1em Verdana, Helvetica, sans-serif;
-  color: #333;
-  background-color: #eee;
-  cursor: pointer;
-  margin: 3px;
-  padding: 0px;
-  height: 22px;
-  width: 18px;
-  border: 1px solid #ccc;
-  border-radius: 1px;
+table {
+  font-size: 1em;
+  color: #000;
 }
 
-button.big {
-  height: 44px;
-  width: 36px;
+td {
+  text-align: left;
+}
+
+img.icon {
+   width: 20px;
+   height: 40px;
+}
+
+img.bigpoint {
+   width: 39px;
+   height: 39px;
+}
+
+img.braille64icon {
+   width: 10px;
+   height: 20px;
+}
+
+img.braille64iconhalf {
+   width: 5px;
+   height: 20px;
 }
 
 textarea,
@@ -74,33 +61,56 @@ input[type="submit"],
   -webkit-border-radius: 0px;
 }
 
-.out {
-  font-size: 1.4em;
-  color: black;
-  cursor: default;
-  border: 1px dotted #999;
-  text-align: center;
-  padding: 0px
-}
-
-.out {
-  font: 10pt Verdana, Helvetica, sans-serif;
-  border: 0;
-  text-align: center;
-  width: 28px;
-}
-
-.bgws {
-  background-color: #fff;
-}
-
-.long {
-  margin-top: 2px;
-  padding-left: 5px;
+button {
+  font-size: 1em;
+  color: #333;
+  background-color: #eee;
+  cursor: pointer;
+  margin: 3px;
+  padding: 0px;
+  height: 22px;
+  width: 18px;
   border: 1px solid #ccc;
-  text-align: left !important;
-  height: 25px;
-  width: 100%
+  border-radius: 1px;
+}
+
+button:focus {
+  outline:0;
+}
+
+button.big {
+  height: 44px;
+  width: 36px;
+}
+
+/* button is just placeholder */
+button.dummy {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.brailleline table {
+  border-spacing: 2px;
+}
+
+.brailleline td, th {
+  padding: 0px;
+}
+
+.big6 table {
+  border-spacing: 20px;
+}
+
+.big6 td, th {
+  padding: 0px;
+}
+
+.braille64buttons table {
+  border-spacing: 0px;
+}
+
+.braille64buttons td, th {
+  padding: 0px;
 }
 
 .zelle {
@@ -109,11 +119,51 @@ input[type="submit"],
   text-align: center;
 }
 
+.coursorpointer {
+  cursor: pointer !important;
+}
+
+.nocoursorpointer {
+  cursor: default;
+}
+
+.output {
+  width: 28px;
+  font-size: 1.4em;
+  color: black;
+  cursor: default;
+  border: 0;
+  text-align: center;
+  padding: 0px
+}
+
+.bgwhite {
+  background-color: #fff;
+}
+
+/* currently not activated */
+/* .long {
+  margin-top: 2px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+  text-align: left !important;
+  height: 25px;
+  width: 100%
+} */
+
+.big6 {
+  margin-top: 0.75rem
+}
+
 .zelle_big {
   border: 1px solid #ccc;
   border-radius: 1px;
   text-align: center;
-  width: 80px;
+  width: 84px;
+}
+
+.braille64 {
+  display: none
 }
 
 .textcenter {
@@ -124,40 +174,13 @@ input[type="submit"],
   vertical-align: bottom;
 }
 
+.spacekey button {
+  width: 4rem;
+}
+
 .middle {
   vertical-align: middle;
 }
-
-.set img {
-  cursor: pointer;
-}
-
-.noprint {
-  color: #666;
-}
-
-.remark {
-  text-align: left;
-  color: #333;
-  background-color: #eee;
-  border: black 1px dashed;
-  padding: 8px;
-  width: 440px;
-  margin-bottom: 20px;
-}
-
-.remark ul {
-  font-size: .9em;
-}
-
-.big6 {
-  margin-top: 0.75rem
-}
-
-.braille64 {
-  display: none
-}
-
 /* Popup container */
 .umschalter {
   font-size: 1.5rem;

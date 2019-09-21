@@ -4,26 +4,26 @@ function createbutton(graf, titel) {
   } else if (graf == 'xx') // backspace
   {
     document.write("<button onclick='lastloe()' type='button' title='" + titel + "'>");
-    document.write("<img src='backspace.svg' title='" + titel + "' alt='" + titel + "' width='10' height='20'>");
+    document.write("<img class='braille64icon' src='backspace.svg' title='" + titel + "' alt='" + titel + "'>");
     document.write("<\/button>");
   } else if (graf == 'xxxx') // delete all
   {
     document.write("<button onclick='loesch()' type='button' title='" + titel + "'>");
-    document.write("<img src='trash.svg' title='" + titel + "' alt='" + titel + "' width='10' height='20'>");
+    document.write("<img class='braille64icon' src='trash.svg' title='" + titel + "' alt='" + titel + "'>");
     document.write("<\/button>");
   } else {
     var alt = alt_l[graf.charAt(0)] + alt_r[graf.charAt(1)];
     if (alt == 'p') alt = 'P0';
     titel = alt + ' = ' + titel;
     document.write("<button onclick='eingabe(\"" + graf + "\")' type='button' title='" + titel + "'>");
-    document.write("<img src='" + bgrafik + graf.charAt(0) + ".svg' title='" + titel + "' alt='&nbsp;' width='5' height='20'>");
-    document.write("<img src='" + bgrafik + graf.charAt(1) + ".svg' title='" + titel + "' alt='" + alt + "' width='5' height='20'>");
+    document.write("<img class='braille64iconhalf' src='" + bgrafik + graf.charAt(0) + ".svg' title='" + titel + "' alt='&nbsp;'>");
+    document.write("<img class='braille64iconhalf' src='" + bgrafik + graf.charAt(1) + ".svg' title='" + titel + "' alt='" + alt + "'>");
     document.write("<\/button>");
   }
 }
 
 
-document.write("<br><table cellpadding=0 cellspacing=0>");
+document.write("<br><table  class='braille64buttons'>");
 //document.write("<tr><td class='middle'>P1245 &nbsp; &nbsp;<\/td><td>");	// Punkte 1245
 document.write("<tr><td>"); // Punkte 1245
 createbutton('10', 'Buchstabe a oder Ziffer 1');
@@ -121,6 +121,4 @@ createbutton('04', 'Apostroph &prime;  oder Ende Ziffern oder Ende Gro&szlig;buc
 
 
 document.write("<\/td><\/tr><tr><td>&nbsp;<\/td><td>");
-document.write("<\/td><\/tr><tr><td class='middle'> <\/td><td>");
-
 document.write("<\/td><\/tr><\/table>");
