@@ -61,28 +61,47 @@
 </head>
 
 <body id="body" onKeyDown="tastbewegung(event,'d')" onKeyUp="tastbewegung(event,'u')" oncontextmenu="return false;">
-  <div id="wrapper">
-    <center>
-      <br>
-      <br>
-      <div class="popup" onclick="openPopup()">&#9432;
-        <div class="popuptext" id="popup">Erl&auml;uterungen:
-          <ul>
-            <li>um die Zeichen zu setzen, kannst Du mit &#9000; zwischen 2 Varianten w&auml;hlen:<ul>
-                <li>setze die Braille-Punkte mit der Maus und best&auml;tige mit &#10003; oder "Enter"</li>
-                <li> oder klicke direkt die Braille-Zeichen-Kn&ouml;pfe</li>
-              </ul>
-            <li>klicke in das &Uuml;bersetzungsfeld, um weitere Bedeutungen anzuzeigen</li>
-            <li>"#" ist das Zahlenzeichen; die nachfolgenden a &minus; j sind die Ziffern 1 &minus; 0</li>
-            <li>herabgesetzte Ziffern nach "#" sind Ordungsziffern (1., 2., 41. usw.)</li>
-            <li>L&ouml;schen: "Backspace" - letztes Zeichen, "ESC" - alle Zeichen</li>
-            <li>Schreibmaschine (S, D, F, J, K, L): dr&uuml;cke die ben&ouml;tigten Punkte gleichzeitig</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="umschalter" onclick="umschalten()">&#9000;</div>
-
+  <center>
+    <div class="wrapper">
+      <table class="menu">
+        <tr>
+          <td>
+            <div class="popup" onclick="openPopup()">?
+              <!-- <div class="umschalter" onclick="umschalten()">&#10303;</div> -->
+              <table class="popuptext" id="popup">
+                <tr>
+                  <td>
+                    <div class="manual">Wähle mit&nbsp;<div class="key_button">&#10303;</div> zwischen 2 Varianten:</div>
+                    <ol>
+                      <li>Setze Braillepunkte in dem Feld und drücke <div class="key_button">&#10003;</div> oder <div class="key_button">&#9166;.</div>
+                      </li>
+                      <li>Oder klicke die Braillezeichen-Knöpfe.</li>
+                    </ol>
+                    <div class="manual">Weitere Tipps:</div>
+                    <ul>
+                      <li>Klicke in das Feld unter der Braillezeile für weitere Bedeutungen.</li>
+                      <li>"#" ist das Zahlenzeichen; die nachfolgenden a - j sind die Ziffern 1 - 0</li>
+                      <li>Nach "#" um einen Punkt nach unten verschobene "a - j" sind Ordungsziffern (1., 2., 41. usw.)</li>
+                      <li>Tasten: <div class="key_button">&#9003;</div> - letztes Zeichen löschen, <div class="key_button">ESC</div> - alle Zeichen löschen, <div class="key_button">Space</div> - Leerzeichen setzen</li>
+                    </ul>
+                    <div class="manual">Der Stenomaschinen-Modus: die Braillepunkte 1&ndash;6 werden mit den Tasten&nbsp;<div class="key_button">S</div>
+                      <div class="key_button">D</div>
+                      <div class="key_button">F</div>
+                      <div class="key_button">J</div>
+                      <div class="key_button">K</div>
+                      <div class="key_button">L</div> erzeugt. Drücke die nötigen Tasten gleichzeitig.
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <!-- </div> -->
+            </div>
+          </td>
+          <td>
+            <div class="umschalter" onclick="umschalten()">&#10303;</div>
+          </td>
+        </tr>
+      </table>
       <noscript>
         <br>
         <font color="red">Ohne Javascript kann der &Uuml;bersetzer nicht benutzt werden.
@@ -101,13 +120,15 @@
           </tbody>
         </table>
       </form>
+    </div>
 
+    <div class="footer">
       <form class="big6" id="big6" action="">
         <table class="big6">
           <tr>
             <td><button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'>
                 <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'></button></td>
-            <td><button class="big dummy nocoursorpointer" type='button' title='dummy'></button></td>
+            <td><button class="big dummy nocoursorpointer" type='button'></button></td>
             <td class="zelle_big coursorpointer">
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_1" alt="·" title="1" onClick="klick(9999,1);">
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_4" alt="·" title="4" onClick="klick(9999,4);"><br>
@@ -131,26 +152,26 @@
 
       <table id="keyboard">
         <tr>
-          <td class="textcenter"><button type="button" onClick="eingabe('40')">S</button></td>
-          <td class="textcenter"><button type="button" onClick="eingabe('20')">D</button></td>
-          <td class="textcenter"><button type="button" onClick="eingabe('10')">F</button></td>
-          <td rowspan="2" class="bottom spacekey"><button type="button" onClick="eingabe('00')">Leertaste</button></td>
-          <td class="textcenter"><button type="button" onClick="eingabe('01')">J</button></td>
-          <td class="textcenter"><button type="button" onClick="eingabe('02')">K</button></td>
-          <td class="textcenter"><button type="button" onClick="eingabe('04')">L</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('40')">S</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('20')">D</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('10')">F</button></td>
+          <td rowspan="2" class="keys bottom spacekey"><button type="button" onClick="eingabe('00')">Leertaste</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('01')">J</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('02')">K</button></td>
+          <td class="keys textcenter"><button type="button" onClick="eingabe('04')">L</button></td>
         </tr>
         <tr>
-          <td class="textcenter">3</td>
-          <td class="textcenter">2</td>
-          <td class="textcenter">1</td>
+          <td class="keys textcenter">3</td>
+          <td class="keys textcenter">2</td>
+          <td class="keys textcenter">1</td>
 
-          <td class="textcenter">4</td>
-          <td class="textcenter">5</td>
-          <td class="textcenter">6</td>
+          <td class="keys textcenter">4</td>
+          <td class="keys textcenter">5</td>
+          <td class="keys textcenter">6</td>
         </tr>
       </table>
-    </center>
-  </div>
+    </div>
+  </center>
   <script language="javascript" type="text/javascript" src="afterload.js"></script>
 </body>
 

@@ -1,8 +1,36 @@
-var pos = 0;
+function vh(v) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return h / v;
+}
+
+function vw(v) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  return w / v;
+}
+
+function vmin(v) {
+  return Math.min(vh(v), vw(v));
+}
+
+function vmax(v) {
+  return Math.max(vh(v), vw(v));
+}
+
+var percentPerField = 9.2;
+
+function fieldsPerLine() {
+  var fields = parseInt(vw(vmin(percentPerField)));
+  if (vmin(1) < 750) {
+    fields --;
+  }
+  return fields;
+}
 
 // how many cells should the braille line have
-var limitZellen = 15;
+var limitZellen = fieldsPerLine();
 // if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
+
+var pos = 0;
 
 var zellen = new Array(limitZellen + 1);
 zellen.fill(" "); // fill all indexes with " "
@@ -53,13 +81,6 @@ function umschalten() {
 function openPopup() {
   var popup = document.getElementById("popup");
   popup.classList.toggle("show");
-}
-
-function scaleBody() {
-  var currentWidth = window.innerWidth;
-  var scaleNow = currentWidth / 500; // bisschen mehr als 480
-  document.getElementById("body").setAttribute(
-    "style", "transform: scale(" + scaleNow + ");");
 }
 
 function ausgabe(pos) {
