@@ -1,28 +1,42 @@
 body {
-  font: 75% Verdana, Helvetica, sans-serif;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 3.5vmin;
   color: #000;
   background-color: #fff;
   background-attachment: fixed;
   margin: auto;
   padding: 0;
-  width: 480px;
   transform-origin: top center;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
 
+.wrapper {
+  margin-top: 3vmin;
+}
+
+div .manual {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: -2vmin;
+}
+
+/* these items don't use body font if not explicit inherit */
+input, select, textarea, button {
+  font-family: inherit;
+}
+
 /*transform: scale(2.8); */
 ul {
-  margin: 10px 0 10px 0;
-  padding-left: 30px;
+  padding-inline-start: 7vmin;
 }
 
 li {
-  margin-bottom: 10px
+  margin-bottom: 1vmin;
 }
 
 table {
-  font-size: 1em;
+  font-size: 0;
   color: #000;
 }
 
@@ -30,24 +44,29 @@ td {
   text-align: left;
 }
 
+img.smallpoint {
+  width: 3.5vmin;
+  height: 3.5vmin;
+}
+
 img.icon {
-   width: 20px;
-   height: 40px;
+  width: 6.25vmin;
+  height: 12.5vmin;
 }
 
 img.bigpoint {
-   width: 39px;
-   height: 39px;
+  width: 12vmin;
+  height: 12vmin;
 }
 
 img.braille64icon {
-   width: 10px;
-   height: 20px;
+  width: 2.5vmin;
+  height: 5vmin;
 }
 
 img.braille64iconhalf {
-   width: 5px;
-   height: 20px;
+  width: 1.25vmin;
+  height: 5vmin;
 }
 
 textarea,
@@ -62,25 +81,25 @@ input[type="submit"],
 }
 
 button {
-  font-size: 1em;
+  font-size: inherit;
   color: #333;
   background-color: #eee;
   cursor: pointer;
-  margin: 3px;
+  margin: 0.5vmin;
   padding: 0px;
-  height: 22px;
-  width: 18px;
+  height: 5.3vmin;
+  width: 4.4vmin;
   border: 1px solid #ccc;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 button.big {
-  height: 44px;
-  width: 36px;
+  height: 12.5vmin;
+  width: 10.25vmin;
 }
 
 /* button is just placeholder */
@@ -89,16 +108,40 @@ button.dummy {
   border-color: #fff;
 }
 
+.key_button {
+  display: inline-block;
+  font-size: 3vmin;
+  line-height: 3vmin;
+  border: 1px solid #333;
+  border-radius: 0.4em;
+  text-align: center;
+  padding-left: 1vmin;
+  padding-right: 1vmin;
+  padding-top: 0.5vmin;
+  padding-bottom: 0.5vmin;
+}
+
+.menu td {
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
 .brailleline table {
   border-spacing: 2px;
 }
 
-.brailleline td, th {
+.brailleline td {
+  width: 9.2vmin;
   padding: 0px;
 }
 
+.braille {
+  height: 14vmin;
+}
+
 .big6 table {
-  border-spacing: 20px;
+  border-spacing: 15px;
 }
 
 .big6 td, th {
@@ -115,7 +158,7 @@ button.dummy {
 
 .zelle {
   border: 1px solid #ccc;
-  border-radius: 1px;
+  border-radius: 2px;
   text-align: center;
 }
 
@@ -127,14 +170,21 @@ button.dummy {
   cursor: default;
 }
 
+.brailleline {
+  margin-top: 2vmin;
+}
+
 .output {
-  width: 28px;
-  font-size: 1.4em;
+  width: 9vmin;
+  font-size: 2.8vmin;
   color: black;
   cursor: default;
   border: 0;
   text-align: center;
-  padding: 0px
+  padding: 0;
+  padding-bottom: 0.2vmin;
+  /* margin 2px damit die Ecken nicht angefressen werden */
+  margin: 2px;
 }
 
 .bgwhite {
@@ -152,18 +202,34 @@ button.dummy {
 } */
 
 .big6 {
-  margin-top: 0.75rem
+  margin-top: 4vmin;
 }
 
 .zelle_big {
   border: 1px solid #ccc;
-  border-radius: 1px;
+  border-radius: 2px;
   text-align: center;
-  width: 84px;
 }
 
 .braille64 {
   display: none
+}
+
+.braille64buttons {
+  /* just for space between button groups */
+  font-size: 2.7vmin;
+}
+
+.keys {
+  font-size: 2.7vmin;
+}
+
+.keys button {
+  margin: 1vmin;
+}
+
+.spacekey button {
+  width: 16vmin;
 }
 
 .textcenter {
@@ -174,58 +240,51 @@ button.dummy {
   vertical-align: bottom;
 }
 
-.spacekey button {
-  width: 4rem;
-}
-
 .middle {
   vertical-align: middle;
 }
+
 /* Popup container */
 .umschalter {
-  font-size: 1.5rem;
+  font-size: 4vmin;
+  line-height: 3vmin;
+  width: 3vmin;
+  text-align: center;
   color: grey;
-  position: absolute;
-  top: 0;
-  right: 0px;
-  display: inline-block;
   cursor: pointer;
 }
 
 .popup {
-  font-size: 10pt;
-  font-weight: bold;
+  font-size: 3vmin;
+  line-height: 3vmin;
+  width: 3vmin;
+  text-align: center;
   color: grey;
-  margin-top: 8px;
-  margin-left: -5px;
-  position: absolute;
-  top: 0;
-  /*right:-10px; */
-  display: inline-block;
   cursor: pointer;
 }
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  /*font-size: 1.3vw;*/
+  font-size: 4vmin;
   visibility: hidden;
   text-align: left;
   font-weight: normal;
-  color: #333;
-  background-color: #eee;
-  border: black 1px;
-  border-style: solid;
-  padding: 8px;
-  width: 480px;
-  /*margin-bottom: 20px;*/
-  position: absolute;
+  background-color: #fff;
+  padding: 3vmin;
+  width: 100%;
+  height: 100%;
+  position: fixed;
   z-index: 1;
-  top: -6px;
-  left: -244px;
-  /*margin-left: -80px;*/
+  top: 0;
+  left: 0;
 }
 
-/*  .popup .popuptext ul{ font-size: .75rem; }*/
+.popuptext td {
+  vertical-align: top;
+  border: 0;
+  line-height: normal;
+}
+
 /* Popup arrow */
 .popup .popuptext::after {
   display: none;
@@ -234,9 +293,6 @@ button.dummy {
   top: 100%;
   left: 50%;
   margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
@@ -244,6 +300,13 @@ button.dummy {
   visibility: visible;
   -webkit-animation: fadeIn 0s;
   animation: fadeIn 0s
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 4vmin;
 }
 
 /* Add animation (fade in the popup) */
