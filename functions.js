@@ -202,15 +202,18 @@ function aend(zelle) {
   else if (wert == 'e') wert = '5';
   else if (wert == '5') wert = 'e';
   else if (wert == 'f') wert = '6';
-  else if (wert == '6') wert = 'f';
+  else if (wert == '6') wert = 'falls';
+  else if (wert == 'falls') wert = 'f';
   else if (wert == 'g') wert = '7';
   else if (wert == '7') wert = 'g';
   else if (wert == 'h') wert = '8';
-  else if (wert == '8') wert = 'h';
+  else if (wert == '8') wert = 'heit';
+  else if (wert == 'heit') wert = 'h';
   else if (wert == 'i') wert = '9';
   else if (wert == '9') wert = 'i';
   else if (wert == 'j') wert = '0';
-  else if (wert == '0') wert = 'j';
+  else if (wert == '0') wert = 'ion';
+  else if (wert == 'ion') wert = 'j';
 
   else if (wert == ',') wert = '1.'; // Ordnungszahlen, Laute und Satzzeichen
   else if (wert == '1.') wert = ',';
@@ -275,14 +278,8 @@ function aend(zelle) {
 
   else if (wert == 'k') wert = 'keit'; // Silben mit Buchstaben
   else if (wert == 'keit') wert = 'k';
-  else if (wert == 'f') wert = 'falls';
-  else if (wert == 'falls') wert = 'f';
   else if (wert == 'm') wert = 'mal';
   else if (wert == 'mal') wert = 'm';
-  else if (wert == 'h') wert = 'heit';
-  else if (wert == 'heit') wert = 'h';
-  else if (wert == 'j') wert = 'ion';
-  else if (wert == 'ion') wert = 'j';
   else if (wert == 'u') wert = 'ung';
   else if (wert == 'ung') wert = 'u';
   else if (wert == 'sch') wert = 'schaft';
