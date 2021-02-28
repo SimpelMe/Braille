@@ -191,26 +191,26 @@ function aend(zelle) {
   var wert = document.form[ausgzelle].value;
 
   if (wert == 'a') wert = '1'; // Ziffern
-  else if (wert == 'b') wert = '2';
-  else if (wert == 'c') wert = '3';
-  else if (wert == 'd') wert = '4';
-  else if (wert == 'e') wert = '5';
-  else if (wert == 'f') wert = '6';
-  else if (wert == 'g') wert = '7';
-  else if (wert == 'h') wert = '8';
-  else if (wert == 'i') wert = '9';
-  else if (wert == 'j') wert = '0';
   else if (wert == '1') wert = 'a';
+  else if (wert == 'b') wert = '2';
   else if (wert == '2') wert = 'b';
   else if (wert == 'en') wert = 'c';
-  else if (wert == '4') wert = 'd';
-  else if (wert == '5') wert = 'e';
-  else if (wert == '6') wert = 'f';
-  else if (wert == '7') wert = 'g';
-  else if (wert == '8') wert = 'h';
-  else if (wert == '9') wert = 'i';
-  else if (wert == '0') wert = 'j';
+  else if (wert == 'c') wert = '3';
   else if (wert == '3') wert = 'en';
+  else if (wert == 'd') wert = '4';
+  else if (wert == '4') wert = 'd';
+  else if (wert == 'e') wert = '5';
+  else if (wert == '5') wert = 'e';
+  else if (wert == 'f') wert = '6';
+  else if (wert == '6') wert = 'f';
+  else if (wert == 'g') wert = '7';
+  else if (wert == '7') wert = 'g';
+  else if (wert == 'h') wert = '8';
+  else if (wert == '8') wert = 'h';
+  else if (wert == 'i') wert = '9';
+  else if (wert == '9') wert = 'i';
+  else if (wert == 'j') wert = '0';
+  else if (wert == '0') wert = 'j';
 
   else if (wert == ',') wert = '1.'; // Ordnungszahlen, Laute und Satzzeichen
   else if (wert == '1.') wert = ',';
@@ -232,12 +232,12 @@ function aend(zelle) {
   else if (wert == '7.') wert = '(=)';
   else if (wert == '(=)') wert = 'eh';
   else if (wert == 'te') wert = '8.';
-  else if (wert == '8.') wert = '\xbb';
+  else if (wert == '8.') wert = '\xbb'; // Anfang Anführungszeichen
   else if (wert == '\xbb') wert = 'te';
   else if (wert == 'in') wert = '9.';
   else if (wert == '9.') wert = 'in';
   else if (wert == 'ar') wert = '0.';
-  else if (wert == '0.') wert = '\xab';
+  else if (wert == '0.') wert = '\xab'; // Ende Anführungszeichen
   else if (wert == '\xab') wert = 'ar';
 
 
@@ -253,21 +253,20 @@ function aend(zelle) {
   else if (wert == '\xdf') wert = 'ss';
 
   else if (wert == '#') wert = 'ich'; // Sonderzeichen mit Lauten
-  else if (wert == 'ck') wert = '$';
-  else if (wert == 'es') wert = '%';
-  else if (wert == 'ge') wert = '&';
-  else if (wert == 'ver') wert = '-';
-  else if (wert == 'ach') wert = '<';
-  else if (wert == 'ig') wert = '>';
-  else if (wert == 'lich') wert = '_';
-
   else if (wert == 'ich') wert = '#';
+  else if (wert == 'ck') wert = '$';
   else if (wert == '$') wert = 'ck';
+  else if (wert == 'es') wert = '%';
   else if (wert == '%') wert = 'es';
+  else if (wert == 'ge') wert = '&';
   else if (wert == '&') wert = 'ge';
+  else if (wert == 'ver') wert = '-';
   else if (wert == '-') wert = 'ver';
+  else if (wert == 'ach') wert = '<';
   else if (wert == '<') wert = 'ach';
+  else if (wert == 'ig') wert = '>';
   else if (wert == '>') wert = 'ig';
+  else if (wert == 'lich') wert = '_';
   else if (wert == '_') wert = 'lich';
 
   document.form[ausgzelle].value = wert;
