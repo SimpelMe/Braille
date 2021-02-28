@@ -104,8 +104,9 @@ button.big {
 
 /* button is just placeholder */
 button.dummy {
-  background-color: #fff;
-  border-color: #fff;
+  /* transparent */
+  background-color: rgb(255, 255, 255, 0);
+  border: 0;
 }
 
 .key_button {
@@ -187,8 +188,8 @@ button.dummy {
   margin: 2px;
 }
 
-.bgwhite {
-  background-color: #fff;
+.bgtransparent {
+  background-color: rgb(255, 255, 255, 0);
 }
 
 /* currently not activated */
@@ -200,7 +201,6 @@ button.dummy {
   height: 25px;
   width: 100%
 } */
-
 .big6 {
   margin-top: 4vmin;
 }

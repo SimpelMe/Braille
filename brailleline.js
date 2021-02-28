@@ -11,6 +11,6 @@ for (var i = 1; i < limitZellen + 1; i++) {
 document.write('</tr>');
 document.write("<tr>");
 for (var i = 1; i < limitZellen + 1; i++) {
-  document.write('<td class="zelle"><input name="z' + i +'" onclick="aend(' + i +')" value=" " maxlength="4" class="output bgwhite coursorpointer" onfocus="if(this.blur)this.blur()" type="reset"></td>');
+  document.write('<td class="zelle"><input name="z' + i +'" onclick="aend(' + i +')" value=" " maxlength="4" class="output bgtransparent coursorpointer" onfocus="if(this.blur)this.blur()" type="reset"></td>');
 }
 document.write("</tr>");

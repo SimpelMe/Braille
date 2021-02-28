@@ -1,4 +1,5 @@
 var braillecode = new Array();
+// braillecode must have ALL signs that could be shown to make (un)click a point
 braillecode[' '] = "00";
 braillecode['a'] = "10";
 braillecode['b'] = "30";
@@ -36,20 +37,29 @@ braillecode['7'] = "33";
 braillecode['8'] = "32";
 braillecode['9'] = "21";
 braillecode['0'] = "23";
+braillecode['1.'] = "20";
+braillecode['2.'] = "60";
+braillecode['3.'] = "22";
+braillecode['4.'] = "26";
+braillecode['5.'] = "24";
+braillecode['6.'] = "62";
+braillecode['7.'] = "66";
+braillecode['8.'] = "64";
+braillecode['9.'] = "42";
 braillecode['en'] = "11";
 braillecode['ll'] = "73";
 braillecode['mm'] = "55";
 braillecode['el'] = "57";
+
 braillecode['@'] = "43";
 braillecode['\xe4'] = "43"; // ae
 braillecode['\xf6'] = "25"; // oe
 braillecode['\xfc'] = "36"; // ue
-braillecode['ss'] = "65"; // sz '\xdf'
+braillecode['ss'] = "65"; // ß '\xdf'
 braillecode['\xc4'] = "43"; // Ae
 braillecode['\xd6'] = "25"; // Oe
 braillecode['\xdc'] = "36"; // Ue
 braillecode['ie'] = "45";
-braillecode['�'] = "45";
 braillecode['\xef'] = "45"; // i umlaut
 braillecode['ei'] = "15";
 braillecode['\xeb'] = "15"; // e umlaut
@@ -82,13 +92,13 @@ braillecode['un'] = "26";
 braillecode['ge'] = "75";
 braillecode['&'] = "75";
 braillecode['lich'] = "07";
-braillecode['_'] = "07"; // HH
+braillecode['_'] = "07";
 braillecode['ck'] = "05";
-braillecode['$'] = "05"; // Gro
-braillecode['#'] = "47"; // ZZ
+braillecode['$'] = "05";
+braillecode['#'] = "47"; // Zahlenzeichen
 braillecode['es'] = "77";
-braillecode['%'] = "77"; // GZ
-braillecode['\''] = "04"; // apostroph
+braillecode['%'] = "77";
+braillecode['\''] = "04"; // Apostroph
 braillecode['|'] = "01";
 braillecode['\'\''] = "01"; // "
 braillecode['~'] = "02"; // (P5)
@@ -107,10 +117,10 @@ braillecode['<'] = "06";
 braillecode['ig'] = "03";
 braillecode['>'] = "03";
 
-braillecode['\xbb'] = "64";
-braillecode['\xab'] = "46"; // anfang + ende Anf�hrungszeichen
+braillecode['\xbb'] = "64"; // Anfang Anführungszeichen
+braillecode['\xab'] = "46"; // Ende Anführungszeichen
 braillecode['te'] = "64";
-braillecode['ar'] = "46"; // und te + ar
+braillecode['ar'] = "46";
 braillecode['{'] = "64";
 braillecode['}'] = "46";
 braillecode['art.'] = "46";
@@ -120,80 +130,80 @@ braillecode['['] = "76";
 braillecode[']'] = "67";
 
 
-function brailleback(code, back) {
-  if (!back) back = 1;
+function brailleback(code) {
   for (var yy = 0; yy < brailletab.length; yy++)
-    if (code == brailletab[yy][0]) return brailletab[yy][back];
+    if (code == brailletab[yy][0]) return brailletab[yy][1];
   return false;
 }
 
 var brailletab = new Array();
+// brailletab only needs that sign which should be shown first
 brailletab = [
-  /*  code  deutsch  engl    */
-  ['10', 'a', 'a'],
-  ['30', 'b', 'b'],
-  ['11', 'en', 'c'],
-  ['13', 'd', 'd'],
-  ['12', 'e', 'e'],
-  ['31', 'f', 'f'],
-  ['33', 'g', 'g'],
-  ['32', 'h', 'h'],
-  ['21', 'i', 'i'],
-  ['23', 'j', 'j'],
-  ['50', 'k', 'k'],
-  ['70', 'l', 'l'],
-  ['51', 'm', 'm'],
-  ['53', 'n', 'n'],
-  ['52', 'o', 'o'],
-  ['71', 'p', 'p'],
-  ['73', 'll', 'q'],
-  ['72', 'r', 'r'],
-  ['61', 's', 's'],
-  ['63', 't', 't'],
-  ['54', 'u', 'u'],
-  ['74', 'v', 'v'],
-  ['27', 'w', 'w'],
-  ['55', 'mm', 'x'],
-  ['57', 'el', 'y'],
-  ['56', 'z', 'z'],
-  ['45', 'ie', 'ing'],
-  ['14', 'au', 'ch'],
-  ['34', 'eu', 'gh'],
-  ['15', 'ei', 'sh'],
-  ['17', 'ch', 'th'], //
-  ['16', 'sch', 'wh'],
-  ['35', 'ein', 'ed'], // grave
-  ['37', 'er', 'er'], // ^
-  ['36', '\xfc', 'ou'], // ue
-  ['25', '\xf6', 'ow'], // oe
-  ['00', ' ', ' '], // leerzeichen
-  ['02', '~', 'S1'], // (P5)
-  ['47', '#', '#'], //
-  ['05', 'ck', 'IT'], // deu $ f�r Grossbuchstabe - engl italic-sign (HH) + decimal-point
-  ['77', 'es', 'for'], // %
-  ['75', 'ge', 'and'], // &
-  ['64', 'te', '? �'], // Anfang Az
-  ['46', 'ar', '� �'], // Ende Az
-  ['42', 'in', 'in'], // '*'
-  ['62', 'an', '!+'], //
-  ['20', ',', ','],
-  ['44', 'ver', '-'], // -
-  ['40', '.', '\''], // engl Apostroph
-  ['26', 'un', '.'], //
-  ['22', 'al', ':'], //
-  ['60', 'be', ';'],
-  ['06', 'ach', 'LTR'], // deu < - engl Letter-sign
-  ['66', 'eh', '(=)'], //
-  ['03', 'ig', 'S3'], // >
-  ['24', 'or', 'en'], //
-  ['01', '|', '�'], // engl ACC
-  ['04', '\'', 'CAP'], // deu Apostroph - engl Gro�
-  ['07', 'lich', 'S2'], //
-  ['43', '\xe4', 'ar'], // ae
-  ['76', 'em', 'of'], // [
-  ['41', '\xe4u', 'st'], // aeu
-  ['67', 'st', 'with'], //]
-  ['65', 'ss', 'the'] // sz '\xdf'
+  // code deutsch
+  ['10', 'a'],
+  ['30', 'b'],
+  ['11', 'en'],
+  ['13', 'd'],
+  ['12', 'e'],
+  ['31', 'f'],
+  ['33', 'g'],
+  ['32', 'h'],
+  ['21', 'i'],
+  ['23', 'j'],
+  ['50', 'k'],
+  ['70', 'l'],
+  ['51', 'm'],
+  ['53', 'n'],
+  ['52', 'o'],
+  ['71', 'p'],
+  ['73', 'll'], // q
+  ['72', 'r'],
+  ['61', 's'],
+  ['63', 't'],
+  ['54', 'u'],
+  ['74', 'v'],
+  ['27', 'w'],
+  ['55', 'mm'], // x
+  ['57', 'el'], // y
+  ['56', 'z'],
+  ['45', 'ie'], // Paragraph
+  ['14', 'au'],
+  ['34', 'eu'],
+  ['15', 'ei'],
+  ['17', 'ch'],
+  ['16', 'sch'],
+  ['35', 'ein'], // grave
+  ['37', 'er'], // ^
+  ['36', '\xfc'], // ü
+  ['25', '\xf6'], // ö
+  ['00', ' '],
+  ['02', '~'],
+  ['47', '#'],
+  ['05', 'ck'], // $
+  ['77', 'es'], // %
+  ['75', 'ge'], // &
+  ['64', 'te'], // Anfang Anführungszeichen
+  ['46', 'ar'], // Ende Anführungszeichen
+  ['42', 'in'], // *
+  ['62', 'an'], // !
+  ['20', ','],
+  ['44', 'ver'], // -
+  ['40', '.'],
+  ['26', 'un'],
+  ['22', 'al'], // :
+  ['60', 'be'], // ;
+  ['06', 'ach'], // <
+  ['66', 'eh'], // (=)
+  ['03', 'ig'], // >
+  ['24', 'or'], // ?
+  ['01', '|'], // engl ACC
+  ['04', '\''], // Apostroph
+  ['07', 'lich'], // _
+  ['43', '\xe4'], // ä
+  ['76', 'em'], // [
+  ['41', '\xe4u'], // äu
+  ['67', 'st'], //]
+  ['65', 'ss'] // ß '\xdf'
 ];
 
 var alt_l = new Array();
