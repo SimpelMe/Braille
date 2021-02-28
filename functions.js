@@ -229,8 +229,10 @@ function aend(zelle) {
   else if (wert == '6.') wert = '!';
   else if (wert == '!') wert = 'an';
   else if (wert == 'eh') wert = '7.';
-  else if (wert == '7.') wert = '(=)';
-  else if (wert == '(=)') wert = 'eh';
+  else if (wert == '7.') wert = '(';
+  else if (wert == '(') wert = '=';
+  else if (wert == '=') wert = ')';
+  else if (wert == ')') wert = 'eh';
   else if (wert == 'te') wert = '8.';
   else if (wert == '8.') wert = '\xbb'; // Anfang Anführungszeichen
   else if (wert == '\xbb') wert = 'te';
@@ -246,11 +248,13 @@ function aend(zelle) {
   else if (wert == 'q') wert = 'll';
   else if (wert == 'll') wert = 'q';
   else if (wert == 'x') wert = 'mm';
-  else if (wert == 'mm') wert = 'x';
+  else if (wert == 'mm') wert = 'nis';
+  else if (wert == 'nis') wert = 'x';
   else if (wert == 'y') wert = 'el';
   else if (wert == 'el') wert = 'y';
   else if (wert == 'ss') wert = '\xdf'; // ß
-  else if (wert == '\xdf') wert = 'ss';
+  else if (wert == '\xdf') wert = 'sam';
+  else if (wert == 'sam') wert = 'ss';
 
   else if (wert == '#') wert = 'ich'; // Sonderzeichen mit Lauten
   else if (wert == 'ich') wert = '#';
@@ -268,6 +272,23 @@ function aend(zelle) {
   else if (wert == '>') wert = 'ig';
   else if (wert == 'lich') wert = '_';
   else if (wert == '_') wert = 'lich';
+
+  else if (wert == 'k') wert = 'keit'; // Silben mit Buchstaben
+  else if (wert == 'keit') wert = 'k';
+  else if (wert == 'f') wert = 'falls';
+  else if (wert == 'falls') wert = 'f';
+  else if (wert == 'm') wert = 'mal';
+  else if (wert == 'mal') wert = 'm';
+  else if (wert == 'h') wert = 'heit';
+  else if (wert == 'heit') wert = 'h';
+  else if (wert == 'j') wert = 'ion';
+  else if (wert == 'ion') wert = 'j';
+  else if (wert == 'u') wert = 'ung';
+  else if (wert == 'ung') wert = 'u';
+  else if (wert == 'sch') wert = 'schaft';
+  else if (wert == 'schaft') wert = 'sch';
+  else if (wert == 'w') wert = 'wärts';
+  else if (wert == 'wärts') wert = 'w';
 
   document.form[ausgzelle].value = wert;
   zellen[zelle - 1] = wert; // neues Zeichen auch in das Array schreiben
