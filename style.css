@@ -21,6 +21,11 @@ div .manual {
   margin-bottom: -2vmin;
 }
 
+a {
+  color: black;
+  cursor: pointer;
+}
+
 /* these items don't use body font if not explicit inherit */
 input, select, textarea, button {
   font-family: inherit;
