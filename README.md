@@ -15,5 +15,3 @@ Weitere Tipps:
 -   Löschen: "Backspace" - letztes Zeichen, "ESC" - alle Zeichen
 
 Desweiteren gibt es den Steno-Maschinen-Modus. Die Punkte 1 - 6 werden mit S, D, F, J, K, L erzeugt. Dazu drücke die benötigten Punkte gleichzeitig.
-
-<https://simpel.cc/braille/>
