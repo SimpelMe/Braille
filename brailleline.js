@@ -85,4 +85,24 @@ function writeBrailleline() {
   }
 }
 
+function scaleBrailleline() {
+  limitZellen = fieldsPerLine();
+  // delete braille line
+  var brailleTable = document.getElementById("brailleline");
+  while(brailleTable.hasChildNodes()) {
+    brailleTable.removeChild(brailleTable.firstChild);
+  }
+  // rebuild braille line
+  writeBrailleline();
+  limitZellen = fieldsPerLine();
+  var startPos = 1;
+  if (totalPos > limitZellen) {
+    startPos = totalPos - limitZellen;
+  }
+  // repaint content of braille line
+  for (var i = startPos; i < totalPos; i++) {
+    ausgabe(i);
+  }
+}
+
 writeBrailleline();

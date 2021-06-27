@@ -30,9 +30,9 @@ function fieldsPerLine() {
 var limitZellen = fieldsPerLine();
 // if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
 
-var pos = 0;
+var totalPos = 1;
 
-var zellen = new Array(limitZellen + 1);
+var zellen = new Array(9999);
 zellen.fill(" "); // fill all indexes with " "
 
 var bit = new Array();
@@ -55,14 +55,8 @@ bit['111'] = '7';
 
 function loesch() {
   zellen.fill(" "); // fill all indexes with " "
-  for (var i = 0; i < limitZellen; i++) ausgabe(i); // affected by count of zellen-limit
-  document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
-  document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
-  document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
-  document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
-  document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
-  document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
-  pos = 0;
+  scaleBrailleline(); // reset braille line
+  totalPos = 1;
 }
 
 function umschalten() {
@@ -83,8 +77,15 @@ function openPopup() {
   popup.classList.toggle("show");
 }
 
-function ausgabe(pos) {
-  var zeichen = zellen[pos];
+function ausgabe(drawPos) {
+  limitZellen = fieldsPerLine();
+  var offset = totalPos - 1 - limitZellen;
+  if (offset < 0 ) {
+    screenpos = drawPos;
+  } else {
+    screenpos = drawPos - offset;
+  }
+  var zeichen = zellen[drawPos];
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
   else pu[0] = 0;
@@ -100,14 +101,14 @@ function ausgabe(pos) {
   else pu[5] = 0;
 
   for (var j = 0; j < 6; j++) {
-    var bild = 'p' + (pos + 1) + '_' + (j + 1);
+    var bild = 'p' + screenpos + '_' + (j + 1);
     if (pu[j])
       document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
     else
       document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
   }
 
-  var ausgzelle = 'z' + (pos + 1);
+  var ausgzelle = 'z' + screenpos;
   document.form[ausgzelle].value = zeichen;
 }
 
@@ -121,7 +122,7 @@ function klick(zelle, punkt) {
   } else {
     bild = 'p' + zelle + '_' + punkt;
     zeichen = zellen[zelle - 1];
-    if (zelle - 1 > pos) pos = zelle;
+    if (zelle - 1 > totalPos) totalPos = zelle;
   }
 
   var pu = [0, 0, 0, 0, 0, 0];
@@ -310,32 +311,44 @@ var bild_7 = new Image;
 bild_7.src = bgrafik + "7.svg";
 
 function lastloe() {
-  if (pos == 0) return;
-  pos--;
-  zellen[pos] = ' ';
-  ausgabe(pos);
+  if (totalPos == 1) return;
+  totalPos--;
+  zellen[totalPos] = ' ';
+  // repaint content of braille line
+  var startPos = 1;
+  if (totalPos > limitZellen) {
+    startPos = totalPos - limitZellen;
+    for (var i = startPos; i < totalPos; i++) {
+      ausgabe(i);
+    }
+  } else {
+    ausgabe(totalPos);
+  }
 }
 
 function eingabe(graf) {
   // test if limit is reached
+  limitZellen = fieldsPerLine();
   var shift = 0;
-  if (pos > limitZellen - 1) {
-    pos = limitZellen - 1;
+  if (totalPos > limitZellen) {
     shift = 1;
-  }
-  // if limit exceeded then shift all leading chararacters
-  if (shift == 1) {
-    for (var i = 0; i < pos; i++) {
-      zellen[i] = zellen[i + 1];
-      ausgabe(i);
-    }
   }
   // paint chararacter
   var zeichen = brailleback(graf);
-  zellen[pos] = zeichen;
-  ausgabe(pos);
-  // next place
-  pos++;
+  zellen[totalPos] = zeichen;
+  // if limit exceeded then shift all leading chararacters
+  if (shift == 1) {
+    totalPos++;
+    var startPos = totalPos - limitZellen;
+    // repaint content of braille line
+    for (var i = startPos; i < totalPos; i++) {
+      // zellen[i] = zellen[i + 1];
+      ausgabe(i);
+    }
+  } else {
+    ausgabe(totalPos);
+    totalPos++;
+  }
 }
 
 function zifferncode(graf) {
@@ -451,13 +464,3 @@ function hideTableKeyboard() {
 function showTableKeyboard() {
   document.getElementById("keyboard").style="display:table";
 };
-
-function sizeContent() {
-  var newWidth = document.body.offsetWidth + "px";
-}
-
-function translateKurz(asciitext) {
-  /*var unicode_braille = liblouis.translateString("tables/unicode.dis,tables/de-de-g0.utb", asciitext)
-  return unicode_braille*/
-  return asciitext;
-}
