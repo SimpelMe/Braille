@@ -32,6 +32,7 @@ var limitZellen = fieldsPerLine();
 
 var totalPos = 1;
 
+var hugeCell = " " // for tapping on the big braille
 var zellen = new Array(9999);
 zellen.fill(" "); // fill all indexes with " "
 
@@ -115,14 +116,19 @@ function ausgabe(drawPos) {
 function klick(zelle, punkt) {
   var bild;
   var zeichen;
+  var big = false;
+  var offset = totalPos - 1 - (limitZellen - zelle);
+  if (totalPos - 1 < limitZellen) {
+    offset = zelle;
+  }
   if (zelle == 9999) { // bigCell
     bild = 'pBig_' + punkt;
-    zeichen = zellen[limitZellen];
-    zelle = limitZellen + 1;
+    zeichen = hugeCell;
+    big = true;
   } else {
     bild = 'p' + zelle + '_' + punkt;
-    zeichen = zellen[zelle - 1];
-    if (zelle - 1 > totalPos) totalPos = zelle;
+    zeichen = zellen[offset];
+    if (zelle > totalPos) totalPos = zelle;
   }
 
   var pu = [0, 0, 0, 0, 0, 0];
@@ -150,7 +156,11 @@ function klick(zelle, punkt) {
   var zeichen1, zeichen2;
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
-  zellen[zelle - 1] = brailleback(zeichen1 + zeichen2);
+  if (big == true) {
+    hugeCell = brailleback(zeichen1 + zeichen2);
+  } else {
+    zellen[offset] = brailleback(zeichen1 + zeichen2);
+  }
   if (zelle < limitZellen + 1) {
     var ausgzelle = 'z' + zelle;
     document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
@@ -158,8 +168,7 @@ function klick(zelle, punkt) {
 }
 
 function grosseAuslesen() {
-  var zeichen = zellen[limitZellen];
-
+  var zeichen = hugeCell;
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
   else pu[0] = 0;
@@ -178,7 +187,7 @@ function grosseAuslesen() {
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
-  zellen[limitZellen] = brailleback('00');
+  hugeCell = brailleback('00');
   document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
   document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
   document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
@@ -289,7 +298,12 @@ function aend(zelle) {
   else if (wert == 'wärts') wert = 'w';
 
   document.form[ausgzelle].value = wert;
-  zellen[zelle - 1] = wert; // neues Zeichen auch in das Array schreiben
+  // neues Zeichen auch in das Array schreiben
+  var offset = totalPos - 1 - (limitZellen - zelle);
+  if (totalPos - 1 < limitZellen) {
+    offset = zelle;
+  }
+  zellen[offset] = wert;
 }
 
 var bgrafik = 'min-';
@@ -342,7 +356,6 @@ function eingabe(graf) {
     var startPos = totalPos - limitZellen;
     // repaint content of braille line
     for (var i = startPos; i < totalPos; i++) {
-      // zellen[i] = zellen[i + 1];
       ausgabe(i);
     }
   } else {
@@ -360,7 +373,6 @@ function zifferncode(graf) {
   }
   return ziff;
 }
-
 
 var tasten = new Array;
 tasten = [
