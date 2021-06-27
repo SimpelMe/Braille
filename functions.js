@@ -436,8 +436,20 @@ function isMobileDevice() {
   return result
 };
 
-function deleteTableKeyboard() {
+function checkKeyboard() {
+  if (isMobileDevice()) {
+    hideTableKeyboard();
+  } else {
+    showTableKeyboard();
+  }
+}
+
+function hideTableKeyboard() {
   document.getElementById("keyboard").style="display:none";
+};
+
+function showTableKeyboard() {
+  document.getElementById("keyboard").style="display:table";
 };
 
 function sizeContent() {
