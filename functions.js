@@ -437,8 +437,7 @@ function isMobileDevice() {
 };
 
 function deleteTableKeyboard() {
-  var element = document.getElementById("keyboard");
-  element.parentNode.removeChild(element);
+  document.getElementById("keyboard").style="display:none";
 };
 
 function sizeContent() {
