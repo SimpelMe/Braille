@@ -18,6 +18,7 @@ braillecode['k'] = "50";
 braillecode['keit'] = "50";
 braillecode['l'] = "70";
 braillecode['m'] = "51";
+braillecode['mal'] = "51";
 braillecode['n'] = "53";
 braillecode['o'] = "52";
 braillecode['p'] = "71";
