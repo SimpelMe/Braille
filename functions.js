@@ -58,6 +58,7 @@ function loesch() {
   zellen.fill(" "); // fill all indexes with " "
   scaleBrailleline(); // reset braille line
   totalPos = 1;
+  writeToTextAusgabe();
 }
 
 function umschalten() {
@@ -111,6 +112,7 @@ function ausgabe(drawPos) {
 
   var ausgzelle = 'z' + screenpos;
   document.form[ausgzelle].value = zeichen;
+  writeToTextAusgabe();
 }
 
 function klick(zelle, punkt) {
@@ -165,6 +167,7 @@ function klick(zelle, punkt) {
     var ausgzelle = 'z' + zelle;
     document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
   }
+  writeToTextAusgabe();
 }
 
 function grosseAuslesen() {
@@ -304,6 +307,7 @@ function aend(zelle) {
     offset = zelle;
   }
   zellen[offset] = wert;
+  writeToTextAusgabe();
 }
 
 var bgrafik = 'min-';
@@ -338,6 +342,7 @@ function lastloe() {
   } else {
     ausgabe(totalPos);
   }
+  writeToTextAusgabe();
 }
 
 function eingabe(graf) {
@@ -476,3 +481,15 @@ function hideTableKeyboard() {
 function showTableKeyboard() {
   document.getElementById("keyboard").style="display:table";
 };
+
+function writeToTextAusgabe() {
+    var textAusgabe = document.getElementById("textausgabe");
+    let text = "";
+    for (let stelle = 1; stelle < zellen.length; stelle++) {
+      var zeichen = zellen[stelle];
+        if (typeof zeichen !== 'undefined'){
+            text = text + zeichen;
+        }
+    }
+    textAusgabe.innerText = text;
+}

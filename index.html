@@ -21,10 +21,10 @@
   <meta name="apple-mobile-web-app-title" content="Braille">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Braille">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#555">
+  <meta name="msapplication-TileColor" content="#555">
   <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
-  <meta name="msapplication-navbutton-color" content="#ffffff">
+  <meta name="msapplication-navbutton-color" content="#555">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes, user-scalable=no">
 
@@ -116,7 +116,7 @@
 
       <form name="form" action="">
         <table id ="brailleline" class="brailleline">
-          <script language="javascript" type="text/javascript" src="brailleline.js"></script>
+          <script language="javascript" type="text/javascript" src="brailleline 2.js"></script>
           <!-- <tr>
             <td colspan="15"><input name="kurzschrift" value="HIER KOMMT DIE KURZSCHRIFTUEBERSEZTZUNG REIN" class="output bgtransparent long" onfocus="if(this.blur)this.blur()" type="reset"></td>
           </tr> -->
@@ -124,7 +124,9 @@
         </table>
       </form>
     </div>
-
+    <div class="textausgabe">
+        <textarea id="textausgabe" readonly></textarea>
+    </div>
     <div class="footer">
       <form class="big6" id="big6" action="">
         <table class="big6">

@@ -7,8 +7,8 @@
 body {
   font-family: Verdana, Helvetica, sans-serif;
   font-size: 3.5vmin;
-  color: #000;
-  background-color: #fff;
+  color: #fff;
+  background-color: #555;
   background-attachment: fixed;
   margin: auto;
   padding: 0;
@@ -28,7 +28,7 @@ div .manual {
 }
 
 a {
-  color: black;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -48,11 +48,20 @@ li {
 
 table {
   font-size: 0;
-  color: #000;
+  color: #fff;
+}
+
+table.menu {
+    margin-top: 6vh;
 }
 
 td {
   text-align: left;
+}
+
+img {
+  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+          filter: invert(100%);
 }
 
 img.smallpoint {
@@ -93,14 +102,14 @@ input[type="submit"],
 
 button {
   font-size: inherit;
-  color: #333;
-  background-color: #eee;
+  color: #fff;
+  background-color: #444;
   cursor: pointer;
   margin: 0.5vmin;
   padding: 0px;
   height: 5.3vmin;
   width: 4.4vmin;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-radius: 2px;
 }
 
@@ -124,7 +133,7 @@ button.dummy {
   display: inline-block;
   font-size: 3vmin;
   line-height: 3vmin;
-  border: 1px solid #333;
+  border: 1px solid #fff;
   border-radius: 0.4em;
   text-align: center;
   padding-left: 1vmin;
@@ -135,7 +144,7 @@ button.dummy {
 
 .menu td {
   padding: 0px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-radius: 2px;
 }
 
@@ -169,7 +178,7 @@ button.dummy {
 }
 
 .zelle {
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-radius: 2px;
   text-align: center;
 }
@@ -188,8 +197,9 @@ button.dummy {
 
 .output {
   width: 9vmin;
-  font-size: 2.8vmin;
-  color: black;
+  font-size: 2.7vmin;
+  font-weight: bold;
+  color: #fff;
   cursor: default;
   border: 0;
   text-align: center;
@@ -207,7 +217,7 @@ button.dummy {
 /* .long {
   margin-top: 2px;
   padding-left: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   text-align: left !important;
   height: 25px;
   width: 100%
@@ -217,7 +227,7 @@ button.dummy {
 }
 
 .zelle_big {
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   border-radius: 2px;
   text-align: center;
 }
@@ -261,8 +271,12 @@ button.dummy {
   line-height: 3vmin;
   width: 3vmin;
   text-align: center;
-  color: grey;
+  color: #fff;
   cursor: pointer;
+}
+
+#popup {
+    margin-top: 6vh;
 }
 
 .popup {
@@ -270,7 +284,7 @@ button.dummy {
   line-height: 3vmin;
   width: 3vmin;
   text-align: center;
-  color: grey;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -280,7 +294,7 @@ button.dummy {
   visibility: hidden;
   text-align: left;
   font-weight: normal;
-  background-color: #fff;
+  background-color: #555;
   padding: 3vmin;
   width: 100%;
   height: 100%;
@@ -339,4 +353,27 @@ button.dummy {
   to {
     opacity: 1;
   }
+}
+
+.textausgabe {
+    margin: 6vmin;
+    text-align: left;
+    font-size: 5vmin;
+}
+
+textarea {
+  color: white;
+  background-color: #555;
+  font-family: monospace;
+  font-size: 0.92em;
+  resize: none;
+  border: 1px solid white;
+  border-radius: 2px;
+  padding: 0.5em;
+  height: calc(100vh - (6vh + 85vmin));
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: default;
 }
