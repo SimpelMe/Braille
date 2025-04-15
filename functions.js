@@ -126,6 +126,7 @@ function klick(zelle, punkt) {
   var zeichen;
   var big = false;
   var offset = totalPos - 1 - (limitZellen - zelle);
+  var selectedCell = totalPos - 1;
   if (totalPos - 1 < limitZellen) {
     offset = zelle;
   }
@@ -133,6 +134,9 @@ function klick(zelle, punkt) {
     bild = 'pBig_' + punkt;
     zeichen = hugeCell;
     big = true;
+  } else if (zelle == 9998) {
+    offset = selectedCell;
+    zeichen = zellen[offset];
   } else {
     bild = 'p' + zelle + '_' + punkt;
     zeichen = zellen[offset];
@@ -154,10 +158,10 @@ function klick(zelle, punkt) {
   else pu[5] = 0;
 
   if (pu[punkt - 1]) {
-    document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
+    // document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
     pu[punkt - 1] = 0;
   } else {
-    document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
+    // document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
     pu[punkt - 1] = 1;
   }
 
