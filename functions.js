@@ -104,14 +104,20 @@ function ausgabe(drawPos) {
 
   for (var j = 0; j < 6; j++) {
     var bild = 'p' + screenpos + '_' + (j + 1);
-    if (pu[j])
-      document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
-    else
-      document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
+    if (pu[j]) {
+      // document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
+      document.getElementById(`checkbox${j + 1}small`).checked = true;
+      
+    } else {
+      // document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
+      document.getElementById(`checkbox${j + 1}small`).checked = false;
+    }
   }
 
+  
+
   var ausgzelle = 'z' + screenpos;
-  document.form[ausgzelle].value = zeichen;
+  // document.form[ausgzelle].value = zeichen;
   writeToTextAusgabe();
 }
 
@@ -354,16 +360,8 @@ function lastloe() {
   if (totalPos == 1) return;
   totalPos--;
   zellen[totalPos] = ' ';
-  // repaint content of braille line
-  var startPos = 1;
-  if (totalPos > limitZellen) {
-    startPos = totalPos - limitZellen;
-    for (var i = startPos; i < totalPos; i++) {
-      ausgabe(i);
-    }
-  } else {
-    ausgabe(totalPos);
-  }
+  // resets the output of the smaller checkboxes
+  ausgabe(totalPos - 1);
   writeToTextAusgabe();
 }
 

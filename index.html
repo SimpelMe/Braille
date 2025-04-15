@@ -127,21 +127,33 @@
     </div>
     <div class="footer">
       <form class="big6" id="big6" action="">
-        <div class="big6">
-          <button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'>
-              <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'></button>
-          <div class="zelle_big coursorpointer">
-            <div class="checkbox-container" id="checkboxContainer">
-              <input type="checkbox" id="checkbox1" aria-label="Punkt 1">
-              <input type="checkbox" id="checkbox4" aria-label="Punkt 4">
-              <input type="checkbox" id="checkbox2" aria-label="Punkt 2">
-              <input type="checkbox" id="checkbox5" aria-label="Punkt 5">
-              <input type="checkbox" id="checkbox3" aria-label="Punkt 3">
-              <input type="checkbox" id="checkbox6" aria-label="Punkt 6">
-            </div>
+        <div class="zelle_small coursorpointer">
+          <div class="checkbox-container checkbox-container-small" id="checkboxContainerSmall">
+            <input type="checkbox" id="checkbox1small" aria-label="selektiertes Zeichen Punkt 1" onclick="klick(9998, 1)">
+            <input type="checkbox" id="checkbox4small" aria-label="selektiertes Zeichen Punkt 4">
+            <input type="checkbox" id="checkbox2small" aria-label="selektiertes Zeichen Punkt 2">
+            <input type="checkbox" id="checkbox5small" aria-label="selektiertes Zeichen Punkt 5">
+            <input type="checkbox" id="checkbox3small" aria-label="selektiertes Zeichen Punkt 3">
+            <input type="checkbox" id="checkbox6small" aria-label="selektiertes Zeichen Punkt 6">
           </div>
+        </div>
+        <div class="zelle_big coursorpointer">
+          <div class="checkbox-container" id="checkboxContainer">
+            <input type="checkbox" id="checkbox1" aria-label="Punkt 1">
+            <input type="checkbox" id="checkbox4" aria-label="Punkt 4">
+            <input type="checkbox" id="checkbox2" aria-label="Punkt 2">
+            <input type="checkbox" id="checkbox5" aria-label="Punkt 5">
+            <input type="checkbox" id="checkbox3" aria-label="Punkt 3">
+            <input type="checkbox" id="checkbox6" aria-label="Punkt 6">
+          </div>
+        </div>
+        <div class="column">
           <button class="big" onclick='lastloe()' type='button' title='letztes zeichen l&ouml;schen'>
-              <img src='backspace.svg' class="icon" title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen'></button>
+            <img src='backspace.svg' class="icon" title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen'>
+          </button>
+          <button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'>
+            <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'>
+          </button>
         </div>
       </form>
 

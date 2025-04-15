@@ -393,6 +393,10 @@ textarea {
   gap: 20px;
 }
 
+.checkbox-container-small {
+  gap:15px;
+}
+
 input[type="checkbox"] {
   width: 40px;
   height: 40px;
@@ -404,6 +408,25 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.checkbox-container-small > input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+}
+
 input[type="checkbox"]:checked {
   background-color: #fff;
+}
+
+.margin-top {
+  margin-top: 4vmin;
+}
+
+.column {
+  display: grid;
+  gap: 20px;
+}
+
+/* it's the upper braille line that should be omitted */
+form[name=form] {
+  display: none;
 }
