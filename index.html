@@ -67,7 +67,6 @@
         <tr>
           <td>
             <div class="popup" onclick="openPopup()">?
-              <!-- <div class="umschalter" onclick="umschalten()">&#10303;</div> -->
               <table class="popuptext" id="popup">
                 <tr>
                   <td>
@@ -100,9 +99,9 @@
               <!-- </div> -->
             </div>
           </td>
-          <td>
+          <!-- <td>
             <div class="umschalter" onclick="umschalten()">&#10303;</div>
-          </td>
+          </td> -->
         </tr>
       </table>
       <noscript>
@@ -135,12 +134,21 @@
                 <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'></button></td>
             <td><button class="big dummy nocoursorpointer" type='button'></button></td>
             <td class="zelle_big coursorpointer">
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_1" alt="·" title="1" onClick="klick(9999,1);">
+              <div class="checkbox-container" id="checkboxContainer">
+                <input type="checkbox" id="checkbox1" aria-label="Punkt 1">
+                <input type="checkbox" id="checkbox4" aria-label="Punkt 4">
+                <input type="checkbox" id="checkbox2" aria-label="Punkt 2">
+                <input type="checkbox" id="checkbox5" aria-label="Punkt 5">
+                <input type="checkbox" id="checkbox3" aria-label="Punkt 3">
+                <input type="checkbox" id="checkbox6" aria-label="Punkt 6">
+              </div>
+            
+              <!-- <img class="bigpoint" src="hilfspunkt.svg" name="pBig_1" alt="·" title="1" onClick="klick(9999,1);">
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_4" alt="·" title="4" onClick="klick(9999,4);"><br>
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_2" alt="·" title="2" onClick="klick(9999,2);">
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_5" alt="·" title="5" onClick="klick(9999,5);"><br>
               <img class="bigpoint" src="hilfspunkt.svg" name="pBig_3" alt="·" title="3" onClick="klick(9999,3);">
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_6" alt="·" title="6" onClick="klick(9999,6);">
+              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_6" alt="·" title="6" onClick="klick(9999,6);"> -->
             </td>
             <td><button class="big" onclick='grosseAuslesen()' type='button' title='enter'>
                 <img src='ok.svg' class="icon" title='ok' alt='ok'></button></td>
@@ -151,11 +159,11 @@
         </table>
       </form>
 
-      <form class="braille64" id="braille64" action="">
+      <!-- <form class="braille64" id="braille64" action="">
         <script language="javascript" type="text/javascript" src="button.js"></script>
-      </form>
+      </form> -->
 
-      <table id="keyboard">
+      <!-- <table id="keyboard">
         <tr>
           <td class="keys textcenter"><button type="button" onClick="eingabe('40')">S</button></td>
           <td class="keys textcenter"><button type="button" onClick="eingabe('20')">D</button></td>
@@ -174,10 +182,11 @@
           <td class="keys textcenter">5</td>
           <td class="keys textcenter">6</td>
         </tr>
-      </table>
+      </table> -->
     </div>
   </center>
-  <script language="javascript" type="text/javascript" src="afterload.js"></script>
+  <script src="afterload.js"></script>
+  <script src="swipe.js"></script>
 </body>
 
 </html>

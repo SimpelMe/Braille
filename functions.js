@@ -62,15 +62,15 @@ function loesch() {
 }
 
 function umschalten() {
-  var x = document.getElementById("big6");
-  var y = document.getElementById("braille64");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "none";
-  } else {
-    x.style.display = "none";
-    y.style.display = "block";
-  }
+  // var x = document.getElementById("big6");
+  // var y = document.getElementById("braille64");
+  // if (x.style.display === "none") {
+  //   x.style.display = "block";
+  //   y.style.display = "none";
+  // } else {
+  //   x.style.display = "none";
+  //   y.style.display = "block";
+  // }
 }
 
 // When the user clicks on <div>, open the popup
@@ -173,30 +173,52 @@ function klick(zelle, punkt) {
 function grosseAuslesen() {
   var zeichen = hugeCell;
   var pu = [0, 0, 0, 0, 0, 0];
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
+
+  if (document.getElementById("checkbox1").checked) pu[0] = 1;
   else pu[0] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
+  if (document.getElementById("checkbox2").checked) pu[1] = 1;
   else pu[1] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
+  if (document.getElementById("checkbox3").checked) pu[2] = 1;
   else pu[2] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
+  if (document.getElementById("checkbox4").checked) pu[3] = 1;
   else pu[3] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
+  if (document.getElementById("checkbox5").checked) pu[4] = 1;
   else pu[4] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
+  if (document.getElementById("checkbox6").checked) pu[5] = 1;
   else pu[5] = 0;
+
+  // reset big6
+  document.getElementById("checkbox1").checked = false;
+  document.getElementById("checkbox2").checked = false;
+  document.getElementById("checkbox3").checked = false;
+  document.getElementById("checkbox4").checked = false;
+  document.getElementById("checkbox5").checked = false;
+  document.getElementById("checkbox6").checked = false;
+
+  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
+  // else pu[0] = 0;
+  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
+  // else pu[1] = 0;
+  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
+  // else pu[2] = 0;
+  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
+  // else pu[3] = 0;
+  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
+  // else pu[4] = 0;
+  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
+  // else pu[5] = 0;
 
   var zeichen1, zeichen2;
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
   hugeCell = brailleback('00');
-  document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
-  document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
-  document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
-  document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
-  document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
-  document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
+  // document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
+  // document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
+  // document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
+  // document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
+  // document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
+  // document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
 }
 
 function aend(zelle) {
@@ -475,11 +497,11 @@ function checkKeyboard() {
 }
 
 function hideTableKeyboard() {
-  document.getElementById("keyboard").style="display:none";
+  // document.getElementById("keyboard").style="display:none";
 };
 
 function showTableKeyboard() {
-  document.getElementById("keyboard").style="display:table";
+  // document.getElementById("keyboard").style="display:table";
 };
 
 function writeToTextAusgabe() {
