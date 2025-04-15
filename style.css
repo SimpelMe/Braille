@@ -9,12 +9,14 @@ body {
   font-size: 3.5vmin;
   color: #fff;
   background-color: #555;
-  background-attachment: fixed;
-  margin: auto;
+  /* background-attachment: fixed; */
+  margin: 0;
   padding: 0;
-  transform-origin: top center;
+  /* transform-origin: top center;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
+  -webkit-user-select: none; */
+  overflow: hidden; /* Verhindert Scrollen */
+  height: 100vh;
 }
 
 .wrapper {
