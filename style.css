@@ -283,8 +283,7 @@ button.dummy {
 }
 
 .popup {
-  font-size: 5vmin;
-  overflow-y: scroll;
+  font-size: 3vmin;
   line-height: 3vmin;
   width: 3vmin;
   text-align: center;
@@ -294,7 +293,8 @@ button.dummy {
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  font-size: 4vmin;
+  font-size: 5vmin;
+  overflow-y: scroll;
   visibility: hidden;
   text-align: left;
   font-weight: normal;
