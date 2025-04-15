@@ -232,8 +232,12 @@ function grosseAuslesen() {
 }
 
 function aend(zelle) {
-  var ausgzelle = 'z' + zelle;
-  var wert = document.form[ausgzelle].value;
+  if (zelle < 1) {
+    return;
+  }
+  // var ausgzelle = 'z' + zelle;
+  // var wert = document.form[ausgzelle].value;
+  var wert = zellen[zelle];
 
   if (wert == 'a') wert = '1'; // Ziffern
   else if (wert == '1') wert = 'a';
@@ -332,13 +336,14 @@ function aend(zelle) {
   else if (wert == 'w') wert = 'wärts';
   else if (wert == 'wärts') wert = 'w';
 
-  document.form[ausgzelle].value = wert;
+  // document.form[ausgzelle].value = wert;
   // neues Zeichen auch in das Array schreiben
-  var offset = totalPos - 1 - (limitZellen - zelle);
-  if (totalPos - 1 < limitZellen) {
-    offset = zelle;
-  }
-  zellen[offset] = wert;
+  // var offset = totalPos - 1 - (limitZellen - zelle);
+  // if (totalPos - 1 < limitZellen) {
+    // offset = zelle;
+  // }
+  // zellen[offset] = wert;
+  zellen[zelle] = wert;
   writeToTextAusgabe();
 }
 

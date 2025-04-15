@@ -389,7 +389,10 @@ textarea {
 }
 
 .checkbox-container-small {
-  gap:15px;
+  gap: 0px;
+  justify-items: center;
+  width: fit-content;
+  justify-self: center;
 }
 
 input[type="checkbox"] {
@@ -419,6 +422,7 @@ input[type="checkbox"]:checked {
 .column {
   display: grid;
   gap: 20px;
+  justify-items: center;
 }
 
 /* it's the upper braille line that should be omitted */
