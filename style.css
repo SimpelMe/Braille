@@ -229,8 +229,9 @@ button.dummy {
   margin-top: 4vmin;
   display: flex;
   align-items: center;
-  column-gap: 30px;
   justify-self: center;
+  justify-content: space-between;
+  width: calc(100vw - 12vmin);
 }
 
 .zelle_big {
