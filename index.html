@@ -61,49 +61,38 @@
 </head>
 
 <body id="body" onKeyDown="tastbewegung(event,'d')" onKeyUp="tastbewegung(event,'u')" oncontextmenu="return false;">
-  <center>
+  <main>
     <div class="wrapper">
-      <table class="menu">
-        <tr>
-          <td>
-            <div class="popup" onclick="openPopup()">?
-              <table class="popuptext" id="popup">
-                <tr>
-                  <td>
-                    <div class="manual">Wähle mit&nbsp;<div class="key_button">&#10303;</div> zwischen 2 Varianten:</div>
-                    <ol>
-                      <li>Setze Braillepunkte in dem Feld und drücke <div class="key_button">&#10003;</div> oder <div class="key_button">&#9166;.</div>
-                      </li>
-                      <li>Oder klicke die Braillezeichen-Knöpfe.</li>
-                    </ol>
-                    <div class="manual">Weitere Tipps:</div>
-                    <ul>
-                      <li>Klicke in das Feld unter der Braillezeile für weitere Bedeutungen.</li>
-                      <li>"#" ist das Zahlenzeichen; die nachfolgenden a - j sind die Ziffern 1 - 0</li>
-                      <li>Nach "#" um einen Punkt nach unten verschobene "a - j" sind Ordungsziffern (1., 2., 41. usw.)</li>
-                      <li>Tasten: <div class="key_button">&#9003;</div> - letztes Zeichen löschen, <div class="key_button">ESC</div> - alle Zeichen löschen, <div class="key_button">Space</div> - Leerzeichen setzen</li>
-                    </ul>
-                    <div class="manual">Der Stenomaschinen-Modus: die Braillepunkte 1&ndash;6 werden mit den Tasten&nbsp;<div class="key_button">S</div>
-                      <div class="key_button">D</div>
-                      <div class="key_button">F</div>
-                      <div class="key_button">J</div>
-                      <div class="key_button">K</div>
-                      <div class="key_button">L</div> erzeugt. Drücke die nötigen Tasten gleichzeitig.
-                    </div>
-                    <div class="manual">
-                      <p>Der Programmcode ist zu finden unter <a href="https://github.com/SimpelMe/Braille">https://github.com/SimpelMe/Braille</a></p>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-              <!-- </div> -->
+      <div class="menu">
+        <button class="popup big" onclick="openPopup()">?</button>
+        <div class="popup">
+          <div class="popuptext" id="popup" onclick="openPopup()">
+            <div class="manual">Wähle mit&nbsp;<div class="key_button">&#10303;</div> zwischen 2 Varianten:</div>
+            <ol>
+              <li>Setze Braillepunkte in dem Feld und drücke <div class="key_button">&#10003;</div> oder <div class="key_button">&#9166;.</div>
+              </li>
+              <li>Oder klicke die Braillezeichen-Knöpfe.</li>
+            </ol>
+            <div class="manual">Weitere Tipps:</div>
+            <ul>
+              <li>Klicke in das Feld unter der Braillezeile für weitere Bedeutungen.</li>
+              <li>"#" ist das Zahlenzeichen; die nachfolgenden a - j sind die Ziffern 1 - 0</li>
+              <li>Nach "#" um einen Punkt nach unten verschobene "a - j" sind Ordungsziffern (1., 2., 41. usw.)</li>
+              <li>Tasten: <div class="key_button">&#9003;</div> - letztes Zeichen löschen, <div class="key_button">ESC</div> - alle Zeichen löschen, <div class="key_button">Space</div> - Leerzeichen setzen</li>
+            </ul>
+            <div class="manual">Der Stenomaschinen-Modus: die Braillepunkte 1&ndash;6 werden mit den Tasten&nbsp;<div class="key_button">S</div>
+              <div class="key_button">D</div>
+              <div class="key_button">F</div>
+              <div class="key_button">J</div>
+              <div class="key_button">K</div>
+              <div class="key_button">L</div> erzeugt. Drücke die nötigen Tasten gleichzeitig.
             </div>
-          </td>
-          <!-- <td>
-            <div class="umschalter" onclick="umschalten()">&#10303;</div>
-          </td> -->
-        </tr>
-      </table>
+            <div class="manual">
+              <p>Der Programmcode ist zu finden unter <a href="https://github.com/SimpelMe/Braille">https://github.com/SimpelMe/Braille</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
       <noscript>
         <br>
         <font color="red">Ohne Javascript kann der &Uuml;bersetzer nicht benutzt werden.
@@ -182,7 +171,7 @@
         </tr>
       </table> -->
     </div>
-  </center>
+  </main>
   <script src="afterload.js"></script>
   <script src="swipe.js"></script>
 </body>
