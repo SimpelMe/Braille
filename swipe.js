@@ -25,6 +25,7 @@ container.addEventListener('touchmove', (e) => {
 
 container.addEventListener('touchend', () => {
   isSwiping = false;
+  grosseAuslesen();
 });
 
 // Klick (Tap) Event für einzelne Checkboxes
