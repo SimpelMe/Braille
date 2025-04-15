@@ -224,8 +224,13 @@ button.dummy {
   height: 25px;
   width: 100%
 } */
+
 .big6 {
   margin-top: 4vmin;
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  justify-self: center;
 }
 
 .zelle_big {

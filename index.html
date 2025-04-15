@@ -119,7 +119,6 @@
           <!-- <tr>
             <td colspan="15"><input name="kurzschrift" value="HIER KOMMT DIE KURZSCHRIFTUEBERSEZTZUNG REIN" class="output bgtransparent long" onfocus="if(this.blur)this.blur()" type="reset"></td>
           </tr> -->
-          </tbody>
         </table>
       </form>
     </div>
@@ -128,35 +127,24 @@
     </div>
     <div class="footer">
       <form class="big6" id="big6" action="">
-        <table class="big6">
-          <tr>
-            <td><button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'>
-                <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'></button></td>
-            <td><button class="big dummy nocoursorpointer" type='button'></button></td>
-            <td class="zelle_big coursorpointer">
-              <div class="checkbox-container" id="checkboxContainer">
-                <input type="checkbox" id="checkbox1" aria-label="Punkt 1">
-                <input type="checkbox" id="checkbox4" aria-label="Punkt 4">
-                <input type="checkbox" id="checkbox2" aria-label="Punkt 2">
-                <input type="checkbox" id="checkbox5" aria-label="Punkt 5">
-                <input type="checkbox" id="checkbox3" aria-label="Punkt 3">
-                <input type="checkbox" id="checkbox6" aria-label="Punkt 6">
-              </div>
-            
-              <!-- <img class="bigpoint" src="hilfspunkt.svg" name="pBig_1" alt="·" title="1" onClick="klick(9999,1);">
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_4" alt="·" title="4" onClick="klick(9999,4);"><br>
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_2" alt="·" title="2" onClick="klick(9999,2);">
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_5" alt="·" title="5" onClick="klick(9999,5);"><br>
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_3" alt="·" title="3" onClick="klick(9999,3);">
-              <img class="bigpoint" src="hilfspunkt.svg" name="pBig_6" alt="·" title="6" onClick="klick(9999,6);"> -->
-            </td>
-            <td><button class="big" onclick='grosseAuslesen()' type='button' title='enter'>
-                <img src='ok.svg' class="icon" title='ok' alt='ok'></button></td>
-            <td><button class="big" onclick='lastloe()' type='button' title='letztes zeichen l&ouml;schen'>
-                <img src='backspace.svg' class="icon" title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen'></button></td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="big6">
+          <button class="big" onclick='loesch()' type='button' title='alle zeichen l&ouml;schen'>
+              <img src='trash.svg' class="icon" title='alle zeichen l&ouml;schen' alt='alle zeichen l&ouml;schen'></button>
+          <div class="zelle_big coursorpointer">
+            <div class="checkbox-container" id="checkboxContainer">
+              <input type="checkbox" id="checkbox1" aria-label="Punkt 1">
+              <input type="checkbox" id="checkbox4" aria-label="Punkt 4">
+              <input type="checkbox" id="checkbox2" aria-label="Punkt 2">
+              <input type="checkbox" id="checkbox5" aria-label="Punkt 5">
+              <input type="checkbox" id="checkbox3" aria-label="Punkt 3">
+              <input type="checkbox" id="checkbox6" aria-label="Punkt 6">
+            </div>
+          </div>
+          <button class="big" onclick='grosseAuslesen()' type='button' title='enter'>
+              <img src='ok.svg' class="icon" title='ok' alt='ok'></button>
+          <button class="big" onclick='lastloe()' type='button' title='letztes zeichen l&ouml;schen'>
+              <img src='backspace.svg' class="icon" title='letztes zeichen l&ouml;schen' alt='letztes zeichen l&ouml;schen'></button>
+        </div>
       </form>
 
       <!-- <form class="braille64" id="braille64" action="">
