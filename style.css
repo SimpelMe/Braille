@@ -283,7 +283,8 @@ button.dummy {
 }
 
 .popup {
-  font-size: 3vmin;
+  font-size: 5vmin;
+  overflow-y: scroll;
   line-height: 3vmin;
   width: 3vmin;
   text-align: center;
