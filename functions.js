@@ -1,8 +1,8 @@
 var totalPos = 1;
 var selectedCharacter = 0;
 
-var zellen = new Array(9999);
-zellen.fill(" "); // fill all indexes with " "
+var zellen = new Array();
+zellen[0] = " "; // muss ein Leerzeichen sein sonst Fehler beim Löschen
 
 var bit = new Array();
 bit[0] = '000';
@@ -23,7 +23,8 @@ bit['011'] = '6';
 bit['111'] = '7';
 
 function loesch() {
-  zellen.fill(" "); // fill all indexes with " "
+  zellen = new Array();
+  zellen[0] = " "; // muss ein Leerzeichen sein sonst Fehler beim Löschen
   totalPos = 1;
   ausgabe(1)
   writeToTextAusgabe();
@@ -247,7 +248,7 @@ function lastloe() {
   if (totalPos == 1) return;
   totalPos--;
   selectedCharacter = totalPos - 1;
-  zellen[totalPos] = ' ';
+  zellen.pop();
   // resets the output of the smaller checkboxes
   ausgabe(totalPos);
   writeToTextAusgabe();
