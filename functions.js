@@ -1,7 +1,7 @@
 var totalPos = 1;
 var selectedCharacter = 0;
 
-var hugeCell = " " // for tapping on the big braille
+// var hugeCell = " " // for tapping on the big braille
 var zellen = new Array(9999);
 zellen.fill(" "); // fill all indexes with " "
 
@@ -25,8 +25,8 @@ bit['111'] = '7';
 
 function loesch() {
   zellen.fill(" "); // fill all indexes with " "
-  scaleBrailleline(); // reset braille line
   totalPos = 1;
+  ausgabe(1)
   writeToTextAusgabe();
 }
 
