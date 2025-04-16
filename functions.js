@@ -254,24 +254,6 @@ function aend(zelle) {
   writeToTextAusgabe();
 }
 
-var bgrafik = 'min-';
-var bild_0 = new Image;
-bild_0.src = bgrafik + "0.svg";
-var bild_1 = new Image;
-bild_1.src = bgrafik + "1.svg";
-var bild_2 = new Image;
-bild_2.src = bgrafik + "2.svg";
-var bild_3 = new Image;
-bild_3.src = bgrafik + "3.svg";
-var bild_4 = new Image;
-bild_4.src = bgrafik + "4.svg";
-var bild_5 = new Image;
-bild_5.src = bgrafik + "5.svg";
-var bild_6 = new Image;
-bild_6.src = bgrafik + "6.svg";
-var bild_7 = new Image;
-bild_7.src = bgrafik + "7.svg";
-
 function lastloe() {
   if (totalPos == 1) return;
   totalPos--;

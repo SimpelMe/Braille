@@ -216,23 +216,3 @@ brailletab = [
   ['67', 'st'], //]
   ['65', 'ss'] // ß '\xdf'
 ];
-
-var alt_l = new Array();
-alt_l[0] = 'P';
-alt_l[1] = 'P1';
-alt_l[2] = 'P2';
-alt_l[3] = 'P12';
-alt_l[4] = 'P3';
-alt_l[5] = 'P13';
-alt_l[6] = 'P23';
-alt_l[7] = 'P123';
-
-var alt_r = new Array();
-alt_r[0] = '';
-alt_r[1] = '4';
-alt_r[2] = '5';
-alt_r[3] = '45';
-alt_r[4] = '6';
-alt_r[5] = '46';
-alt_r[6] = '56';
-alt_r[7] = '456';

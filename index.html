@@ -54,9 +54,9 @@
 
   <title>Braille-Übersetzer</title>
 
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="braille-code.js"></script>
-  <script type="text/javascript" src="functions.js"></script>
+  <link rel="stylesheet" href="style.min.css">
+  <script src="braille-code.min.js"></script>
+  <script src="functions.min.js"></script>
 
 </head>
 
@@ -101,18 +101,12 @@
         <br>
         <br>
       </noscript>
-
-      <form name="form" action="">
-        <table id ="brailleline" class="brailleline">
-          <script language="javascript" type="text/javascript" src="brailleline 2.js"></script>
-        </table>
-      </form>
     </div>
     <div class="textausgabe">
         <div id="textausgabe"></div>
     </div>
     <div class="footer">
-      <div class="big6" id="big6" action="">
+      <div class="big6" id="big6">
         <div class="column">
           <div class="zelle_small coursorpointer">
             <div class="checkbox-container checkbox-container-small" id="checkboxContainerSmall">
@@ -149,7 +143,7 @@
       </div>
     </div>
   </main>
-  <script src="swipe.js"></script>
 </body>
+<script src="swipe.min.js"></script>
 
 </html>
