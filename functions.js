@@ -1,37 +1,3 @@
-function vh(v) {
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  return h / v;
-}
-
-function vw(v) {
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  return w / v;
-}
-
-function vmin(v) {
-  return Math.min(vh(v), vw(v));
-}
-
-function vmax(v) {
-  return Math.max(vh(v), vw(v));
-}
-
-var percentPerField = 9.2;
-
-function fieldsPerLine() {
-  var fields = parseInt(vw(vmin(percentPerField)));
-  if (vmin(1) < 750) {
-    fields --;
-  }
-  return fields;
-}
-
-// how many cells should the braille line have
-// var limitZellen = fieldsPerLine();
-// console.log("limitZellen = " + limitZellen);
-
-// if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
-
 var totalPos = 1;
 var selectedCharacter = 0;
 
@@ -64,18 +30,6 @@ function loesch() {
   writeToTextAusgabe();
 }
 
-function umschalten() {
-  // var x = document.getElementById("big6");
-  // var y = document.getElementById("braille64");
-  // if (x.style.display === "none") {
-  //   x.style.display = "block";
-  //   y.style.display = "none";
-  // } else {
-  //   x.style.display = "none";
-  //   y.style.display = "block";
-  // }
-}
-
 // When the user clicks on <div>, open the popup
 function openPopup() {
   var popup = document.getElementById("popup");
@@ -83,14 +37,7 @@ function openPopup() {
 }
 
 function ausgabe(drawPos) {
-  // limitZellen = fieldsPerLine();
-  // var offset = totalPos - 1 - limitZellen;
-  // if (offset < 0 ) {
-    screenpos = drawPos;
-  // } else {
-  //   screenpos = drawPos - offset;
-  // }
-  // var zeichen = zellen[drawPos - 1];
+  screenpos = drawPos;
   var zeichen = zellen[drawPos - 1];
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
@@ -109,32 +56,21 @@ function ausgabe(drawPos) {
   for (var j = 0; j < 6; j++) {
     var bild = 'p' + screenpos + '_' + (j + 1);
     if (pu[j]) {
-      // document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
       document.getElementById(`checkbox${j + 1}small`).checked = true;
       
     } else {
-      // document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
       document.getElementById(`checkbox${j + 1}small`).checked = false;
     }
   }
 
-  
-
-  var ausgzelle = 'z' + screenpos;
-  // document.form[ausgzelle].value = zeichen;
   writeToTextAusgabe();
 }
 
 function klick(zelle, punkt) {
-  var bild;
   var zeichen;
   var big = false;
-  // var offset = totalPos - 1 - (limitZellen - zelle);
-  var offset;
+  var offset = zelle;
   var selectedCell = totalPos - 1;
-  // if (totalPos - 1 < limitZellen) {
-    offset = zelle;
-  // }
   if (zelle == 9999) { // bigCell
     bild = 'pBig_' + punkt;
     zeichen = hugeCell;
@@ -146,9 +82,7 @@ function klick(zelle, punkt) {
     }
     zeichen = zellen[offset];
   } else {
-    bild = 'p' + zelle + '_' + punkt;
     zeichen = zellen[offset];
-    if (zelle > totalPos) totalPos = zelle;
   }
 
   var pu = [0, 0, 0, 0, 0, 0];
@@ -166,10 +100,8 @@ function klick(zelle, punkt) {
   else pu[5] = 0;
 
   if (pu[punkt - 1]) {
-    // document.images[bild].src = 'hilfspunkt.svg', document.images[bild].alt = '.';
     pu[punkt - 1] = 0;
   } else {
-    // document.images[bild].src = 'punkt.svg', document.images[bild].alt = 'o';
     pu[punkt - 1] = 1;
   }
 
@@ -181,16 +113,11 @@ function klick(zelle, punkt) {
   } else {
     zellen[offset] = brailleback(zeichen1 + zeichen2);
   }
-  // if (zelle < limitZellen + 1) {
-  //   var ausgzelle = 'z' + zelle;
-  //   document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
-  // }
   writeToTextAusgabe();
 }
 
 function grosseAuslesen() {
   selectedCharacter = totalPos;
-  // var zeichen = hugeCell;
   var pu = [0, 0, 0, 0, 0, 0];
 
   if (document.getElementById("checkbox1").checked) pu[0] = 1;
@@ -214,38 +141,17 @@ function grosseAuslesen() {
   document.getElementById("checkbox5").checked = false;
   document.getElementById("checkbox6").checked = false;
 
-  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
-  // else pu[0] = 0;
-  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
-  // else pu[1] = 0;
-  // if (bit[braillecode[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
-  // else pu[2] = 0;
-  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
-  // else pu[3] = 0;
-  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
-  // else pu[4] = 0;
-  // if (bit[braillecode[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
-  // else pu[5] = 0;
-
   var zeichen1, zeichen2;
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
   hugeCell = brailleback('00');
-  // document.images['pBig_1'].src = 'hilfspunkt.svg', document.images['pBig_1'].alt = '.';
-  // document.images['pBig_2'].src = 'hilfspunkt.svg', document.images['pBig_2'].alt = '.';
-  // document.images['pBig_3'].src = 'hilfspunkt.svg', document.images['pBig_3'].alt = '.';
-  // document.images['pBig_4'].src = 'hilfspunkt.svg', document.images['pBig_4'].alt = '.';
-  // document.images['pBig_5'].src = 'hilfspunkt.svg', document.images['pBig_5'].alt = '.';
-  // document.images['pBig_6'].src = 'hilfspunkt.svg', document.images['pBig_6'].alt = '.';
 }
 
 function aend(zelle) {
   if (zelle < 1) {
     return;
   }
-  // var ausgzelle = 'z' + zelle;
-  // var wert = document.form[ausgzelle].value;
   var wert = zellen[zelle];
 
   if (wert == 'a') wert = '1'; // Ziffern
@@ -303,7 +209,6 @@ function aend(zelle) {
   else if (wert == '0.') wert = '\xab'; // Ende Anführungszeichen
   else if (wert == '\xab') wert = 'ar';
 
-
   else if (wert == 'c') wert = 'en'; // seltene Buchstaben mit Lauten
   else if (wert == 'en') wert = 'c';
   else if (wert == 'q') wert = 'll';
@@ -345,13 +250,6 @@ function aend(zelle) {
   else if (wert == 'w') wert = 'wärts';
   else if (wert == 'wärts') wert = 'w';
 
-  // document.form[ausgzelle].value = wert;
-  // neues Zeichen auch in das Array schreiben
-  // var offset = totalPos - 1 - (limitZellen - zelle);
-  // if (totalPos - 1 < limitZellen) {
-    // offset = zelle;
-  // }
-  // zellen[offset] = wert;
   zellen[zelle] = wert;
   writeToTextAusgabe();
 }
@@ -385,28 +283,11 @@ function lastloe() {
 }
 
 function eingabe(graf) {
-  // test if limit is reached
-  // limitZellen = fieldsPerLine();
-  // var shift = 0;
-  // if (totalPos > limitZellen) {
-  //   shift = 1;
-  // }
-  // paint chararacter
   var zeichen = brailleback(graf);
   zellen[totalPos] = zeichen;
-  // if limit exceeded then shift all leading chararacters
-  // if (shift == 1) {
-  //   totalPos++;
-  //   var startPos = totalPos - limitZellen;
-  //   // repaint content of braille line
-  //   for (var i = startPos; i < totalPos; i++) {
-  //     ausgabe(i);
-  //   }
-  // } else {
-    totalPos++;
-    selectedCharacter = totalPos - 1;
-    ausgabe(totalPos);
-  // }
+  totalPos++;
+  selectedCharacter = totalPos - 1;
+  ausgabe(totalPos);
 }
 
 function zifferncode(graf) {
@@ -476,51 +357,6 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
     }
   }
 }
-
-var isMobile = {
-  Android: function() {
-    return navigator.userAgent.match(/Android/i);
-  },
-  BlackBerry: function() {
-    return navigator.userAgent.match(/BlackBerry/i);
-  },
-  iOS: function() {
-    return navigator.userAgent.match(/iPhone|iPod|iPad/i);
-  },
-  Opera: function() {
-    return navigator.userAgent.match(/Opera Mini/i);
-  },
-  Windows: function() {
-    return navigator.userAgent.match(/IEMobile/i);
-  },
-  any: function() {
-    return ((isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()));
-  }
-};
-
-function isMobileDevice() {
-  var result = 0;
-  if (isMobile.any()) {
-    result = 1;
-  }
-  return result
-};
-
-function checkKeyboard() {
-  if (isMobileDevice()) {
-    hideTableKeyboard();
-  } else {
-    showTableKeyboard();
-  }
-}
-
-function hideTableKeyboard() {
-  // document.getElementById("keyboard").style="display:none";
-};
-
-function showTableKeyboard() {
-  // document.getElementById("keyboard").style="display:table";
-};
 
 function writeToTextAusgabe() {
     var textAusgabeDiv = document.getElementById("textausgabe");
