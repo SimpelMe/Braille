@@ -2,7 +2,8 @@ function writeBrailleline() {
   var brailleTable = document.getElementById("brailleline");
   var row = brailleTable.insertRow();
 
-  for (var i = 1; i < limitZellen + 1; i++) {
+  // for (var i = 1; i < limitZellen + 1; i++) {
+  for (var i = 1; i < totalPos + 1; i++) {
     var cell = row.insertCell();
     cell.classList.add("zelle");
     cell.classList.add("braille");
@@ -68,7 +69,8 @@ function writeBrailleline() {
   }
 
   var row = brailleTable.insertRow();
-  for (var i = 1; i < limitZellen + 1; i++) {
+  // for (var i = 1; i < limitZellen + 1; i++) {
+  for (var i = 1; i < totalPos + 1; i++) {
     var cell = row.insertCell();
     cell.classList.add("zelle");
     var input = document.createElement('input');
@@ -86,7 +88,7 @@ function writeBrailleline() {
 }
 
 function scaleBrailleline() {
-  limitZellen = fieldsPerLine();
+  // limitZellen = fieldsPerLine();
   // delete braille line
   var brailleTable = document.getElementById("brailleline");
   while(brailleTable.hasChildNodes()) {
@@ -94,11 +96,11 @@ function scaleBrailleline() {
   }
   // rebuild braille line
   writeBrailleline();
-  limitZellen = fieldsPerLine();
+  // limitZellen = fieldsPerLine();
   var startPos = 1;
-  if (totalPos > limitZellen) {
-    startPos = totalPos - limitZellen;
-  }
+  // if (totalPos > limitZellen) {
+  //   startPos = totalPos - limitZellen;
+  // }
   // repaint content of braille line
   for (var i = startPos; i < totalPos; i++) {
     ausgabe(i);

@@ -27,7 +27,9 @@ function fieldsPerLine() {
 }
 
 // how many cells should the braille line have
-var limitZellen = fieldsPerLine();
+// var limitZellen = fieldsPerLine();
+// console.log("limitZellen = " + limitZellen);
+
 // if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
 
 var totalPos = 1;
@@ -80,14 +82,14 @@ function openPopup() {
 }
 
 function ausgabe(drawPos) {
-  limitZellen = fieldsPerLine();
-  var offset = totalPos - 1 - limitZellen;
-  if (offset < 0 ) {
+  // limitZellen = fieldsPerLine();
+  // var offset = totalPos - 1 - limitZellen;
+  // if (offset < 0 ) {
     screenpos = drawPos;
-  } else {
-    screenpos = drawPos - offset;
-  }
-  var zeichen = zellen[drawPos];
+  // } else {
+  //   screenpos = drawPos - offset;
+  // }
+  var zeichen = zellen[drawPos - 1];
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
   else pu[0] = 0;
@@ -125,11 +127,12 @@ function klick(zelle, punkt) {
   var bild;
   var zeichen;
   var big = false;
-  var offset = totalPos - 1 - (limitZellen - zelle);
+  // var offset = totalPos - 1 - (limitZellen - zelle);
+  var offset;
   var selectedCell = totalPos - 1;
-  if (totalPos - 1 < limitZellen) {
+  // if (totalPos - 1 < limitZellen) {
     offset = zelle;
-  }
+  // }
   if (zelle == 9999) { // bigCell
     bild = 'pBig_' + punkt;
     zeichen = hugeCell;
@@ -173,15 +176,15 @@ function klick(zelle, punkt) {
   } else {
     zellen[offset] = brailleback(zeichen1 + zeichen2);
   }
-  if (zelle < limitZellen + 1) {
-    var ausgzelle = 'z' + zelle;
-    document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
-  }
+  // if (zelle < limitZellen + 1) {
+  //   var ausgzelle = 'z' + zelle;
+  //   document.form[ausgzelle].value = brailleback(zeichen1 + zeichen2);
+  // }
   writeToTextAusgabe();
 }
 
 function grosseAuslesen() {
-  var zeichen = hugeCell;
+  // var zeichen = hugeCell;
   var pu = [0, 0, 0, 0, 0, 0];
 
   if (document.getElementById("checkbox1").checked) pu[0] = 1;
@@ -370,32 +373,32 @@ function lastloe() {
   totalPos--;
   zellen[totalPos] = ' ';
   // resets the output of the smaller checkboxes
-  ausgabe(totalPos - 1);
+  ausgabe(totalPos);
   writeToTextAusgabe();
 }
 
 function eingabe(graf) {
   // test if limit is reached
-  limitZellen = fieldsPerLine();
-  var shift = 0;
-  if (totalPos > limitZellen) {
-    shift = 1;
-  }
+  // limitZellen = fieldsPerLine();
+  // var shift = 0;
+  // if (totalPos > limitZellen) {
+  //   shift = 1;
+  // }
   // paint chararacter
   var zeichen = brailleback(graf);
   zellen[totalPos] = zeichen;
   // if limit exceeded then shift all leading chararacters
-  if (shift == 1) {
+  // if (shift == 1) {
+  //   totalPos++;
+  //   var startPos = totalPos - limitZellen;
+  //   // repaint content of braille line
+  //   for (var i = startPos; i < totalPos; i++) {
+  //     ausgabe(i);
+  //   }
+  // } else {
     totalPos++;
-    var startPos = totalPos - limitZellen;
-    // repaint content of braille line
-    for (var i = startPos; i < totalPos; i++) {
-      ausgabe(i);
-    }
-  } else {
     ausgabe(totalPos);
-    totalPos++;
-  }
+  // }
 }
 
 function zifferncode(graf) {
@@ -512,13 +515,22 @@ function showTableKeyboard() {
 };
 
 function writeToTextAusgabe() {
-    var textAusgabe = document.getElementById("textausgabe");
-    let text = "";
-    for (let stelle = 1; stelle < zellen.length; stelle++) {
+    var textAusgabeDiv = document.getElementById("textausgabe");
+    textAusgabeDiv.innerHTML = "";
+    let textDiv = "";
+    let textNode = "";
+    for (let stelle = 1; stelle < totalPos; stelle++) {
       var zeichen = zellen[stelle];
         if (typeof zeichen !== 'undefined'){
-            text = text + zeichen;
+          textDiv = document.createElement("div");
+          textNode = document.createTextNode(zeichen);
+          if (zeichen == " ") {
+            textDiv.classList.add("space");
+          }
+          textDiv.appendChild(textNode);
+          textAusgabeDiv.appendChild(textDiv);
+            // text = text + zeichen;
         }
     }
-    textAusgabe.innerText = text;
+    // textAusgabeDiv.innerText = text;
 }

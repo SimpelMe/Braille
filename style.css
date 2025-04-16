@@ -421,7 +421,7 @@ input[type="checkbox"]:checked {
 
 .column {
   display: grid;
-  gap: 20px;
+  gap: 10px;
   justify-items: center;
 }
 
@@ -433,4 +433,17 @@ form[name=form] {
 .menu {
   display: grid;
   justify-content: center;
+}
+
+#textausgabe {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 6.5vmin;
+  column-gap: 2vmin;
+  row-gap: 3vmin;
+  cursor: pointer;
+}
+
+.space {
+  white-space: pre;
 }
