@@ -1,7 +1,6 @@
 var totalPos = 1;
 var selectedCharacter = 0;
 
-// var hugeCell = " " // for tapping on the big braille
 var zellen = new Array(9999);
 zellen.fill(" "); // fill all indexes with " "
 
@@ -68,14 +67,9 @@ function ausgabe(drawPos) {
 
 function klick(zelle, punkt) {
   var zeichen;
-  var big = false;
   var offset = zelle;
   var selectedCell = totalPos - 1;
-  if (zelle == 9999) { // bigCell
-    bild = 'pBig_' + punkt;
-    zeichen = hugeCell;
-    big = true;
-  } else if (zelle == 9998) {
+  if (zelle == 9998) { // small checkboxes
     offset = selectedCell;
     if (selectedCharacter > 0) {
       offset = selectedCharacter;
@@ -108,11 +102,7 @@ function klick(zelle, punkt) {
   var zeichen1, zeichen2;
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
-  if (big == true) {
-    hugeCell = brailleback(zeichen1 + zeichen2);
-  } else {
-    zellen[offset] = brailleback(zeichen1 + zeichen2);
-  }
+  zellen[offset] = brailleback(zeichen1 + zeichen2);
   writeToTextAusgabe();
 }
 
@@ -145,7 +135,6 @@ function grosseAuslesen() {
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
-  hugeCell = brailleback('00');
 }
 
 function aend(zelle) {
