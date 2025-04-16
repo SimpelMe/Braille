@@ -439,11 +439,17 @@ form[name=form] {
   display: flex;
   flex-wrap: wrap;
   font-size: 6.5vmin;
-  column-gap: 2vmin;
-  row-gap: 3vmin;
   cursor: pointer;
+}
+
+#textausgabe > div {
+  padding: 5px;
 }
 
 .space {
   white-space: pre;
+}
+
+.selected-character {
+  background-color: #888;
 }

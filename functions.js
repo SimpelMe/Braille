@@ -33,6 +33,7 @@ function fieldsPerLine() {
 // if changing limitZellen then adapt at index.html "zelle img" and "zelle input"
 
 var totalPos = 1;
+var selectedCharacter = 0;
 
 var hugeCell = " " // for tapping on the big braille
 var zellen = new Array(9999);
@@ -89,6 +90,7 @@ function ausgabe(drawPos) {
   // } else {
   //   screenpos = drawPos - offset;
   // }
+  // var zeichen = zellen[drawPos - 1];
   var zeichen = zellen[drawPos - 1];
   var pu = [0, 0, 0, 0, 0, 0];
   if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
@@ -139,6 +141,9 @@ function klick(zelle, punkt) {
     big = true;
   } else if (zelle == 9998) {
     offset = selectedCell;
+    if (selectedCharacter > 0) {
+      offset = selectedCharacter;
+    }
     zeichen = zellen[offset];
   } else {
     bild = 'p' + zelle + '_' + punkt;
@@ -184,6 +189,7 @@ function klick(zelle, punkt) {
 }
 
 function grosseAuslesen() {
+  selectedCharacter = totalPos;
   // var zeichen = hugeCell;
   var pu = [0, 0, 0, 0, 0, 0];
 
@@ -371,6 +377,7 @@ bild_7.src = bgrafik + "7.svg";
 function lastloe() {
   if (totalPos == 1) return;
   totalPos--;
+  selectedCharacter = totalPos - 1;
   zellen[totalPos] = ' ';
   // resets the output of the smaller checkboxes
   ausgabe(totalPos);
@@ -397,6 +404,7 @@ function eingabe(graf) {
   //   }
   // } else {
     totalPos++;
+    selectedCharacter = totalPos - 1;
     ausgabe(totalPos);
   // }
 }
@@ -527,10 +535,17 @@ function writeToTextAusgabe() {
           if (zeichen == " ") {
             textDiv.classList.add("space");
           }
+          if (stelle == selectedCharacter) {
+            textDiv.classList.add("selected-character")
+          }
           textDiv.appendChild(textNode);
+          textDiv.setAttribute("onclick","selectCharacter(" + stelle + ")");
           textAusgabeDiv.appendChild(textDiv);
-            // text = text + zeichen;
         }
     }
-    // textAusgabeDiv.innerText = text;
+}
+
+function selectCharacter(stelle) {
+  selectedCharacter = stelle;
+  ausgabe(selectedCharacter + 1);
 }
