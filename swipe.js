@@ -3,17 +3,17 @@ let toggledCheckboxes = new Set();
 
 // Verhindert Pull-to-Refresh auf iOS
 // was durch Swipen versehentlich audgelöst werden kann
-document.addEventListener('touchmove', (e) => {
-  if (e.target.closest('#popup')) {
-    return;
-  }
-  if (e.target.closest('#textausgabe')) {
-    return;
-  }
-  if (!e.target.closest('.checkbox-container')) {
-    e.preventDefault();
-  }
-}, { passive: false });
+// document.addEventListener('touchmove', (e) => {
+//   if (e.target.closest('#popup')) {
+//     return;
+//   }
+//   if (e.target.closest('#textausgabe')) {
+//     return;
+//   }
+//   if (!e.target.closest('.checkbox-container')) {
+//     e.preventDefault();
+//   }
+// }, { passive: false });
 
 const container = document.getElementById('checkboxContainer');
 
