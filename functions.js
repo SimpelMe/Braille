@@ -136,6 +136,7 @@ function grosseAuslesen() {
   zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
   zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
   eingabe(zeichen1 + zeichen2);
+  scrollTextToEnd();
 }
 
 function aend(zelle) {
@@ -325,6 +326,7 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
       if (tasten[5][2]) rechts = rechts + 4;
       weiter = links + "" + rechts;
       eingabe(weiter);
+      scrollTextToEnd();
       tasten[0][2] = tasten[1][2] = tasten[2][2] = tasten[3][2] = tasten[4][2] = tasten[5][2] = tasten[6][2] = 0;
     }
   }
@@ -351,10 +353,14 @@ function writeToTextAusgabe() {
       textAusgabeDiv.appendChild(textDiv);
     }
   }
-  textAusgabeDiv.scrollTop = textAusgabeDiv.scrollHeight;
 }
 
 function selectCharacter(stelle) {
   selectedCharacter = stelle;
   ausgabe(selectedCharacter + 1);
+}
+
+function scrollTextToEnd() {
+  var textAusgabeDiv = document.getElementById("textausgabe");
+  textAusgabeDiv.scrollTop = textAusgabeDiv.scrollHeight;
 }

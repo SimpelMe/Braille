@@ -7,6 +7,9 @@ document.addEventListener('touchmove', (e) => {
   if (e.target.closest('#popup')) {
     return;
   }
+  if (e.target.closest('#textausgabe')) {
+    return;
+  }
   if (!e.target.closest('.checkbox-container')) {
     e.preventDefault();
   }
