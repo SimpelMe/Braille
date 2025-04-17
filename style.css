@@ -1,7 +1,13 @@
 :root {
   /* prevent zooming while tapping fast on iOS */
   touch-action: pan-x pan-y;
-  height: 100%;
+}
+
+html, body {
+  /* prevent pull-to-refresh */
+  /* but there is still a slight scrolling x and y */
+  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 body {
@@ -11,7 +17,6 @@ body {
   background-color: #555;
   margin: 6vmin;
   padding: 0;
-  overflow: hidden; /* Verhindert Scrollen */
   height: calc(100vh - 12vmin);
 }
 
@@ -20,6 +25,7 @@ main {
   flex-direction: column;
   height: 100%;
   row-gap: 6vmin;
+  overflow: hidden;
 }
 
 .wrapper {
