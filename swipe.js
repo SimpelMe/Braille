@@ -11,7 +11,9 @@ document.addEventListener('touchmove', (e) => {
     return;
   }
   if (!e.target.closest('.checkbox-container')) {
-    e.preventDefault();
+    console.log("preventDefault");
+    
+    // e.preventDefault();
   }
 }, { passive: false });
 
@@ -49,6 +51,5 @@ function handleCheckboxToggle(touch) {
   if (target && target.type === 'checkbox' && !toggledCheckboxes.has(target)) {
     target.checked = !target.checked;
     toggledCheckboxes.add(target);  // Nur einmal pro Swipe
-    // console.log(`Checkbox ${target.id} geändert: ${target.checked ? 'AN' : 'AUS'}`);
   }
 }
