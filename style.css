@@ -5,7 +5,6 @@
 
 html, body {
   /* prevent pull-to-refresh */
-  /* but there is still a slight scrolling x and y */
   overscroll-behavior: none;
   overflow: hidden;
 }
@@ -275,13 +274,6 @@ button.dummy {
   }
 }
 
-/* .textausgabe {
-    text-align: left;
-    font-size: 5vmin;
-    flex-grow: 1;
-    overflow-y: scroll;
-} */
-
 .checkbox-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -338,7 +330,7 @@ input[type="checkbox"]:checked {
   flex-grow: 1;
   font-size: 6.5vmin;
   cursor: pointer;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #textausgabe > div {

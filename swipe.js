@@ -1,37 +1,70 @@
 let isSwiping = false;
 let toggledCheckboxes = new Set();
+let touchMoved = false;
 
 const container = document.getElementById('checkboxContainer');
 
+// draw braille with finger touch
 container.addEventListener('touchstart', (e) => {
   isSwiping = true;
+  touchMoved = false;
   toggledCheckboxes.clear();
   handleCheckboxToggle(e.touches[0]);
-}, {passive: true});
+}, { passive: true });
 
 container.addEventListener('touchmove', (e) => {
+  touchMoved = true;
   if (isSwiping) {
     handleCheckboxToggle(e.touches[0]);
   }
-}, {passive: true});
+}, { passive: true });
 
-container.addEventListener('touchend', () => {
-  isSwiping = false;
-  grosseAuslesen();
-});
+container.addEventListener('touchend', (e) => {
+  if (isSwiping) {
+    isSwiping = false;
+
+    if (!touchMoved) {
+      // Tap: unterdrücke nachfolgenden Click
+      // Sonst wird das Zeichen doppelt ausgelesen
+      e.preventDefault();
+    }
+
+    grosseAuslesen();
+  }
+}, { passive: false }); // <- wichtig! Nur so wirkt preventDefault()
 
 // Klick (Tap) Event für einzelne Checkboxes
 container.addEventListener('click', (e) => {
   const target = e.target.closest('input[type="checkbox"]');
-  if (target) {
+  if (!isSwiping && target) {
     target.checked = !target.checked;
+  }
+});
+
+// draw braille with mouse
+container.addEventListener('mousedown', (e) => {
+  isSwiping = true;
+  toggledCheckboxes.clear();
+  handleCheckboxToggle(e);
+});
+
+container.addEventListener('mousemove', (e) => {
+  if (isSwiping) {
+    handleCheckboxToggle(e);
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  if (isSwiping) {
+    isSwiping = false;
+    grosseAuslesen();
   }
 });
 
 // Swipe-Handler
 function handleCheckboxToggle(touch) {
   const target = document.elementFromPoint(touch.clientX, touch.clientY);
-  
+
   if (target && target.type === 'checkbox' && !toggledCheckboxes.has(target)) {
     target.checked = !target.checked;
     toggledCheckboxes.add(target);  // Nur einmal pro Swipe
