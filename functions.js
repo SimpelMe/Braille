@@ -331,26 +331,27 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
 }
 
 function writeToTextAusgabe() {
-    var textAusgabeDiv = document.getElementById("textausgabe");
-    textAusgabeDiv.innerHTML = "";
-    let textDiv = "";
-    let textNode = "";
-    for (let stelle = 1; stelle < totalPos; stelle++) {
-      var zeichen = zellen[stelle];
-        if (typeof zeichen !== 'undefined'){
-          textDiv = document.createElement("div");
-          textNode = document.createTextNode(zeichen);
-          if (zeichen == " ") {
-            textDiv.classList.add("space");
-          }
-          if (stelle == selectedCharacter) {
-            textDiv.classList.add("selected-character")
-          }
-          textDiv.appendChild(textNode);
-          textDiv.setAttribute("onclick","selectCharacter(" + stelle + ")");
-          textAusgabeDiv.appendChild(textDiv);
-        }
+  var textAusgabeDiv = document.getElementById("textausgabe");
+  textAusgabeDiv.innerHTML = "";
+  let textDiv = "";
+  let textNode = "";
+  for (let stelle = 1; stelle < totalPos; stelle++) {
+    var zeichen = zellen[stelle];
+    if (typeof zeichen !== 'undefined'){
+      textDiv = document.createElement("div");
+      textNode = document.createTextNode(zeichen);
+      if (zeichen == " ") {
+        textDiv.classList.add("space");
+      }
+      if (stelle == selectedCharacter) {
+        textDiv.classList.add("selected-character")
+      }
+      textDiv.appendChild(textNode);
+      textDiv.setAttribute("onclick","selectCharacter(" + stelle + ")");
+      textAusgabeDiv.appendChild(textDiv);
     }
+  }
+  textAusgabeDiv.scrollTop = textAusgabeDiv.scrollHeight;
 }
 
 function selectCharacter(stelle) {

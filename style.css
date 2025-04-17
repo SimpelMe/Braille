@@ -269,12 +269,12 @@ button.dummy {
   }
 }
 
-.textausgabe {
+/* .textausgabe {
     text-align: left;
     font-size: 5vmin;
     flex-grow: 1;
     overflow-y: scroll;
-}
+} */
 
 .checkbox-container {
   display: grid;
@@ -328,8 +328,11 @@ input[type="checkbox"]:checked {
 #textausgabe {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  flex-grow: 1;
   font-size: 6.5vmin;
   cursor: pointer;
+  overflow-y: scroll;
 }
 
 #textausgabe > div {
