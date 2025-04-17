@@ -9,18 +9,21 @@ body {
   font-size: 3.5vmin;
   color: #fff;
   background-color: #555;
-  /* background-attachment: fixed; */
-  margin: 0;
+  margin: 6vmin;
   padding: 0;
-  /* transform-origin: top center;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none; */
   overflow: hidden; /* Verhindert Scrollen */
-  height: 100vh;
+  height: calc(100vh - 12vmin);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  row-gap: 6vmin;
 }
 
 .wrapper {
-  margin-top: 3vmin;
+  flex-grow: 0;
 }
 
 div .manual {
@@ -39,7 +42,6 @@ input, select, textarea, button {
   font-family: inherit;
 }
 
-/*transform: scale(2.8); */
 ul {
   padding-inline-start: 7vmin;
 }
@@ -48,58 +50,14 @@ li {
   margin-bottom: 1vmin;
 }
 
-table {
-  font-size: 0;
-  color: #fff;
-}
-
-table.menu {
-    margin-top: 6vh;
-}
-
-td {
-  text-align: left;
-}
-
 img {
   -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
           filter: invert(100%);
 }
 
-img.smallpoint {
-  width: 3.5vmin;
-  height: 3.5vmin;
-}
-
 img.icon {
   width: 6.25vmin;
   height: 12.5vmin;
-}
-
-img.bigpoint {
-  width: 12vmin;
-  height: 12vmin;
-}
-
-img.braille64icon {
-  width: 2.5vmin;
-  height: 5vmin;
-}
-
-img.braille64iconhalf {
-  width: 1.25vmin;
-  height: 5vmin;
-}
-
-textarea,
-input.text,
-input[type="text"],
-input[type="reset"],
-input[type="button"],
-input[type="submit"],
-.input-checkbox {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
 }
 
 button {
@@ -125,7 +83,7 @@ button.big {
   font-size: 10vmin;
 }
 
-/* button is just placeholder */
+button is just placeholder
 button.dummy {
   /* transparent */
   background-color: rgb(255, 255, 255, 0);
@@ -145,33 +103,8 @@ button.dummy {
   padding-bottom: 0.5vmin;
 }
 
-.brailleline table {
-  border-spacing: 2px;
-}
-
-.brailleline td {
-  width: 9.2vmin;
-  padding: 0px;
-}
-
 .braille {
   height: 14vmin;
-}
-
-.big6 table {
-  border-spacing: 15px;
-}
-
-.big6 td, th {
-  padding: 0px;
-}
-
-.braille64buttons table {
-  border-spacing: 0px;
-}
-
-.braille64buttons td, th {
-  padding: 0px;
 }
 
 .zelle {
@@ -186,10 +119,6 @@ button.dummy {
 
 .nocoursorpointer {
   cursor: default;
-}
-
-.brailleline {
-  margin-top: 2vmin;
 }
 
 .output {
@@ -210,29 +139,12 @@ button.dummy {
   background-color: rgb(255, 255, 255, 0);
 }
 
-/* currently not activated */
-/* .long {
-  margin-top: 2px;
-  padding-left: 5px;
-  border: 1px solid #fff;
-  text-align: left !important;
-  height: 25px;
-  width: 100%
-} */
-
 .big6 {
-  margin-top: 4vmin;
   display: flex;
   align-items: center;
   justify-self: center;
   justify-content: space-between;
   width: calc(100vw - 12vmin);
-}
-
-.zelle_big {
-  /* border: 1px solid #fff;
-  border-radius: 2px;
-  text-align: center; */
 }
 
 .braille64 {
@@ -323,7 +235,8 @@ button.dummy {
   margin-left: -5px;
 }
 
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
+/* Toggle this class when clicking on the popup container
+(hide and show the popup) */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 0s;
@@ -332,9 +245,7 @@ button.dummy {
 
 .footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 4vmin;
+  flex-grow: 0;
 }
 
 /* Add animation (fade in the popup) */
@@ -359,26 +270,10 @@ button.dummy {
 }
 
 .textausgabe {
-    margin: 6vmin;
     text-align: left;
     font-size: 5vmin;
-}
-
-textarea {
-  color: white;
-  background-color: #555;
-  font-family: monospace;
-  font-size: 0.92em;
-  resize: none;
-  border: 1px solid white;
-  border-radius: 2px;
-  padding: 0.5em;
-  height: calc(100vh - (6vh + 85vmin) - 5vh);
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: default;
+    flex-grow: 1;
+    overflow-y: scroll;
 }
 
 .checkbox-container {
@@ -423,11 +318,6 @@ input[type="checkbox"]:checked {
   display: grid;
   gap: 10px;
   justify-items: center;
-}
-
-/* it's the upper braille line that should be omitted */
-form[name=form] {
-  display: none;
 }
 
 .menu {
