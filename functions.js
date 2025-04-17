@@ -364,3 +364,13 @@ function scrollTextToEnd() {
   var textAusgabeDiv = document.getElementById("textausgabe");
   textAusgabeDiv.scrollTop = textAusgabeDiv.scrollHeight;
 }
+
+const convertHeight = () => {
+  const height = window.innerHeight;
+  const body = document.getElementById("body");
+  body.style.height = `calc(${height}px - 12vmin)`;
+  const popup = document.getElementById("popup");
+  popup.style.height = `calc(${height}px - 12vmin)`;
+};
+window.addEventListener("resize", convertHeight);
+window.addEventListener("DOMContentLoaded", convertHeight);
