@@ -68,29 +68,82 @@
         <button class="popup big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openPopup()">?</button>
         <div class="popup">
           <div class="popuptext" id="popup" onclick="openPopup()">
-            <div class="manual">Wähle mit&nbsp;<div class="key_button">&#10303;</div> zwischen 2 Varianten:</div>
-            <ol>
-              <li>Setze Braillepunkte in dem Feld und drücke <div class="key_button">&#10003;</div> oder <div class="key_button">&#9166;</div>.
-              </li>
-              <li>Oder klicke die Braillezeichen-Knöpfe.</li>
-            </ol>
-            <div class="manual">Weitere Tipps:</div>
+            <p>
+              Bedienelemente:
+            </p>
             <ul>
-              <li>Klicke in das Feld unter der Braillezeile für weitere Bedeutungen.</li>
-              <li>"#" ist das Zahlenzeichen; die nachfolgenden a - j sind die Ziffern 1 - 0</li>
-              <li>Nach "#" um einen Punkt nach unten verschobene "a - j" sind Ordungsziffern (1., 2., 41. usw.)</li>
-              <li>Tasten: <div class="key_button">&#9003;</div> - letztes Zeichen löschen, <div class="key_button">ESC</div> - alle Zeichen löschen, <div class="key_button">Space</div> - Leerzeichen setzen</li>
+              <li>
+                <span class="braille-symbol braille-symbol-gross">&#10303;</span> - Eingabefeld (gross)
+              </li>
+              <li>
+                <span class="braille-symbol braille-symbol-klein">&#10303;</span> - Korrekturfeld (klein)
+              </li>
+              <li>
+                <img src='alternative.svg' class="manual-icon" alt='Button mit 2 nach oben von einander wegstrebenden Pfeilen'> - Alternatives Zeichen
+              </li>
+              <li>
+                <img src='backspace.svg' class="manual-icon" alt='Button mit nach links zeigendem gefülltem Pfeil und einem x drin'> - Letztes Zeichen löschen
+              </li>
+              <li>
+                <img src='trash.svg' class="manual-icon" title='alle zeichen l&ouml;schen' alt='Button mit einem Mülleimer'> - Alle Zeichen löschen
+              </li>
+              <li>
+                <span class="manual-icon-char">?</span> - Bedienungsanleitung
+              </li>
             </ul>
-            <div class="manual">Der Stenomaschinen-Modus: die Braillepunkte 1&ndash;6 werden mit den Tasten&nbsp;<div class="key_button">S</div>
-              <div class="key_button">D</div>
-              <div class="key_button">F</div>
-              <div class="key_button">J</div>
-              <div class="key_button">K</div>
-              <div class="key_button">L</div> erzeugt. Drücke die nötigen Tasten gleichzeitig.
-            </div>
-            <div class="manual">
+            <hr>
+            <p>
+              Es gibt zwei Braille-Felder - <span class="braille-symbol">&#10303;</span> - „6er“ genannt.
+            </p>
+            <p>
+              Zeichne ein Braillezeichen auf dem <i>großen</i> 6er. Das Zeichen wird übersetzt im Textfeld angezeigt und selektiert.
+            </p>
+            <p>
+              Selektierte Zeichen werden im <i>kleinen</i> 6er angezeigt. Mit Klick können dort einzelne Punkte korrigiert und die Übersetzung im Textfeld angepasst werden.
+            </p>
+            <p>
+              Mit dem Knopf „Alternative Zeichen“ (unter dem <i>kleinen</i> 6er) können die alternativen Übersetzungen angezeigt werden.
+            </p>
+
+            <p>Weitere Tipps:</p>
+            <ul>
+              <li># ist das Zahlenzeichen, die nachfolgenden a - j sind die Ziffern 1 - 0.</li>
+              <li>Nach # um einen Punkt nach unten verschobene a - j sind Ordungsziffern (1., 2. usw.).</li>
+            </ul>
+            <hr>
+            <p>
+              Der Stenomaschinen-Modus:
+            </p>
+            <p>
+              Die Braillepunkte 1&ndash;6 können mit den Tasten 
+              <span class="key_button">F</span>
+              <span class="key_button">D</span>
+              <span class="key_button">S</span>
+              <span class="key_button">J</span>
+              <span class="key_button">K</span>
+              <span class="key_button">L</span> erzeugt werden. Drücke die nötigen Tasten gleichzeitig.
+            </p>
+            <p>
+              Weitere Tasten:
+            </p>
+            <ul>
+              <li>
+                <span class="key_button">&#9003;</span> - letztes Zeichen löschen
+              </li>
+              <li>
+                <span class="key_button">ESC</span> - alle Zeichen löschen
+              </li>
+              <li>
+                <span class="key_button">Space</span> - Leerzeichen setzen
+              </li>
+              <li>
+                <span class="key_button">&lt;</span> - alternative Übersetzung
+              </li>
+            </ul>
+            <hr>
+            <p>
               <p>Der Programmcode ist zu finden unter <a href="https://github.com/SimpelMe/Braille">https://github.com/SimpelMe/Braille</a></p>
-            </div>
+            </p>
           </div>
         </div>
       </div>

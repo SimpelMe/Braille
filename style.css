@@ -42,12 +42,6 @@ main {
   flex-grow: 0;
 }
 
-div .manual {
-  display: inline-block;
-  margin-top: 0px;
-  margin-bottom: -2vmin;
-}
-
 a {
   color: #fff;
   cursor: pointer;
@@ -268,4 +262,55 @@ input[type="checkbox"]:checked {
     und damit den Webview halb nach unten schiebt */
     margin-bottom: 2em;
   }
+}
+
+#popup > p {
+  line-height: 1.25em;
+}
+
+.braille-symbol {
+  font-size: 1.5em;
+  vertical-align: sub;
+}
+
+.braille-symbol-gross {
+  font-size: 3em;
+  vertical-align: middle;
+  line-height: 0.75em;
+}
+
+.braille-symbol-klein {
+  margin-left: 0.35em;
+  margin-right: 0.35em;
+}
+
+.manual-icon {
+  height: 1.25em;
+  max-height: 45px;
+  width: 1em;
+  max-width: 36px;
+  font-size: 1.25em;
+  margin-right: 0.25em;
+  vertical-align: middle;
+  border: 1px solid black; /* black weil invertiert */
+  padding: 3px;
+  border-radius: 2px;
+  background-color: #bbb; /* ist auch die invertierte Farbe */
+}
+
+.manual-icon-char {
+  height: 1.25em;
+  max-height: 45px;
+  width: 1em;
+  max-width: 36px;
+  font-size: 1.25em;
+  margin-right: 0.25em;
+  vertical-align: middle;
+  border: 1px solid white;
+  padding: 3px;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  line-height: 1.7em;
+  border-radius: 2px;
+  background-color: #444;
 }
