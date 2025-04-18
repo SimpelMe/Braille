@@ -123,7 +123,7 @@ button.big {
 .big6 {
   display: flex;
   flex-grow: 0;
-  column-gap: 1.8em;
+  column-gap: 1.5em;
   align-items: flex-end;
   justify-self: center;
   justify-content: center;
