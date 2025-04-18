@@ -305,6 +305,7 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
   } // Tab no-jump
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
+  if (e.keyCode == 188 && r == 'u') aend(selectedCharacter); // <
 
   if (/[SDFJKL ]/.test(weiter)) {
     for (var i = 0; i < 7; i++) {
