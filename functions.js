@@ -295,10 +295,6 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
     if (e.preventDefault) e.preventDefault();
     else e.returnValue = false;
   } // Backspace no-history-back
-  if (weiter == '\r') {
-    if (e.preventDefault) e.preventDefault();
-    else e.returnValue = false;
-  } // Enter no-history-forward
   if (weiter == '\t') {
     if (e.preventDefault) e.preventDefault();
     else e.returnValue = false;
