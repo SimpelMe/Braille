@@ -111,7 +111,7 @@ braillecode['es'] = "77";
 braillecode['%'] = "77";
 braillecode['\''] = "04"; // Apostroph
 braillecode['|'] = "01";
-braillecode['\'\''] = "01"; // "
+braillecode['\'\''] = "01"; // " \'\'
 braillecode['~'] = "02"; // (P5)
 braillecode['er'] = "37"; //  ^
 braillecode['ein'] = "35"; //  grave
@@ -153,7 +153,7 @@ brailletab = [
   // code deutsch
   ['10', 'a'],
   ['30', 'b'],
-  ['11', 'en'],
+  ['11', 'en'], // c
   ['13', 'd'],
   ['12', 'e'],
   ['31', 'f'],
@@ -177,13 +177,13 @@ brailletab = [
   ['55', 'mm'], // x
   ['57', 'el'], // y
   ['56', 'z'],
-  ['45', 'ie'], // Paragraph
+  ['45', 'ie'], // §
   ['14', 'au'],
   ['34', 'eu'],
   ['15', 'ei'],
   ['17', 'ch'],
   ['16', 'sch'],
-  ['35', 'ein'], // grave
+  ['35', 'ein'], // ` grave
   ['37', 'er'], // ^
   ['36', '\xfc'], // ü
   ['25', '\xf6'], // ö
@@ -193,26 +193,26 @@ brailletab = [
   ['05', 'ck'], // $
   ['77', 'es'], // %
   ['75', 'ge'], // &
-  ['64', 'te'], // Anfang Anführungszeichen
-  ['46', 'ar'], // Ende Anführungszeichen
+  ['64', 'te'], // » Anfang Anführungszeichen
+  ['46', 'ar'], // « Ende Anführungszeichen
   ['42', 'in'], // *
-  ['62', 'an'], // !
+  ['62', 'an'], // +
   ['20', ','],
   ['44', 'ver'], // -
   ['40', '.'],
-  ['26', 'un'],
+  ['26', 'un'], // / Slash
   ['22', 'al'], // :
   ['60', 'be'], // ;
   ['06', 'ach'], // <
   ['66', 'eh'], // (=)
   ['03', 'ig'], // >
   ['24', 'or'], // ?
-  ['01', '|'], // engl ACC
+  ['01', '|'],  // " \'\'
   ['04', '\''], // Apostroph
   ['07', 'lich'], // _
   ['43', '\xe4'], // ä
   ['76', 'em'], // [
   ['41', '\xe4u'], // äu
-  ['67', 'st'], //]
+  ['67', 'st'], // ]
   ['65', 'ss'] // ß '\xdf'
 ];

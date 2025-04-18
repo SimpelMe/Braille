@@ -187,7 +187,8 @@ function aend(zelle) {
   else if (wert == '6.') wert = '!';
   else if (wert == '!') wert = 'an';
   else if (wert == 'eh') wert = '7.';
-  else if (wert == '7.') wert = '(';
+  else if (wert == '7.') wert = '(=)';
+  else if (wert == '(=)') wert = '(';
   else if (wert == '(') wert = '=';
   else if (wert == '=') wert = ')';
   else if (wert == ')') wert = 'eh';
