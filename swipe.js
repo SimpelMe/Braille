@@ -2,6 +2,11 @@ let isSwiping = false;
 let toggledCheckboxes = new Set();
 let touchMoved = false;
 
+const body = document.getElementById('body');
+body.addEventListener('click', (e) => {
+  // body.style.backgroundColor = "red";
+});
+
 const container = document.getElementById('checkboxContainer');
 
 // draw braille with finger touch
@@ -23,14 +28,15 @@ container.addEventListener('touchend', (e) => {
   if (isSwiping) {
     isSwiping = false;
 
-    if (!touchMoved) {
+    // if (!touchMoved) {
       // Tap: unterdrücke nachfolgenden Click
       // Sonst wird das Zeichen doppelt ausgelesen
       e.preventDefault();
-    }
+    // }
 
     grosseAuslesen();
   }
+  return;
 }, { passive: false }); // <- wichtig! Nur so wirkt preventDefault()
 
 // Klick (Tap) Event für einzelne Checkboxes
