@@ -26,7 +26,7 @@ body {
   background-color: #555;
   margin: 6vmin;
   padding: 0;
-  height: calc(100vh - 12vmin);
+  height: calc(100svh - 12vmin);
 }
 
 main {

@@ -54,6 +54,8 @@ container.addEventListener('mousemove', (e) => {
   }
 });
 
+// event auf das document nicht nur container
+// Wischer nach außerhalb würden sonst kein Ende mehr finden
 document.addEventListener('mouseup', () => {
   if (isSwiping) {
     isSwiping = false;
