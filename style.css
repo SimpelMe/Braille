@@ -1,6 +1,10 @@
 :root {
   /* prevent zooming while tapping fast on iOS */
   touch-action: pan-x pan-y;
+  --default-min-font-size-px: 12px;
+  --default-min-font-size: 12;
+  --default-max-font-size-px: 18px;
+  --default-max-font-size: 18;
 }
 
 html, body {
@@ -9,9 +13,15 @@ html, body {
   overflow: hidden;
 }
 
+html {
+  /* see: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/#comment-1769978 - comment by MaxDesign */
+  font-size:calc(var(--default-min-font-size-px) + (var(--default-max-font-size) - var(--default-min-font-size)) * ((100vw - 360px) / 1560));
+  font-size: clamp(var(--default-min-font-size-px), calc(var(--default-min-font-size-px) + (var(--default-max-font-size) - var(--default-min-font-size)) * ((100vw - 360px) / 1560)), var(--default-max-font-size-px));
+}
+
 body {
   font-family: Verdana, Helvetica, sans-serif;
-  font-size: 3.5vmin;
+  font-size: 2em;
   color: #fff;
   background-color: #555;
   margin: 6vmin;
@@ -23,8 +33,9 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
-  row-gap: 6vmin;
+  gap: 1.25em;
   overflow: hidden;
+  font-size: 0.75em;
 }
 
 .wrapper {
@@ -61,8 +72,10 @@ img {
 }
 
 img.icon {
-  width: 6.25vmin;
-  height: 12.5vmin;
+  width: 75%;
+  height: 75%;
+  margin: auto;
+  display: block;
 }
 
 button {
@@ -83,22 +96,17 @@ button:focus {
 }
 
 button.big {
-  height: 12.5vmin;
-  width: 10.25vmin;
-  font-size: 10vmin;
-}
-
-button is just placeholder
-button.dummy {
-  /* transparent */
-  background-color: rgb(255, 255, 255, 0);
-  border: 0;
+  height: 1.25em;
+  max-height: 45px;
+  width: 1em;
+  max-width: 36px;
+  font-size: 2em;
 }
 
 .key_button {
   display: inline-block;
-  font-size: 3vmin;
-  line-height: 3vmin;
+  font-size: 0.8em;
+  line-height: 0.8em;
   border: 1px solid #fff;
   border-radius: 0.4em;
   text-align: center;
@@ -108,91 +116,17 @@ button.dummy {
   padding-bottom: 0.5vmin;
 }
 
-.braille {
-  height: 14vmin;
-}
-
-.zelle {
-  border: 1px solid #fff;
-  border-radius: 2px;
-  text-align: center;
-}
-
 .coursorpointer {
   cursor: pointer !important;
 }
 
-.nocoursorpointer {
-  cursor: default;
-}
-
-.output {
-  width: 9vmin;
-  font-size: 2.7vmin;
-  font-weight: bold;
-  color: #fff;
-  cursor: default;
-  border: 0;
-  text-align: center;
-  padding: 0;
-  padding-bottom: 0.2vmin;
-  /* margin 2px damit die Ecken nicht angefressen werden */
-  margin: 2px;
-}
-
-.bgtransparent {
-  background-color: rgb(255, 255, 255, 0);
-}
-
 .big6 {
   display: flex;
-  align-items: center;
+  flex-grow: 0;
+  column-gap: 1.8em;
+  align-items: flex-end;
   justify-self: center;
-  justify-content: space-between;
-  width: calc(100vw - 12vmin);
-}
-
-.braille64 {
-  display: none
-}
-
-.braille64buttons {
-  /* just for space between button groups */
-  font-size: 2.7vmin;
-}
-
-.keys {
-  font-size: 2.7vmin;
-}
-
-.keys button {
-  margin: 1vmin;
-}
-
-.spacekey button {
-  width: 16vmin;
-}
-
-.textcenter {
-  text-align: center;
-}
-
-.bottom {
-  vertical-align: bottom;
-}
-
-.middle {
-  vertical-align: middle;
-}
-
-/* Popup container */
-.umschalter {
-  font-size: 4vmin;
-  line-height: 3vmin;
-  width: 3vmin;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
+  justify-content: center;
 }
 
 #popup {
@@ -210,7 +144,7 @@ button.dummy {
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  font-size: 5vmin;
+  font-size: 1.6em;
   overflow-y: scroll;
   visibility: hidden;
   text-align: left;
@@ -248,32 +182,6 @@ button.dummy {
   animation: fadeIn 0s
 }
 
-.footer {
-  width: 100%;
-  flex-grow: 0;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 .checkbox-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -308,14 +216,11 @@ input[type="checkbox"]:checked {
   background-color: #fff;
 }
 
-.margin-top {
-  margin-top: 4vmin;
-}
-
 .column {
   display: grid;
   gap: 10px;
   justify-items: center;
+  align-self: center;
 }
 
 .menu {
@@ -328,7 +233,7 @@ input[type="checkbox"]:checked {
   flex-wrap: wrap;
   align-content: flex-start;
   flex-grow: 1;
-  font-size: 6.5vmin;
+  font-size: 1.25em;
   cursor: pointer;
   overflow-y: auto;
 }
@@ -343,4 +248,24 @@ input[type="checkbox"]:checked {
 
 .selected-character {
   background-color: #888;
+}
+
+/* das ist ca. der Moment, wo dann der Text hochkant mehr Inhalt fasst */
+@media (orientation: landscape) and (min-aspect-ratio: 1.35) {
+  main {
+    flex-direction: row;
+  }
+  .big6 {
+    column-gap: 0.75em;
+    align-self: flex-end;
+  }
+}
+
+/* iPhone 13 mini z.B. ohne Adressleiste */
+@media (max-aspect-ratio: 0.5) {
+  .big6 {
+    /* damit man nicht ständig über den Strich nach unten wischt
+    und damit den Webview halb nach unten schiebt */
+    margin-bottom: 2em;
+  }
 }
