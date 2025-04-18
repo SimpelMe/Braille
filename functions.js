@@ -286,23 +286,11 @@ tasten = [
 
 function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
 {
-  var weiter = String.fromCharCode(e.keyCode);
-  if (weiter == ' ') {
-    if (e.preventDefault) e.preventDefault();
-    else e.returnValue = false;
-  } // Leerzeichen no-scroll
-  if (e.keyCode == 8) {
-    if (e.preventDefault) e.preventDefault();
-    else e.returnValue = false;
-  } // Backspace no-history-back
-  if (weiter == '\t') {
-    if (e.preventDefault) e.preventDefault();
-    else e.returnValue = false;
-  } // Tab no-jump
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
   if (e.keyCode == 188 && r == 'u') aend(selectedCharacter); // <
 
+  var weiter = String.fromCharCode(e.keyCode);
   if (/[SDFJKL ]/.test(weiter)) {
     for (var i = 0; i < 7; i++) {
       if (weiter == tasten[i][0]) {
