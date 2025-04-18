@@ -1,6 +1,5 @@
 let isSwiping = false;
 let toggledCheckboxes = new Set();
-let touchMoved = false;
 
 const body = document.getElementById('body');
 body.addEventListener('click', (e) => {
@@ -12,13 +11,11 @@ const container = document.getElementById('checkboxContainer');
 // draw braille with finger touch
 container.addEventListener('touchstart', (e) => {
   isSwiping = true;
-  touchMoved = false;
   toggledCheckboxes.clear();
   handleCheckboxToggle(e.touches[0]);
 }, { passive: true });
 
 container.addEventListener('touchmove', (e) => {
-  touchMoved = true;
   if (isSwiping) {
     handleCheckboxToggle(e.touches[0]);
   }
@@ -28,15 +25,12 @@ container.addEventListener('touchend', (e) => {
   if (isSwiping) {
     isSwiping = false;
 
-    // if (!touchMoved) {
-      // Tap: unterdrücke nachfolgenden Click
-      // Sonst wird das Zeichen doppelt ausgelesen
-      e.preventDefault();
-    // }
-
     grosseAuslesen();
   }
-  return;
+  // Tap: unterdrücke nachfolgenden Click
+  // Sonst wird das Zeichen doppelt ausgelesen
+  // oder der erste Klick nach dem Wischen nicht erkannt
+  e.preventDefault();
 }, { passive: false }); // <- wichtig! Nur so wirkt preventDefault()
 
 // Klick (Tap) Event für einzelne Checkboxes
