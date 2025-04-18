@@ -374,3 +374,11 @@ const convertHeight = () => {
 };
 window.addEventListener("resize", convertHeight);
 window.addEventListener("DOMContentLoaded", convertHeight);
+
+// bei Klick in die leere Textausgabe selektiere das letzte Zeichen
+function selectLastCharacter(event) {
+  const textAusgabeDiv = document.getElementById("textausgabe");
+  if (event.target === textAusgabeDiv) {
+    selectCharacter(totalPos - 1);
+  }
+}

@@ -1,11 +1,6 @@
 let isSwiping = false;
 let toggledCheckboxes = new Set();
 
-const body = document.getElementById('body');
-body.addEventListener('click', (e) => {
-  // body.style.backgroundColor = "red";
-});
-
 const container = document.getElementById('checkboxContainer');
 
 // draw braille with finger touch
