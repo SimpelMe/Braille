@@ -303,7 +303,6 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
     if (e.preventDefault) e.preventDefault();
     else e.returnValue = false;
   } // Tab no-jump
-  if (e.keyCode == 13 && r == 'u') grosseAuslesen(); // Enter
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
 
