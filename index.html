@@ -66,6 +66,9 @@
     <div class="wrapper">
       <div class="menu">
         <button class="popup big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openPopup()">?</button>
+        <button class="popup big" title="Text kopieren" aria-label="Text kopieren" onclick="copyText()">
+          <img src='copy.svg' class="icon" title='Text kopieren' alt='Text kopieren'>
+        </button>
         <div class="popup">
           <div class="popuptext" id="popup" onclick="openPopup()">
             <p>
@@ -85,10 +88,13 @@
                 <img src='backspace.svg' class="manual-icon" alt='Button mit nach links zeigendem gefülltem Pfeil und einem x drin'> - Letztes Zeichen löschen
               </li>
               <li>
-                <img src='trash.svg' class="manual-icon" title='alle zeichen l&ouml;schen' alt='Button mit einem Mülleimer'> - Alle Zeichen löschen
+                <img src='trash.svg' class="manual-icon" alt='Button mit einem Mülleimer'> - Alle Zeichen löschen
               </li>
               <li>
                 <span class="manual-icon-char">?</span> - Bedienungsanleitung
+              </li>
+              <li>
+                <img src='copy.svg' class="manual-icon" alt='Button mit 2 Blatt Papier, die sich stark verdecken'> - Text kopieren
               </li>
             </ul>
             <hr>

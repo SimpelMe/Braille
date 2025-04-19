@@ -367,3 +367,13 @@ function selectLastCharacter(event) {
     selectCharacter(totalPos - 1);
   }
 }
+
+function copyText() {
+  // verbinde alle Zellen ohne Komma und entferne das erste leere Zeichen
+  const textCopy = zellen.join('').slice(1);
+  if (window.isSecureContext) {
+    navigator.clipboard.writeText(textCopy);
+  } else {
+    console.error("Diese Seite ist nicht sicher (http oder localhost) und darf deshalb das Clipboard nicht benutzen. \n\nDas Clipboard würde enthalten:\n" + textCopy)
+  }
+}
