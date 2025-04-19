@@ -373,6 +373,7 @@ function copyText() {
   const textCopy = zellen.join('').slice(1);
   if (window.isSecureContext) {
     navigator.clipboard.writeText(textCopy);
+    alert("Text ist kopiert.\n\n" + textCopy.substring(0,42) + " …");
   } else {
     console.error("Diese Seite ist nicht sicher (http oder localhost) und darf deshalb das Clipboard nicht benutzen. \n\nDas Clipboard würde enthalten:\n" + textCopy)
   }
