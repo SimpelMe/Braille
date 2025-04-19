@@ -308,16 +308,12 @@ input[type="checkbox"]:checked {
   main {
     flex-direction: row;
   }
+  .menu {
+    grid-template-columns: auto;
+  }
   .big6 {
     column-gap: 0.75em;
     align-self: flex-end;
-  }
-}
-
-/* Menüknöpfe untereinander anordnen */
-@media (orientation: landscape){
-  .menu {
-    grid-template-columns: auto;
   }
 }
 
