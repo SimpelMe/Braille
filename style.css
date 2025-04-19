@@ -268,10 +268,13 @@ input[type="checkbox"]:checked {
   font-size: 3em;
   line-height: 0;
   justify-self: anchor-center;
+  align-self: center;
 }
 
 .braille-symbol-klein {
-  justify-self: anchor-center;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
 }
 
 .manual-icon {
