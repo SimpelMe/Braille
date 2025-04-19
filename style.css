@@ -67,8 +67,8 @@ img {
 }
 
 img.icon {
-  width: 75%;
-  height: 75%;
+  width: 50%;
+  height: 50%;
   margin: auto;
   display: block;
 }
@@ -76,14 +76,14 @@ img.icon {
 button {
   font-size: inherit;
   color: #fff;
-  background-color: #444;
+  background-color: #555;
   cursor: pointer;
   margin: 0.5vmin;
   padding: 0px;
   height: 5.3vmin;
   width: 4.4vmin;
-  border: 1px solid #fff;
-  border-radius: 2px;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 button:focus {
@@ -91,10 +91,10 @@ button:focus {
 }
 
 button.big {
-  height: 1.25em;
-  max-height: 45px;
-  width: 1em;
-  max-width: 36px;
+  height: 2em;
+  max-height: 40px;
+  width: 2em;
+  max-width: 40px;
   font-size: 2em;
 }
 
