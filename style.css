@@ -57,8 +57,22 @@ ul {
   padding-inline-start: 7vmin;
 }
 
+.manual-icon-lu {
+  padding-inline-start: 0.5em;
+}
+
 li {
   margin-bottom: 1vmin;
+}
+
+.manual-icon-li {
+  margin-bottom: 1vmin;
+  display: grid;
+  align-items: anchor-center;
+  grid-template-columns: 1.5em auto;
+  column-gap: 0.5em;
+  line-height: 1.25em;
+  padding-bottom: 0.25em;
 }
 
 img {
@@ -252,27 +266,32 @@ input[type="checkbox"]:checked {
 
 .braille-symbol-gross {
   font-size: 3em;
-  vertical-align: middle;
-  line-height: 0.75em;
+  line-height: 0;
+  margin-left: -0.1em; /* manual vertical alignment */
 }
 
 .braille-symbol-klein {
-  margin-left: 0.35em;
-  margin-right: 0.35em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .manual-icon {
-  height: 1.25em;
-  max-height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1em;
+  max-height: 40px;
   width: 1em;
-  max-width: 36px;
-  font-size: 1.25em;
-  margin-right: 0.25em;
-  vertical-align: middle;
-  border: 1px solid black; /* black weil invertiert */
+  max-width: 40px;
+  margin-right: .25em;
+  border: 1px solid white;
   padding: 3px;
-  border-radius: 2px;
-  background-color: #bbb; /* ist auch die invertierte Farbe */
+  border-radius: 50%;
+  background-color: #555;
+}
+
+.manual-icon-img {
+  width: 80%;
 }
 
 .menu {
