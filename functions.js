@@ -289,7 +289,7 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
 {
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
-  if (e.keyCode == 188 && r == 'u') aend(selectedCharacter); // <
+  if (e.key == '<' && r == 'u') aend(selectedCharacter); // <
 
   var weiter = String.fromCharCode(e.keyCode);
   if (/[SDFJKL ]/.test(weiter)) {

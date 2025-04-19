@@ -129,8 +129,6 @@ button.big {
 }
 
 .popup {
-  /* font-size: 3vmin; */
-  /* line-height: 3vmin; */
   width: 3vmin;
   text-align: center;
   color: #fff;
@@ -139,7 +137,6 @@ button.big {
 
 /* The actual popup (appears on top) */
 .popup .popuptext {
-  /* font-size: 1.6em; */
   overflow-y: scroll;
   visibility: hidden;
   text-align: left;
