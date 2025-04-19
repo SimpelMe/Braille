@@ -68,7 +68,7 @@ li {
 .manual-icon-li {
   margin-bottom: 1vmin;
   display: grid;
-  align-items: anchor-center;
+  align-items: center;
   grid-template-columns: 1.5em auto;
   column-gap: 0.5em;
   line-height: 1.25em;
