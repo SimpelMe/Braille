@@ -54,11 +54,16 @@ input, select, textarea, button {
 }
 
 ul {
-  padding-inline-start: 7vmin;
+  padding-inline-start: 2em;
 }
 
 .manual-icon-lu {
-  padding-inline-start: 0.5em;
+  padding-inline-start: 1em;
+}
+
+.manual-keys-ul {
+  list-style-type: none;
+  padding-inline-start: 1em;
 }
 
 li {
