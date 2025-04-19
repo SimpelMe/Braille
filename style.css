@@ -276,23 +276,6 @@ input[type="checkbox"]:checked {
   background-color: #bbb; /* ist auch die invertierte Farbe */
 }
 
-.manual-icon-char {
-  height: 1.25em;
-  max-height: 45px;
-  width: 1em;
-  max-width: 36px;
-  font-size: 1.25em;
-  margin-right: 0.25em;
-  vertical-align: middle;
-  border: 1px solid white;
-  padding: 3px;
-  padding-left: 0.4em;
-  padding-right: 0.4em;
-  line-height: 1.7em;
-  border-radius: 2px;
-  background-color: #444;
-}
-
 .menu {
   display: grid;
   justify-content: center;
