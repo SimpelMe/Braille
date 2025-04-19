@@ -272,8 +272,7 @@ input[type="checkbox"]:checked {
 }
 
 .braille-symbol-klein {
-  margin-left: auto;
-  margin-right: auto;
+  justify-self: center;
   align-self: center;
 }
 
@@ -281,6 +280,8 @@ input[type="checkbox"]:checked {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-self: center;
+  align-self: center;
   height: 1em;
   max-height: 40px;
   width: 1em;
