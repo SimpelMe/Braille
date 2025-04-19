@@ -267,12 +267,11 @@ input[type="checkbox"]:checked {
 .braille-symbol-gross {
   font-size: 3em;
   line-height: 0;
-  margin-left: -0.1em; /* manual vertical alignment */
+  justify-self: anchor-center;
 }
 
 .braille-symbol-klein {
-  margin-left: auto;
-  margin-right: auto;
+  justify-self: anchor-center;
 }
 
 .manual-icon {
