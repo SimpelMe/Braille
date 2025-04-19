@@ -147,7 +147,7 @@ button.big {
 }
 
 .popup {
-  width: 3vmin;
+  width: 0;
   text-align: center;
   color: #fff;
   cursor: pointer;
