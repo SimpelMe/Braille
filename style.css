@@ -306,7 +306,7 @@ input[type="checkbox"]:checked {
   display: grid;
   justify-content: center;
   /* so viele 'auto' wie Buttons nebeneinander */
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
 
