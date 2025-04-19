@@ -370,7 +370,7 @@ function selectLastCharacter(event) {
 
 function copyText() {
   // verbinde alle Zellen ohne Komma und entferne das erste leere Zeichen
-  if (zellen.length < 1) {
+  if (zellen.length < 2) {
     return
   }
   const textCopy = zellen.join('').slice(1);
