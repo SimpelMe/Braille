@@ -374,6 +374,9 @@ function copyText() {
     return
   }
   const textCopy = zellen.join('').slice(1);
+  if (textCopy.trim().length === 0) {
+    return
+  }
   if (window.isSecureContext) {
     navigator.clipboard.writeText(textCopy);
     alert("Text ist kopiert.\n\n" + textCopy.substring(0,42) + " …");
