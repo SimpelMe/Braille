@@ -4,6 +4,9 @@ var selectedCharacter = 0;
 var zellen = new Array();
 zellen[0] = " "; // muss ein Leerzeichen sein sonst Fehler beim Löschen
 
+var saveTextToLocalStorageBool = false;
+var useVollschrift = true;
+
 var bit = new Array();
 bit[0] = '000';
 bit[1] = '100'; // oberster Punkt = kleinstes Bit
@@ -34,6 +37,12 @@ function loesch() {
 function openManual() {
   var manual = document.getElementById("manual");
   manual.classList.toggle("show");
+}
+
+// When the user clicks on settings button open settings
+function openSettings() {
+  var settings = document.getElementById("settings");
+  settings.classList.toggle("show");
 }
 
 function ausgabe(drawPos) {
@@ -338,7 +347,7 @@ function writeToTextAusgabe() {
       textAusgabeDiv.appendChild(textDiv);
     }
   }
-  saveToLocalStorage();
+  saveTextToLocalStorage();
   removeTestButton();
 }
 
@@ -405,19 +414,17 @@ function removeTestButton() {
   }
 }
 
-function saveToLocalStorage() {
+function saveTextToLocalStorage() {
   if(!window.localStorage) {
-    alert("Zugriff auf Local Storage unterbunden.");
+    console.warn("Zugriff auf Local Storage unterbunden.");
     return;
+  } else if (saveTextToLocalStorageBool === false) {
+    return
   }
   localStorage.setObj("zellen", zellen);
 }
 
 function readFromLocalStorage() {
-  if(!window.localStorage) {
-    alert("Zugriff auf Local Storage unterbunden.");
-    return;
-  }
   if (localStorage.getItem("zellen") === null) {
     return;
   }
@@ -434,4 +441,27 @@ Storage.prototype.setObj = function(key, obj) {
 
 Storage.prototype.getObj = function(key) {
   return JSON.parse(this.getItem(key))
+}
+
+function toggleVollschrift() {
+  const vollschriftCB = document.getElementById("checkboxVollschrift");
+  if (vollschriftCB.checked) {
+    localStorage.removeItem("useVollschrift");
+    useVollschrift = true;
+  } else {
+    localStorage.setObj("useVollschrift", false);
+    useVollschrift = false;
+  }
+}
+
+function toggleLocalStorage() {
+  const localStorageCB = document.getElementById("checkboxLocalStorage");
+  if (localStorageCB.checked) {
+    saveTextToLocalStorageBool = true;
+    localStorage.setObj("saveTextToLocalStorageBool", saveTextToLocalStorageBool);
+  } else {
+    saveTextToLocalStorageBool = false;
+    localStorage.removeItem("zellen");
+    localStorage.removeItem("saveTextToLocalStorageBool");
+  }
 }
