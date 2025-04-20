@@ -338,6 +338,7 @@ function writeToTextAusgabe() {
       textAusgabeDiv.appendChild(textDiv);
     }
   }
+  saveToLocalStorage();
 }
 
 function selectCharacter(stelle) {
@@ -401,4 +402,35 @@ function test() {
   writeToTextAusgabe();
   selectCharacter(totalPos - 1);
   scrollTextToEnd();
+}
+
+function saveToLocalStorage() {
+  if(!window.localStorage) {
+    alert("Zugriff auf Local Storage unterbunden.");
+    return;
+  }
+  localStorage.setObj("zellen", zellen);
+}
+
+function readFromLocalStorage() {
+  if(!window.localStorage) {
+    alert("Zugriff auf Local Storage unterbunden.");
+    return;
+  }
+  if (localStorage.getItem("zellen") === null) {
+    return;
+  }
+  zellen = localStorage.getObj("zellen");
+  totalPos = zellen.length;
+  writeToTextAusgabe();
+  selectCharacter(totalPos - 1);
+  scrollTextToEnd();
+}
+
+Storage.prototype.setObj = function(key, obj) {
+  return this.setItem(key, JSON.stringify(obj))
+}
+
+Storage.prototype.getObj = function(key) {
+  return JSON.parse(this.getItem(key))
 }
