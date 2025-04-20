@@ -443,7 +443,7 @@ Storage.prototype.getObj = function(key) {
   return JSON.parse(this.getItem(key))
 }
 
-function toggleVollschrift() {
+function toggleVollschrift(event) {
   const vollschriftCB = document.getElementById("checkboxVollschrift");
   if (vollschriftCB.checked) {
     localStorage.removeItem("useVollschrift");
@@ -452,9 +452,10 @@ function toggleVollschrift() {
     localStorage.setObj("useVollschrift", false);
     useVollschrift = false;
   }
+  event.stopPropagation();
 }
 
-function toggleLocalStorage() {
+function toggleLocalStorage(event) {
   const localStorageCB = document.getElementById("checkboxLocalStorage");
   if (localStorageCB.checked) {
     saveTextToLocalStorageBool = true;
@@ -464,4 +465,5 @@ function toggleLocalStorage() {
     localStorage.removeItem("zellen");
     localStorage.removeItem("saveTextToLocalStorageBool");
   }
+  event.stopPropagation();
 }

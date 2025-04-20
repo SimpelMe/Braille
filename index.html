@@ -185,15 +185,15 @@
       <div id="settings" class="popuptext" onclick="openSettings()">
         <p>Optionen:</p>
         <p>
-          <input type="checkbox" id="checkboxVollschrift" checked onclick="toggleVollschrift()">
-          <label for="checkboxKurzschrift">Vollschrift bevorzugen</label>
+          <input type="checkbox" id="checkboxVollschrift" checked onclick="toggleVollschrift(event)">
+          <label for="checkboxVollschrift" onclick="event.stopPropagation()">Vollschrift bevorzugen</label>
         </p>
         <p class="hint">
           Die Übersetzung des Textes soll zuerst die Vollschrift-Zeichen anzeigen (default). Ansonsten werden die Kurzschrift-Zeichen bevorzugt.
         </p>
         <p>
-          <input type="checkbox" id="checkboxLocalStorage" onclick="toggleLocalStorage()">
-          <label for="checkboxLocalStorage">Text lokal speichern</label>
+          <input type="checkbox" id="checkboxLocalStorage" onclick="toggleLocalStorage(event)">
+          <label for="checkboxLocalStorage" onclick="event.stopPropagation()">Text lokal speichern</label>
         </p>
         <p class="hint">
           Der übersetzte Text soll ein Neuladen überstehen und wird deshalb auf dem Gerät gespeichert.
