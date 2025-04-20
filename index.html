@@ -74,7 +74,7 @@
       </div>
     </noscript>
     <div class="menu">
-      <button class="big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openPopup()">
+      <button class="big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openManual()">
         <img src='question.svg' class="icon" title='Bedienungsanleitung' alt='Bedienungsanleitung'>
       </button>
       <button class="big" title="Einstellungen" aria-label="Einstellungen" onclick="alert('Aktuell keine Funktion.')">
@@ -86,7 +86,7 @@
       <button class="big" title="Text kopieren" aria-label="Text kopieren" onclick="copyText()">
         <img src='copy.svg' class="icon" title='Text kopieren' alt='Text kopieren'>
       </button>
-      <div class="popuptext" id="popup" onclick="openPopup()">
+      <div id="manual" class="popuptext" onclick="openManual()">
         <p>
           Bedienelemente:
         </p>

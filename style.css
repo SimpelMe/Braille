@@ -137,11 +137,11 @@ button.big {
   justify-content: center;
 }
 
-#popup {
+#manual {
   visibility: hidden;
 }
 
-#popup.show {
+#manual.show {
   visibility: visible;
 }
 

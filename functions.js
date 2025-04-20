@@ -30,10 +30,10 @@ function loesch() {
   writeToTextAusgabe();
 }
 
-// When the user clicks on manual button open the popup
-function openPopup() {
-  var popup = document.getElementById("popup");
-  popup.classList.toggle("show");
+// When the user clicks on manual button open the manual
+function openManual() {
+  var manual = document.getElementById("manual");
+  manual.classList.toggle("show");
 }
 
 function ausgabe(drawPos) {
@@ -356,8 +356,8 @@ const convertHeight = () => {
   const height = window.innerHeight;
   const body = document.getElementById("body");
   body.style.height = `calc(${height}px - 12vmin)`;
-  const popup = document.getElementById("popup");
-  popup.style.height = `calc(${height}px - 12vmin)`;
+  const manual = document.getElementById("manual");
+  manual.style.height = `calc(${height}px - 12vmin)`;
 };
 window.addEventListener("resize", convertHeight);
 window.addEventListener("DOMContentLoaded", convertHeight);
