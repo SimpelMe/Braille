@@ -38,10 +38,6 @@ main {
   font-size: 0.75em;
 }
 
-.wrapper {
-  flex-grow: 0;
-}
-
 a {
   color: #fff;
   cursor: pointer;
@@ -135,7 +131,6 @@ button.big {
 
 .big6 {
   display: flex;
-  flex-grow: 0;
   column-gap: 1.5em;
   align-items: flex-end;
   justify-self: center;
@@ -289,6 +284,7 @@ input[type="checkbox"]:checked {
   }
   .menu {
     flex-direction: column;
+    justify-content: flex-start;
   }
   .big6 {
     column-gap: 0.75em;

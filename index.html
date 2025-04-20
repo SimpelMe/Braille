@@ -63,127 +63,125 @@
 
 <body id="body" onKeyDown="tastbewegung(event,'d')" onKeyUp="tastbewegung(event,'u')" oncontextmenu="return false;">
   <main>
-    <div class="wrapper">
-      <div class="menu">
-        <button class="big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openPopup()">
-          <img src='question.svg' class="icon" title='Bedienungsanleitung' alt='Bedienungsanleitung'>
-        </button>
-        <button class="big" title="Einstellungen" aria-label="Einstellungen" onclick="alert('Aktuell keine Funktion.')">
-          <img src='settings.svg' class="icon" title='Einstellungen' alt='Einstellungen'>
-        </button>
-        <button id="test-button" class="big" title="Testtext einfügen" aria-label="Testtext einfügen" onclick="test()">
-          <img src='test.svg' class="icon" title='Testtext einfügen' alt='Testtext einfügen'>
-        </button>
-        <button class="big" title="Text kopieren" aria-label="Text kopieren" onclick="copyText()">
-          <img src='copy.svg' class="icon" title='Text kopieren' alt='Text kopieren'>
-        </button>
-        <div class="popuptext" id="popup" onclick="openPopup()">
-          <p>
-            Bedienelemente:
-          </p>
-          <ul class="manual-icon-lu">
-            <li class="manual-icon-li">
-              <span class="braille-symbol braille-symbol-gross">&#10303;</span> - Eingabefeld (gross)
-            </li>
-            <li class="manual-icon-li">
-              <span class="braille-symbol braille-symbol-klein">&#10303;</span> - Korrekturfeld (klein)
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='alternative.svg' class="manual-icon-img" alt='Button mit 2 nach oben von einander wegstrebenden Pfeilen'>
-              </div> - Alternatives Zeichen
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='backspace.svg' class="manual-icon-img" alt='Button mit nach links zeigendem gefülltem Pfeil und einem x drin'>
-              </div> - Letztes Zeichen löschen
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='trash.svg' class="manual-icon-img" alt='Button mit einem Mülleimer'>
-              </div> - Alle Zeichen löschen
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='question.svg' class="manual-icon-img" alt='Button mit einem Fragezeichen'>
-              </div> - Bedienungsanleitung
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='settings.svg' class="manual-icon-img" alt='Button mit einem Zahnrad'>
-              </div> - Einstellungen
-            </li>
-            <li class="manual-icon-li">
-              <div class="manual-icon">
-                <img src='copy.svg' class="manual-icon-img" alt='Button mit 2 Blatt Papier, die sich stark verdecken'>
-              </div> - Text kopieren
-            </li>
-          </ul>
-          <hr>
-          <p>
-            Es gibt zwei Braille-Felder - <span class="braille-symbol">&#10303;</span> - „6er“ genannt.
-          </p>
-          <p>
-            Zeichne ein Braillezeichen auf dem <i>großen</i> 6er. Das Zeichen wird übersetzt im Textfeld angezeigt und selektiert.
-          </p>
-          <p>
-            Selektierte Zeichen werden im <i>kleinen</i> 6er angezeigt. Mit Klick können dort einzelne Punkte korrigiert und die Übersetzung im Textfeld angepasst werden.
-          </p>
-          <p>
-            Mit dem Knopf „Alternative Zeichen“ (unter dem <i>kleinen</i> 6er) können die alternativen Übersetzungen angezeigt werden.
-          </p>
-
-          <p>Weitere Tipps:</p>
-          <ul>
-            <li># ist das Zahlenzeichen, die nachfolgenden a - j sind die Ziffern 1 - 0.</li>
-            <li>Nach # um einen Punkt nach unten verschobene a - j sind Ordungsziffern (1., 2. usw.).</li>
-          </ul>
-          <hr>
-          <p>
-            Stenomaschinen-Modus:
-          </p>
-          <p>
-            Die Braillepunkte 1&ndash;6 können mit den Tasten 
-            <span class="key_button">F</span>
-            <span class="key_button">D</span>
-            <span class="key_button">S</span>
-            <span class="key_button">J</span>
-            <span class="key_button">K</span>
-            <span class="key_button">L</span> erzeugt werden. Drücke die nötigen Tasten gleichzeitig.
-          </p>
-          <p>
-            Weitere Tasten:
-          </p>
-          <ul class="manual-keys-ul">
-            <li>
-              <span class="key_button">Space</span> - Leerzeichen setzen
-            </li>
-            <li>
-              <span class="key_button">&lt;</span> - alternative Übersetzung
-            </li>
-            <li>
-              <span class="key_button">&#9003;</span> - letztes Zeichen löschen
-            </li>
-            <li>
-              <span class="key_button">ESC</span> - alle Zeichen löschen
-            </li>
-          </ul>
-          <hr>
-          <p>
-            <p>Der Programmcode ist zu finden unter <a href="https://github.com/SimpelMe/Braille">https://github.com/SimpelMe/Braille</a></p>
-          </p>
-        </div>
+    <noscript>
+      <div class="no-script">
+        <p>
+          JavaScript ist deaktiviert. Ohne JavaScript kann der &Uuml;bersetzer nicht benutzt werden.
+        </p>
+        <p>
+          <b>Bitte aktiviere JavaScript.</b>
+        </p>
       </div>
-      <noscript>
-        <div class="no-script">
-          <p>
-            JavaScript ist deaktiviert. Ohne JavaScript kann der &Uuml;bersetzer nicht benutzt werden.
-          </p>
-          <p>
-            <b>Bitte aktiviere JavaScript.</b>
-          </p>
-        </div>
-      </noscript>
+    </noscript>
+    <div class="menu">
+      <button class="big" title="Bedienungsanleitung" aria-label="Bedienungsanleitung" onclick="openPopup()">
+        <img src='question.svg' class="icon" title='Bedienungsanleitung' alt='Bedienungsanleitung'>
+      </button>
+      <button class="big" title="Einstellungen" aria-label="Einstellungen" onclick="alert('Aktuell keine Funktion.')">
+        <img src='settings.svg' class="icon" title='Einstellungen' alt='Einstellungen'>
+      </button>
+      <button id="test-button" class="big" title="Testtext einfügen" aria-label="Testtext einfügen" onclick="test()">
+        <img src='test.svg' class="icon" title='Testtext einfügen' alt='Testtext einfügen'>
+      </button>
+      <button class="big" title="Text kopieren" aria-label="Text kopieren" onclick="copyText()">
+        <img src='copy.svg' class="icon" title='Text kopieren' alt='Text kopieren'>
+      </button>
+      <div class="popuptext" id="popup" onclick="openPopup()">
+        <p>
+          Bedienelemente:
+        </p>
+        <ul class="manual-icon-lu">
+          <li class="manual-icon-li">
+            <span class="braille-symbol braille-symbol-gross">&#10303;</span> - Eingabefeld (gross)
+          </li>
+          <li class="manual-icon-li">
+            <span class="braille-symbol braille-symbol-klein">&#10303;</span> - Korrekturfeld (klein)
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='alternative.svg' class="manual-icon-img" alt='Button mit 2 nach oben von einander wegstrebenden Pfeilen'>
+            </div> - Alternatives Zeichen
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='backspace.svg' class="manual-icon-img" alt='Button mit nach links zeigendem gefülltem Pfeil und einem x drin'>
+            </div> - Letztes Zeichen löschen
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='trash.svg' class="manual-icon-img" alt='Button mit einem Mülleimer'>
+            </div> - Alle Zeichen löschen
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='question.svg' class="manual-icon-img" alt='Button mit einem Fragezeichen'>
+            </div> - Bedienungsanleitung
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='settings.svg' class="manual-icon-img" alt='Button mit einem Zahnrad'>
+            </div> - Einstellungen
+          </li>
+          <li class="manual-icon-li">
+            <div class="manual-icon">
+              <img src='copy.svg' class="manual-icon-img" alt='Button mit 2 Blatt Papier, die sich stark verdecken'>
+            </div> - Text kopieren
+          </li>
+        </ul>
+        <hr>
+        <p>
+          Es gibt zwei Braille-Felder - <span class="braille-symbol">&#10303;</span> - „6er“ genannt.
+        </p>
+        <p>
+          Zeichne ein Braillezeichen auf dem <i>großen</i> 6er. Das Zeichen wird übersetzt im Textfeld angezeigt und selektiert.
+        </p>
+        <p>
+          Selektierte Zeichen werden im <i>kleinen</i> 6er angezeigt. Mit Klick können dort einzelne Punkte korrigiert und die Übersetzung im Textfeld angepasst werden.
+        </p>
+        <p>
+          Mit dem Knopf „Alternative Zeichen“ (unter dem <i>kleinen</i> 6er) können die alternativen Übersetzungen angezeigt werden.
+        </p>
+
+        <p>Weitere Tipps:</p>
+        <ul>
+          <li># ist das Zahlenzeichen, die nachfolgenden a - j sind die Ziffern 1 - 0.</li>
+          <li>Nach # um einen Punkt nach unten verschobene a - j sind Ordungsziffern (1., 2. usw.).</li>
+        </ul>
+        <hr>
+        <p>
+          Stenomaschinen-Modus:
+        </p>
+        <p>
+          Die Braillepunkte 1&ndash;6 können mit den Tasten 
+          <span class="key_button">F</span>
+          <span class="key_button">D</span>
+          <span class="key_button">S</span>
+          <span class="key_button">J</span>
+          <span class="key_button">K</span>
+          <span class="key_button">L</span> erzeugt werden. Drücke die nötigen Tasten gleichzeitig.
+        </p>
+        <p>
+          Weitere Tasten:
+        </p>
+        <ul class="manual-keys-ul">
+          <li>
+            <span class="key_button">Space</span> - Leerzeichen setzen
+          </li>
+          <li>
+            <span class="key_button">&lt;</span> - alternative Übersetzung
+          </li>
+          <li>
+            <span class="key_button">&#9003;</span> - letztes Zeichen löschen
+          </li>
+          <li>
+            <span class="key_button">ESC</span> - alle Zeichen löschen
+          </li>
+        </ul>
+        <hr>
+        <p>
+          <p>Der Programmcode ist zu finden unter <a href="https://github.com/SimpelMe/Braille">https://github.com/SimpelMe/Braille</a></p>
+        </p>
+      </div>
     </div>
 
     <div id="textausgabe" onclick="selectLastCharacter(event)"></div>
