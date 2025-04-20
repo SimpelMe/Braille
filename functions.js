@@ -30,7 +30,7 @@ function loesch() {
   writeToTextAusgabe();
 }
 
-// When the user clicks on <div>, open the popup
+// When the user clicks on manual button open the popup
 function openPopup() {
   var popup = document.getElementById("popup");
   popup.classList.toggle("show");
@@ -339,6 +339,7 @@ function writeToTextAusgabe() {
     }
   }
   saveToLocalStorage();
+  removeTestButton();
 }
 
 function selectCharacter(stelle) {
@@ -387,13 +388,6 @@ function copyText() {
 }
 
 function test() {
-  const testButton = document.getElementById("test-button");
-  testButton.remove();
-
-  // damit rechts kein gap im menu bleibt
-  const menu = document.querySelector(".menu");
-  menu.style.gridTemplateColumns = "auto auto auto";
-
   const testString = " der weg des gerechten ist von allen seiten von den ungerechtigkeiten der egoisten und der tyrannei der bösen umgeben. gesegnet ist derjenige, der im namen der nächstenliebe und des guten willens die schwachen durch das tal der finsternis führt, denn er ist wahrhaftig der hüter seines bruders und der finder verlorener kinder. und ich werde mit großer rache und zornigem grimm diejenigen schlagen, die versuchen, meine brüder zu vergiften und zu vernichten. und ihr werdet meinen namen erkennen, wenn ich meine rache an euch vollziehe.";
 
   const testArray = testString.split('');
@@ -402,6 +396,13 @@ function test() {
   writeToTextAusgabe();
   selectCharacter(totalPos - 1);
   scrollTextToEnd();
+}
+
+function removeTestButton() {
+  const testButton = document.getElementById("test-button");
+  if (testButton && totalPos > 1) {
+    testButton.remove();
+  }
 }
 
 function saveToLocalStorage() {
