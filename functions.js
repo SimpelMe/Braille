@@ -452,7 +452,7 @@ function toggleVollschrift(event) {
     localStorage.setObj("useVollschrift", false);
     useVollschrift = false;
   }
-  event.stopPropagation();
+  doNotClickParents(event);
 }
 
 function toggleLocalStorage(event) {
@@ -465,5 +465,11 @@ function toggleLocalStorage(event) {
     localStorage.removeItem("zellen");
     localStorage.removeItem("saveTextToLocalStorageBool");
   }
+  doNotClickParents(event);
+}
+
+/* click auf Label klickt auch das Div über der Checkbox
+  damit würde sich aber das Settings-Menü schließen */
+function doNotClickParents(event) {
   event.stopPropagation();
 }
