@@ -143,53 +143,29 @@ button.big {
 }
 
 #popup {
-  padding: 6vmin;
+  visibility: hidden;
 }
 
-.popup {
-  width: 0;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
+#popup.show {
+  visibility: visible;
 }
 
 /* The actual popup (appears on top) */
-.popup .popuptext {
-  overflow-y: scroll;
-  visibility: hidden;
-  text-align: left;
-  font-weight: normal;
-  background-color: #555;
+.popuptext {
   width: calc(100vw - 12vmin);
   height: calc(100vh - 12vmin);
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-}
-
-.popuptext {
+  padding: 6vmin;
+  overflow-y: scroll;
+  text-align: left;
   vertical-align: top;
-  border: 0;
   line-height: normal;
-}
-
-/* Popup arrow */
-.popup .popuptext::after {
-  display: none;
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-}
-
-/* Toggle this class when clicking on the popup container
-(hide and show the popup) */
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 0s;
-  animation: fadeIn 0s
+  font-weight: normal;
+  background-color: #555;
+  border: 0;
 }
 
 .checkbox-container {
@@ -231,11 +207,6 @@ input[type="checkbox"]:checked {
   gap: 10px;
   justify-items: center;
   align-self: center;
-}
-
-.menu {
-  display: grid;
-  justify-content: center;
 }
 
 #textausgabe {
@@ -305,10 +276,9 @@ input[type="checkbox"]:checked {
 }
 
 .menu {
-  display: grid;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  /* so viele 'auto' wie Buttons nebeneinander */
-  grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
 
@@ -318,7 +288,7 @@ input[type="checkbox"]:checked {
     flex-direction: row;
   }
   .menu {
-    grid-template-columns: auto;
+    flex-direction: column;
   }
   .big6 {
     column-gap: 0.75em;
