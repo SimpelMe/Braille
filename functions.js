@@ -45,21 +45,35 @@ function openSettings() {
   settings.classList.toggle("show");
 }
 
+function brailleback(code) {
+  for (let i = 0; i < brailleArray.length; i++)
+    if (code == brailleArray[i][PUNKTCODE]) {
+      var preferredCharacter;
+      if (useVollschrift) {
+        preferredCharacter = brailleArray[i][ALLEZEICHEN][0];
+      } else {
+        preferredCharacter = brailleArray[i][ALLEZEICHEN][brailleArray[i][KURZSCHRIFTPOINTER]];
+      }
+      return preferredCharacter;
+    }
+  return false;
+}
+
 function ausgabe(drawPos) {
   screenpos = drawPos;
   var zeichen = zellen[drawPos - 1];
   var pu = [0, 0, 0, 0, 0, 0];
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
   else pu[0] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
   else pu[1] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
   else pu[2] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
   else pu[3] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
   else pu[4] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
   else pu[5] = 0;
 
   for (var j = 0; j < 6; j++) {
@@ -90,17 +104,17 @@ function klick(zelle, punkt) {
   }
 
   var pu = [0, 0, 0, 0, 0, 0];
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
   else pu[0] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
   else pu[1] = 0;
-  if (bit[braillecode[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
   else pu[2] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
   else pu[3] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
   else pu[4] = 0;
-  if (bit[braillecode[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
+  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
   else pu[5] = 0;
 
   if (pu[punkt - 1]) {
@@ -148,165 +162,37 @@ function grosseAuslesen() {
   scrollTextToEnd();
 }
 
-function aend(zelle) {
+function alternativesZeichen(zelle) {
   if (zelle < 1) {
     return;
   }
-  var wert = zellen[zelle];
+  let character = zellen[zelle];
 
-  if (wert == 'a') wert = '1'; // Buchstaben
-  else if (wert == '1') wert = 'a';
+  // Index des Zeichens im brailleArray finden
+  let indexOfCurrentCharacter;
+  let punktcode = charToBraillecodeArray[character];
+  for (let i = 0; i < brailleArray.length; i++) {
+    if (punktcode == brailleArray[i][PUNKTCODE]) {
+      indexOfCurrentCharacter = i;
+    }
+  }
 
-  else if (wert == 'b') wert = '2';
-  else if (wert == '2') wert = 'b';
+  // inneres Array der Alternativen
+  let alleAlternativen = brailleArray[indexOfCurrentCharacter][ALLEZEICHEN];
+  // Index des Zeichens im inneren Array der Alternativen finden
+  let currentIndex = alleAlternativen.indexOf(character);
 
-  else if (wert == 'c') wert = '3';
-  else if (wert == '3') wert = 'en';
-  else if (wert == 'en') wert = 'c';
+  // den neuen Index über die Alternativen hochzählen
+  // bzw. von vorne anfangen wenn das Ende erreicht ist
+  let newIndex;
+  let count = alleAlternativen.length;
+  if (currentIndex == count - 1) {
+    newIndex = 0;
+  } else {
+    newIndex = currentIndex + 1;
+  }
 
-  else if (wert == 'd') wert = '4';
-  else if (wert == '4') wert = 'd';
-
-  else if (wert == 'e') wert = '5';
-  else if (wert == '5') wert = 'e';
-
-  else if (wert == 'f') wert = '6';
-  else if (wert == '6') wert = 'falls';
-  else if (wert == 'falls') wert = 'f';
-
-  else if (wert == 'g') wert = '7';
-  else if (wert == '7') wert = 'g';
-
-  else if (wert == 'h') wert = '8';
-  else if (wert == '8') wert = 'heit';
-  else if (wert == 'heit') wert = 'h';
-
-  else if (wert == 'i') wert = '9';
-  else if (wert == '9') wert = 'i';
-
-  else if (wert == 'j') wert = '0';
-  else if (wert == '0') wert = 'ion';
-  else if (wert == 'ion') wert = 'j';
-
-  else if (wert == 'k') wert = 'keit';
-  else if (wert == 'keit') wert = 'k';
-
-  else if (wert == 'm') wert = 'mal';
-  else if (wert == 'mal') wert = 'm';
-
-  else if (wert == 'q') wert = 'll';
-  else if (wert == 'll') wert = 'q';
-
-  else if (wert == 'u') wert = 'ung';
-  else if (wert == 'ung') wert = 'u';
-
-  else if (wert == 'w') wert = 'wärts';
-  else if (wert == 'wärts') wert = 'w';
-
-  else if (wert == 'x') wert = 'mm';
-  else if (wert == 'mm') wert = 'nis';
-  else if (wert == 'nis') wert = 'ex';
-  else if (wert == 'ex') wert = 'x';
-
-  else if (wert == 'y') wert = 'el';
-  else if (wert == 'el') wert = 'y';
-
-  else if (wert == 'ä') wert = '@';
-  else if (wert == '@') wert = 'ä';
-
-  else if (wert == 'ß') wert = 'ss';
-  else if (wert == 'ss') wert = 'sam';
-  else if (wert == 'sam') wert = 'ß';
-
-  else if (wert == 'sch') wert = 'schaft';
-  else if (wert == 'schaft') wert = 'sch';
-
-  else if (wert == ',') wert = '1.'; // Satzzeichen, Ordnungszahlen
-  else if (wert == '1.') wert = ',';
-
-  else if (wert == ';') wert = '2.';
-  else if (wert == '2.') wert = 'be';
-  else if (wert == 'be') wert = ';';
-
-  else if (wert == ':') wert = '3.';
-  else if (wert == '3.') wert = 'al';
-  else if (wert == 'al') wert = ':';
-
-  else if (wert == '/') wert = '4.';
-  else if (wert == '4.') wert = 'un';
-  else if (wert == 'un') wert = '/';
-
-  else if (wert == '?') wert = '5.';
-  else if (wert == '5.') wert = 'or';
-  else if (wert == 'or') wert = '?';
-
-  else if (wert == '!') wert = '+';
-  else if (wert == '+') wert = '6.';
-  else if (wert == '6.') wert = 'an';
-  else if (wert == 'an') wert = '!';
-
-  else if (wert == '(=)') wert = '(';
-  else if (wert == '(') wert = ')';
-  else if (wert == ')') wert = '=';
-  else if (wert == '=') wert = '7.';
-  else if (wert == '7.') wert = 'eh';
-  else if (wert == 'eh') wert = '(=)';
-
-  else if (wert == '»') wert = '8.';
-  else if (wert == '8.') wert = 'te';
-  else if (wert == 'te') wert = '»';
-
-  else if (wert == '*') wert = '9.';
-  else if (wert == '9.') wert = 'in';
-  else if (wert == 'in') wert = '*';
-
-  else if (wert == '«') wert = '0.';
-  else if (wert == '0.') wert = 'ar';
-  else if (wert == 'ar') wert = '«';
-
-  else if (wert == '#') wert = 'ich'; // Sonderzeichen mit Lauten
-  else if (wert == 'ich') wert = '#';
-
-  else if (wert == '$') wert = 'ck';
-  else if (wert == 'ck') wert = '$';
-
-  else if (wert == '%') wert = 'es';
-  else if (wert == 'es') wert = '%';
-
-  else if (wert == '&') wert = 'ge';
-  else if (wert == 'ge') wert = '&';
-
-  else if (wert == '-') wert = 'ver';
-  else if (wert == 'ver') wert = '-';
-
-  else if (wert == '<') wert = 'ach';
-  else if (wert == 'ach') wert = '<';
-
-  else if (wert == '>') wert = 'ig';
-  else if (wert == 'ig') wert = '>';
-
-  else if (wert == '_') wert = 'lich';
-  else if (wert == 'lich') wert = '_';
-
-  else if (wert == '§') wert = 'ie';
-  else if (wert == 'ie') wert = '§';
-
-  else if (wert == '`') wert = 'ein';
-  else if (wert == 'ein') wert = '`';
-
-  else if (wert == '^') wert = 'er';
-  else if (wert == 'er') wert = '^';
-
-  else if (wert == '[') wert = 'em';
-  else if (wert == 'em') wert = '[';
-
-  else if (wert == ']') wert = 'st';
-  else if (wert == 'st') wert = ']';
-
-  else if (wert == '"') wert = '|';
-  else if (wert == '|') wert = '"';
-
-  zellen[zelle] = wert;
+  zellen[zelle] = alleAlternativen[newIndex];
   writeToTextAusgabe();
 }
 
@@ -353,7 +239,7 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
 {
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
-  if (e.key == '<' && r == 'u') aend(selectedCharacter); // <
+  if (e.key == '<' && r == 'u') alternativesZeichen(selectedCharacter); // <
 
   var weiter = String.fromCharCode(e.keyCode);
   if (/[SDFJKL ]/.test(weiter)) {
@@ -508,15 +394,7 @@ function toggleVollschrift(event) {
     useVollschrift = false;
   }
   doNotClickParents(event);
-  selectBrailleSchrift();
-}
-
-function selectBrailleSchrift() {
-  if (useVollschrift) {
-    brailletab = brailletabVollschrift;
-  } else {
-    brailletab = brailletabKurzschrift;
-  }
+  // selectBrailleSchrift();
 }
 
 function toggleLocalStorage(event) {
