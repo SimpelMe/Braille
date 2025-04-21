@@ -147,7 +147,7 @@ function grosseAuslesen() {
   if (document.getElementById("checkbox6").checked) pu[5] = 1;
   else pu[5] = 0;
 
-  // reset big6
+  // reset big braille field
   document.getElementById("checkbox1").checked = false;
   document.getElementById("checkbox2").checked = false;
   document.getElementById("checkbox3").checked = false;

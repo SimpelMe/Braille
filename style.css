@@ -129,7 +129,7 @@ button.big {
   cursor: pointer !important;
 }
 
-.big6 {
+.controls {
   display: flex;
   column-gap: 1.5em;
   align-items: flex-end;
@@ -316,7 +316,7 @@ input[type="checkbox"]:checked {
     flex-direction: column;
     justify-content: flex-start;
   }
-  .big6 {
+  .controls {
     column-gap: 0.75em;
     align-self: flex-end;
   }
@@ -324,7 +324,7 @@ input[type="checkbox"]:checked {
 
 /* iPhone 13 mini z.B. ohne Adressleiste */
 @media (max-aspect-ratio: 0.5) {
-  .big6 {
+  .controls {
     /* damit man nicht ständig über den Strich nach unten wischt
     und damit den Webview halb nach unten schiebt */
     margin-bottom: 2em;
