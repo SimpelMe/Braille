@@ -93,7 +93,7 @@ function klick(zelle, punkt) {
   var zeichen;
   var offset = zelle;
   var selectedCell = totalPos - 1;
-  if (zelle == 9998) { // small checkboxes
+  if (zelle == 999999) { // small checkboxes
     offset = selectedCell;
     if (selectedCharacter > 0) {
       offset = selectedCharacter;
