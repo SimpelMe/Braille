@@ -154,102 +154,157 @@ function aend(zelle) {
   }
   var wert = zellen[zelle];
 
-  if (wert == 'a') wert = '1'; // Ziffern
+  if (wert == 'a') wert = '1'; // Buchstaben
   else if (wert == '1') wert = 'a';
+
   else if (wert == 'b') wert = '2';
   else if (wert == '2') wert = 'b';
-  else if (wert == 'en') wert = 'c';
+
   else if (wert == 'c') wert = '3';
   else if (wert == '3') wert = 'en';
+  else if (wert == 'en') wert = 'c';
+
   else if (wert == 'd') wert = '4';
   else if (wert == '4') wert = 'd';
+
   else if (wert == 'e') wert = '5';
   else if (wert == '5') wert = 'e';
+
   else if (wert == 'f') wert = '6';
   else if (wert == '6') wert = 'falls';
   else if (wert == 'falls') wert = 'f';
+
   else if (wert == 'g') wert = '7';
   else if (wert == '7') wert = 'g';
+
   else if (wert == 'h') wert = '8';
   else if (wert == '8') wert = 'heit';
   else if (wert == 'heit') wert = 'h';
+
   else if (wert == 'i') wert = '9';
   else if (wert == '9') wert = 'i';
+
   else if (wert == 'j') wert = '0';
   else if (wert == '0') wert = 'ion';
   else if (wert == 'ion') wert = 'j';
 
-  else if (wert == ',') wert = '1.'; // Ordnungszahlen, Laute und Satzzeichen
-  else if (wert == '1.') wert = ',';
-  else if (wert == 'be') wert = '2.';
-  else if (wert == '2.') wert = ';';
-  else if (wert == ';') wert = 'be';
-  else if (wert == 'al') wert = '3.';
-  else if (wert == '3.') wert = ':';
-  else if (wert == ':') wert = 'al';
-  else if (wert == 'un') wert = '4.';
-  else if (wert == '4.') wert = 'un';
-  else if (wert == 'or') wert = '5.';
-  else if (wert == '5.') wert = '?';
-  else if (wert == '?') wert = 'or';
-  else if (wert == 'an') wert = '6.';
-  else if (wert == '6.') wert = '!';
-  else if (wert == '!') wert = 'an';
-  else if (wert == 'eh') wert = '7.';
-  else if (wert == '7.') wert = '(=)';
-  else if (wert == '(=)') wert = '(';
-  else if (wert == '(') wert = '=';
-  else if (wert == '=') wert = ')';
-  else if (wert == ')') wert = 'eh';
-  else if (wert == 'te') wert = '8.';
-  else if (wert == '8.') wert = '\xbb'; // Anfang Anführungszeichen
-  else if (wert == '\xbb') wert = 'te';
-  else if (wert == 'in') wert = '9.';
-  else if (wert == '9.') wert = 'in';
-  else if (wert == 'ar') wert = '0.';
-  else if (wert == '0.') wert = '\xab'; // Ende Anführungszeichen
-  else if (wert == '\xab') wert = 'ar';
+  else if (wert == 'k') wert = 'keit';
+  else if (wert == 'keit') wert = 'k';
 
-  else if (wert == 'c') wert = 'en'; // seltene Buchstaben mit Lauten
-  else if (wert == 'en') wert = 'c';
+  else if (wert == 'm') wert = 'mal';
+  else if (wert == 'mal') wert = 'm';
+
   else if (wert == 'q') wert = 'll';
   else if (wert == 'll') wert = 'q';
+
+  else if (wert == 'u') wert = 'ung';
+  else if (wert == 'ung') wert = 'u';
+
+  else if (wert == 'w') wert = 'wärts';
+  else if (wert == 'wärts') wert = 'w';
+
   else if (wert == 'x') wert = 'mm';
   else if (wert == 'mm') wert = 'nis';
-  else if (wert == 'nis') wert = 'x';
+  else if (wert == 'nis') wert = 'ex';
+  else if (wert == 'ex') wert = 'x';
+
   else if (wert == 'y') wert = 'el';
   else if (wert == 'el') wert = 'y';
-  else if (wert == 'ss') wert = '\xdf'; // ß
-  else if (wert == '\xdf') wert = 'sam';
-  else if (wert == 'sam') wert = 'ss';
+
+  else if (wert == 'ä') wert = '@';
+  else if (wert == '@') wert = 'ä';
+
+  else if (wert == 'ß') wert = 'ss';
+  else if (wert == 'ss') wert = 'sam';
+  else if (wert == 'sam') wert = 'ß';
+
+  else if (wert == 'sch') wert = 'schaft';
+  else if (wert == 'schaft') wert = 'sch';
+
+  else if (wert == ',') wert = '1.'; // Satzzeichen, Ordnungszahlen
+  else if (wert == '1.') wert = ',';
+
+  else if (wert == ';') wert = '2.';
+  else if (wert == '2.') wert = 'be';
+  else if (wert == 'be') wert = ';';
+
+  else if (wert == ':') wert = '3.';
+  else if (wert == '3.') wert = 'al';
+  else if (wert == 'al') wert = ':';
+
+  else if (wert == '/') wert = '4.';
+  else if (wert == '4.') wert = 'un';
+  else if (wert == 'un') wert = '/';
+
+  else if (wert == '?') wert = '5.';
+  else if (wert == '5.') wert = 'or';
+  else if (wert == 'or') wert = '?';
+
+  else if (wert == '!') wert = '+';
+  else if (wert == '+') wert = '6.';
+  else if (wert == '6.') wert = 'an';
+  else if (wert == 'an') wert = '!';
+
+  else if (wert == '(=)') wert = '(';
+  else if (wert == '(') wert = ')';
+  else if (wert == ')') wert = '=';
+  else if (wert == '=') wert = '7.';
+  else if (wert == '7.') wert = 'eh';
+  else if (wert == 'eh') wert = '(=)';
+
+  else if (wert == '»') wert = '8.';
+  else if (wert == '8.') wert = 'te';
+  else if (wert == 'te') wert = '»';
+
+  else if (wert == '*') wert = '9.';
+  else if (wert == '9.') wert = 'in';
+  else if (wert == 'in') wert = '*';
+
+  else if (wert == '«') wert = '0.';
+  else if (wert == '0.') wert = 'ar';
+  else if (wert == 'ar') wert = '«';
 
   else if (wert == '#') wert = 'ich'; // Sonderzeichen mit Lauten
   else if (wert == 'ich') wert = '#';
-  else if (wert == 'ck') wert = '$';
-  else if (wert == '$') wert = 'ck';
-  else if (wert == 'es') wert = '%';
-  else if (wert == '%') wert = 'es';
-  else if (wert == 'ge') wert = '&';
-  else if (wert == '&') wert = 'ge';
-  else if (wert == 'ver') wert = '-';
-  else if (wert == '-') wert = 'ver';
-  else if (wert == 'ach') wert = '<';
-  else if (wert == '<') wert = 'ach';
-  else if (wert == 'ig') wert = '>';
-  else if (wert == '>') wert = 'ig';
-  else if (wert == 'lich') wert = '_';
-  else if (wert == '_') wert = 'lich';
 
-  else if (wert == 'k') wert = 'keit'; // Silben mit Buchstaben
-  else if (wert == 'keit') wert = 'k';
-  else if (wert == 'm') wert = 'mal';
-  else if (wert == 'mal') wert = 'm';
-  else if (wert == 'u') wert = 'ung';
-  else if (wert == 'ung') wert = 'u';
-  else if (wert == 'sch') wert = 'schaft';
-  else if (wert == 'schaft') wert = 'sch';
-  else if (wert == 'w') wert = 'wärts';
-  else if (wert == 'wärts') wert = 'w';
+  else if (wert == '$') wert = 'ck';
+  else if (wert == 'ck') wert = '$';
+
+  else if (wert == '%') wert = 'es';
+  else if (wert == 'es') wert = '%';
+
+  else if (wert == '&') wert = 'ge';
+  else if (wert == 'ge') wert = '&';
+
+  else if (wert == '-') wert = 'ver';
+  else if (wert == 'ver') wert = '-';
+
+  else if (wert == '<') wert = 'ach';
+  else if (wert == 'ach') wert = '<';
+
+  else if (wert == '>') wert = 'ig';
+  else if (wert == 'ig') wert = '>';
+
+  else if (wert == '_') wert = 'lich';
+  else if (wert == 'lich') wert = '_';
+
+  else if (wert == '§') wert = 'ie';
+  else if (wert == 'ie') wert = '§';
+
+  else if (wert == '`') wert = 'ein';
+  else if (wert == 'ein') wert = '`';
+
+  else if (wert == '^') wert = 'er';
+  else if (wert == 'er') wert = '^';
+
+  else if (wert == '[') wert = 'em';
+  else if (wert == 'em') wert = '[';
+
+  else if (wert == ']') wert = 'st';
+  else if (wert == 'st') wert = ']';
+
+  else if (wert == '"') wert = '|';
+  else if (wert == '|') wert = '"';
 
   zellen[zelle] = wert;
   writeToTextAusgabe();
@@ -453,6 +508,15 @@ function toggleVollschrift(event) {
     useVollschrift = false;
   }
   doNotClickParents(event);
+  selectBrailleSchrift();
+}
+
+function selectBrailleSchrift() {
+  if (useVollschrift) {
+    brailletab = brailletabVollschrift;
+  } else {
+    brailletab = brailletabKurzschrift;
+  }
 }
 
 function toggleLocalStorage(event) {

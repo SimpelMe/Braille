@@ -57,24 +57,25 @@ braillecode['en'] = "11";
 braillecode['ll'] = "73";
 braillecode['mm'] = "55";
 braillecode['nis'] = "55";
+braillecode['ex'] = "55";
 braillecode['el'] = "57";
 
 braillecode['@'] = "43";
-braillecode['\xe4'] = "43"; // ae
-braillecode['\xf6'] = "25"; // oe
-braillecode['\xfc'] = "36"; // ue
-braillecode['ss'] = "65"; // ß '\xdf'
-braillecode['sam'] = "65"; // ß '\xdf'
-braillecode['\xc4'] = "43"; // Ae
-braillecode['\xd6'] = "25"; // Oe
-braillecode['\xdc'] = "36"; // Ue
+braillecode['ä'] = "43";
+braillecode['ö'] = "25";
+braillecode['ü'] = "36";
+braillecode['ss'] = "65";
+braillecode['ß'] = "65";
+braillecode['sam'] = "65";
+
 braillecode['ie'] = "45";
 braillecode['\xef'] = "45"; // i umlaut
+braillecode['§'] = "45";
 braillecode['ei'] = "15";
 braillecode['\xeb'] = "15"; // e umlaut
 braillecode['eu'] = "34";
 braillecode['\xea'] = "34"; // e dach
-braillecode['\xe4u'] = "41";
+braillecode['äu'] = "41";
 braillecode['\xe2'] = "41"; // a dach
 braillecode['au'] = "14";
 braillecode['\xfb'] = "14"; // u dach
@@ -89,16 +90,21 @@ braillecode['\xb0'] = "67"; // grad
 braillecode[','] = "20";
 braillecode['.'] = "40";
 braillecode['al'] = "22";
+braillecode[':'] = "22";
 braillecode['ver'] = "44";
 braillecode['-'] = "44";
 braillecode['be'] = "60";
+braillecode[';'] = "60";
 braillecode['!'] = "62";
 braillecode['+'] = "62";
 braillecode['an'] = "62";
 braillecode['!+'] = "62";
 braillecode['or'] = "24";
+braillecode['?'] = "24";
 braillecode['in'] = "42";
+braillecode['*'] = "42";
 braillecode['un'] = "26";
+braillecode['/'] = "26";
 braillecode['ge'] = "75";
 braillecode['&'] = "75";
 braillecode['lich'] = "07";
@@ -106,16 +112,17 @@ braillecode['_'] = "07";
 braillecode['ck'] = "05";
 braillecode['$'] = "05";
 braillecode['#'] = "47"; // Zahlenzeichen
-braillecode['ich'] = "47"; // Zahlenzeichen
+braillecode['ich'] = "47";
 braillecode['es'] = "77";
 braillecode['%'] = "77";
 braillecode['\''] = "04"; // Apostroph
 braillecode['|'] = "01";
-braillecode['\'\''] = "01"; // " \'\'
-braillecode['~'] = "02"; // (P5)
-braillecode['er'] = "37"; //  ^
-braillecode['ein'] = "35"; //  grave
-
+braillecode['"'] = "01";
+braillecode['~'] = "02";
+braillecode['er'] = "37";
+braillecode['^'] = "37";
+braillecode['ein'] = "35";
+braillecode['`'] = "35";
 braillecode['eh'] = "66";
 braillecode['('] = "66";
 braillecode[')'] = "66";
@@ -127,9 +134,8 @@ braillecode['ach'] = "06";
 braillecode['<'] = "06";
 braillecode['ig'] = "03";
 braillecode['>'] = "03";
-
-braillecode['\xbb'] = "64"; // Anfang Anführungszeichen
-braillecode['\xab'] = "46"; // Ende Anführungszeichen
+braillecode['»'] = "64";
+braillecode['«'] = "46";
 braillecode['te'] = "64";
 braillecode['ar'] = "46";
 braillecode['{'] = "64";
@@ -147,10 +153,76 @@ function brailleback(code) {
   return false;
 }
 
-var brailletab = new Array();
-// brailletab only needs that sign which should be shown first
-brailletab = [
-  // code deutsch
+// brailletabVollschrift only needs that sign which should be shown first
+var brailletabVollschrift = [
+  ['10', 'a'],
+  ['30', 'b'],
+  ['11', 'c'],
+  ['13', 'd'],
+  ['12', 'e'],
+  ['31', 'f'],
+  ['33', 'g'],
+  ['32', 'h'],
+  ['21', 'i'],
+  ['23', 'j'],
+  ['50', 'k'],
+  ['70', 'l'],
+  ['51', 'm'],
+  ['53', 'n'],
+  ['52', 'o'],
+  ['71', 'p'],
+  ['73', 'q'],
+  ['72', 'r'],
+  ['61', 's'],
+  ['63', 't'],
+  ['54', 'u'],
+  ['74', 'v'],
+  ['27', 'w'],
+  ['55', 'x'],
+  ['57', 'y'],
+  ['56', 'z'],
+  ['45', '§'],
+  ['14', 'au'],
+  ['34', 'eu'],
+  ['15', 'ei'],
+  ['17', 'ch'],
+  ['16', 'sch'],
+  ['35', '`'],
+  ['37', '^'],
+  ['36', 'ü'],
+  ['25', 'ö'],
+  ['00', ' '],
+  ['02', '~'],
+  ['47', '#'],
+  ['05', '$'],
+  ['77', '%'],
+  ['75', '&'],
+  ['64', '»'],
+  ['46', '«'],
+  ['42', '*'],
+  ['62', '!'], // ! oder +
+  ['20', ','],
+  ['44', '-'],
+  ['40', '.'],
+  ['26', '/'],
+  ['22', ':'],
+  ['60', ';'],
+  ['06', '<'],
+  ['66', '(=)'],
+  ['03', '>'],
+  ['24', '?'],
+  ['01', '"'],
+  ['04', '\''], // Apostroph
+  ['07', '_'],
+  ['43', 'ä'],
+  ['76', '['],
+  ['41', 'äu'],
+  ['67', ']'],
+  ['65', 'ß']
+];
+
+// brailletabKurzschrift only needs that sign which should be shown first
+var brailletabKurzschrift = [
   ['10', 'a'],
   ['30', 'b'],
   ['11', 'en'], // c
@@ -185,8 +257,8 @@ brailletab = [
   ['16', 'sch'],
   ['35', 'ein'], // ` grave
   ['37', 'er'], // ^
-  ['36', '\xfc'], // ü
-  ['25', '\xf6'], // ö
+  ['36', 'ü'],
+  ['25', 'ö'],
   ['00', ' '],
   ['02', '~'],
   ['47', '#'],
@@ -207,12 +279,15 @@ brailletab = [
   ['66', 'eh'], // (=)
   ['03', 'ig'], // >
   ['24', 'or'], // ?
-  ['01', '|'],  // " \'\'
+  ['01', '"'],
   ['04', '\''], // Apostroph
   ['07', 'lich'], // _
-  ['43', '\xe4'], // ä
+  ['43', 'ä'], // ä
   ['76', 'em'], // [
-  ['41', '\xe4u'], // äu
+  ['41', 'äu'], // äu
   ['67', 'st'], // ]
-  ['65', 'ss'] // ß '\xdf'
+  ['65', 'ss'] // ß
 ];
+
+var brailletab = new Array();
+brailletab = brailletabVollschrift;

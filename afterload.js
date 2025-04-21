@@ -5,6 +5,7 @@ if (window.localStorage) {
     }
     if (localStorage.getItem("useVollschrift") == "false") {
     useVollschrift = false;
+    selectBrailleSchrift();
     document.getElementById("checkboxVollschrift").checked = false;
     }
     readFromLocalStorage();
