@@ -240,6 +240,12 @@ function tastbewegung(e, r) // r fuer Richtung:     'd' down    'u' up
   if (e.keyCode == 27 && r == 'u') loesch(); // ESC
   if (e.keyCode == 8 && r == 'u') lastloe(); // Backspace
   if (e.key == '<' && r == 'u') alternativesZeichen(selectedCharacter); // <
+  // unterdrücke das Leerzeichen, sonst geht der Steno-Modus kaputt
+  // es werden evtl. fokussierte Tasten "geklickt"
+  if (weiter == ' ') {
+    if (e.preventDefault) e.preventDefault();
+    else e.returnValue = false;
+  }
 
   var weiter = String.fromCharCode(e.keyCode);
   if (/[SDFJKL ]/.test(weiter)) {
