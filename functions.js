@@ -60,30 +60,45 @@ function brailleback(code) {
 }
 
 function ausgabe(drawPos) {
-  screenpos = drawPos;
+  // lese den Buchstaben aus z.B. 'e'
+  // charToBraillecodeArray von 'e' ist '12'
+  // linke Ziffer ist '1' binär '001'
+  // rechte Ziffer ist '2' binär '010'
   var zeichen = zellen[drawPos - 1];
-  var pu = [0, 0, 0, 0, 0, 0];
-  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(0) == '1') pu[0] = 1;
-  else pu[0] = 0;
-  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(1) == '1') pu[1] = 1;
-  else pu[1] = 0;
-  if (bit[charToBraillecodeArray[zeichen].substr(0, 1)].charAt(2) == '1') pu[2] = 1;
-  else pu[2] = 0;
-  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(0) == '1') pu[3] = 1;
-  else pu[3] = 0;
-  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(1) == '1') pu[4] = 1;
-  else pu[4] = 0;
-  if (bit[charToBraillecodeArray[zeichen].substr(1, 1)].charAt(2) == '1') pu[5] = 1;
-  else pu[5] = 0;
+  var leftColNumber = charToBraillecodeArray[zeichen].substr(0, 1);
+  var rightColNumber = charToBraillecodeArray[zeichen].substr(1, 1)
 
-  for (var j = 0; j < 6; j++) {
-    var bild = 'p' + screenpos + '_' + (j + 1);
-    if (pu[j]) {
-      document.getElementById(`checkbox${j + 1}small`).checked = true;
-      
-    } else {
-      document.getElementById(`checkbox${j + 1}small`).checked = false;
-    }
+  // linke Spalte schauen, ob das Bit gesetzt ist (Bsp: cb1 gesetzt)
+  if (leftColNumber & 1) {
+    document.getElementById(`checkbox1small`).checked = true;
+  } else {
+    document.getElementById(`checkbox1small`).checked = false;
+  }
+  if (leftColNumber & 2) {
+    document.getElementById(`checkbox2small`).checked = true;
+  } else {
+    document.getElementById(`checkbox2small`).checked = false;
+  }
+  if (leftColNumber & 4) {
+    document.getElementById(`checkbox3small`).checked = true;
+  } else {
+    document.getElementById(`checkbox3small`).checked = false;
+  }
+  // rechte Spalte schauen, ob das Bit gesetzt ist (Bsp: cb5 gesetzt)
+  if (rightColNumber & 1) {
+    document.getElementById(`checkbox4small`).checked = true;
+  } else {
+    document.getElementById(`checkbox4small`).checked = false;
+  }
+  if (rightColNumber & 2) {
+    document.getElementById(`checkbox5small`).checked = true;
+  } else {
+    document.getElementById(`checkbox5small`).checked = false;
+  }
+  if (rightColNumber & 4) {
+    document.getElementById(`checkbox6small`).checked = true;
+  } else {
+    document.getElementById(`checkbox6small`).checked = false;
   }
 
   writeToTextAusgabe();
@@ -132,20 +147,20 @@ function klick(zelle, punkt) {
 
 function grosseAuslesen() {
   selectedCharacter = totalPos;
-  var pu = [0, 0, 0, 0, 0, 0];
+  var point = [0, 0, 0, 0, 0, 0, 0];
 
-  if (document.getElementById("checkbox1").checked) pu[0] = 1;
-  else pu[0] = 0;
-  if (document.getElementById("checkbox2").checked) pu[1] = 1;
-  else pu[1] = 0;
-  if (document.getElementById("checkbox3").checked) pu[2] = 1;
-  else pu[2] = 0;
-  if (document.getElementById("checkbox4").checked) pu[3] = 1;
-  else pu[3] = 0;
-  if (document.getElementById("checkbox5").checked) pu[4] = 1;
-  else pu[4] = 0;
-  if (document.getElementById("checkbox6").checked) pu[5] = 1;
-  else pu[5] = 0;
+  if (document.getElementById("checkbox1").checked) point[1] = 1;
+  else point[1] = 0;
+  if (document.getElementById("checkbox2").checked) point[2] = 1;
+  else point[2] = 0;
+  if (document.getElementById("checkbox3").checked) point[3] = 1;
+  else point[3] = 0;
+  if (document.getElementById("checkbox4").checked) point[4] = 1;
+  else point[4] = 0;
+  if (document.getElementById("checkbox5").checked) point[5] = 1;
+  else point[5] = 0;
+  if (document.getElementById("checkbox6").checked) point[6] = 1;
+  else point[6] = 0;
 
   // reset big braille field
   document.getElementById("checkbox1").checked = false;
@@ -156,8 +171,8 @@ function grosseAuslesen() {
   document.getElementById("checkbox6").checked = false;
 
   var zeichen1, zeichen2;
-  zeichen1 = bit[pu[0].toString() + pu[1].toString() + pu[2].toString()];
-  zeichen2 = bit[pu[3].toString() + pu[4].toString() + pu[5].toString()];
+  zeichen1 = bit[point[1].toString() + point[2].toString() + point[3].toString()];
+  zeichen2 = bit[point[4].toString() + point[5].toString() + point[6].toString()];
   eingabe(zeichen1 + zeichen2);
   scrollTextToEnd();
 }
